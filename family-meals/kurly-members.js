@@ -27,6 +27,7 @@ function draw(){
  const head=document.createElement('aside');head.className='info-box';head.style.marginBottom='12px';
  head.textContent='장보기 기본 금액은 전체 '+NUM_REFERENCE+'종 식재료의 참고 예상가입니다(첫 구매 특별가 제외). 컬리멤버스 계정의 실제 가격이나 컬리 검색순서 첫 상품 가격으로 검증된 값은 아닙니다. 검색 1위 상품·회원가를 직접 확인해 저장하면 해당 값이 우선 적용됩니다. 총액 역시 참고 예상액이며 최종 결제금액이 아닙니다.';
  page.querySelector('.counter')?.insertAdjacentElement('afterend',head);
+ const amountLabel=page.querySelector('.counter .stat:nth-child(2) .stat-label');if(amountLabel)amountLabel.textContent='장보기 참고 예상 합계(일부 회원 확인가 포함)';
  for(const row of page.querySelectorAll('.shopitem')){
   const field=row.querySelector('input[data-price]');if(!field)continue;
   const id=field.dataset.price,rec=data[id],name=row.querySelector('.shopname')?.firstChild?.textContent?.trim()||id;
