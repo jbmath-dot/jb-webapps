@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "source": "public_kurly_product_pages_via_web_search",
+  "observed_on": "2026-10-26",
+  "notice": "공개된 컬리 상품페이지의 웹 검색 결과에서 확인한 표시가격. 실시간 현재가·개인 쿠폰 적용가·재고 여부가 아니며 주문 직전 상품 페이지 재확인이 필요합니다.",
+  "products": {
+    "chicken": {
+      "product_id": "5090273",
+      "price": 10170,
+      "unit": "1팩/500g",
+      "url": "https://www.kurly.com/goods/5090273?collectionCode=sale231107",
+      "crawled": "2026-10-23",
+      "note": "동일 상품의 다른 검색본에는 10,735원으로 보여 시점 차이가 확인됨"
+    },
+    "pork": {
+      "product_id": "5059791",
+      "price": 9090,
+      "unit": "1팩/500g",
+      "url": "https://www.kurly.com/goods/5059791",
+      "crawled": "2026-09",
+      "note": "최근 1개월 안에 수집된 상품 페이지 검색본"
+    },
+    "beef": {
+      "product_id": "1000120373",
+      "price": 9990,
+      "unit": "1팩/300g",
+      "url": "https://www.kurly.com/goods/1000120373",
+      "crawled": "2026-09",
+      "note": "최근 1개월 안에 수집된 상품 페이지 검색본"
+    },
+    "potato": {
+      "product_id": "5026448",
+      "price": 3990,
+      "unit": "1봉/1kg",
+      "url": "https://www.kurly.com/goods/5026448",
+      "crawled": "2026-09",
+      "note": "최근 1개월 안에 수집된 상품 페이지 검색본"
+    },
+    "broccoli": {
+      "product_id": "5054660",
+      "price": 4290,
+      "unit": "1봉/250g 이상",
+      "url": "https://www.kurly.com/goods/5054660",
+      "crawled": "2026-09",
+      "note": "최근 1개월 안에 수집된 상품 페이지 검색본"
+    }
+  }
+}
