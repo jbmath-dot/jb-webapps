@@ -1,0 +1,27 @@
+name: Refresh Kurly price signals
+on:
+  schedule:
+    - cron: '18 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: meals-kurly-quotes
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refresh using private managed API key, when available
+        env:
+          APIFUSE_API_KEY: ${{ secrets.APIFUSE_API_KEY }}
+        run: python family-meals/refresh_kurly.py
+      - name: Commit only validated public product data
+        run: |
+          if git diff --quiet -- family-meals/kurly-price-feed.json; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add family-meals/kurly-price-feed.json
+          git commit -m 'chore(meals): update verified Kurly price signals'
+          git push
