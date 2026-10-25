@@ -1,7 +1,5 @@
 name: Refresh Kurly price signals
 on:
-  schedule:
-    - cron: '18 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
