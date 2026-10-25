@@ -79,7 +79,7 @@
         apply.addEventListener("click",()=>{const latest=$(`input[data-price="${id}"]`);if(latest){latest.value=String(q.price);latest.dispatchEvent(new Event("change",{bubbles:true}));}});
         status.append(" ",apply);
       } else if(obs) {
-        status.textContent=`컬리 상품페이지 조회 시 표시가 ${fmt(obs.price)}원 · 조회 기록 ${observed.observed_on||"시점 미확인"} · 실시간 현재가·재고 미확인`;
+        status.textContent=`컬리 상품페이지 수집본 표시가 ${fmt(obs.price)}원 · 웹 자료 수집 ${obs.crawled||"시점 미상"} · 확인일 ${observed.observed_on||"미상"} · 현재 판매가·재고 미확인`;
         const quantity=row.querySelector(".shopname .meta")?.textContent||"";
         const packs=parseInt(quantity,10);
         if(Number.isFinite(packs)&&packs>0){observedTotal+=Number(obs.price)*packs;observedCount++;}
