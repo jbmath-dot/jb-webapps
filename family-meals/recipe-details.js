@@ -15,6 +15,8 @@
     fish:["순살 고등어구이 실제 레시피","https://www.10000recipe.com/recipe/7072586"],
     potato:["간장 감자조림 실제 레시피","https://www.10000recipe.com/recipe/7076122"],
     soup:["맑은 감자국 실제 레시피","https://www.10000recipe.com/recipe/7031555"],
+    tofuSoup:["두부·애호박 맑은국 실제 레시피","https://www.10000recipe.com/recipe/7070778"],
+    spinachSoup:["시금치국 실제 레시피","https://www.10000recipe.com/recipe/7013957"],
     zucchini:["새우젓 없는 애호박볶음 실제 레시피","https://www.10000recipe.com/recipe/7017773"],
     oatmeal:["오트밀 바나나죽 실제 레시피","https://www.10000recipe.com/recipe/7018027"]
   };
@@ -23,6 +25,8 @@
   const escNumber=n=>Number(n).toLocaleString("ko-KR");
   function reference(title){
     if(/오트밀|귀리/.test(title))return references.oatmeal;
+    if(/두부/.test(title)&&/국|탕|수프/.test(title))return references.tofuSoup;
+    if(/시금치국/.test(title))return references.spinachSoup;
     if(/불고기/.test(title))return references.bulgogi;
     if(/에어프라이어/.test(title)&&/닭/.test(title))return references.chickenAir;
     if(/돼지/.test(title)&&/두부/.test(title))return references.porkTofu;
@@ -30,6 +34,7 @@
     if(/소고기|한우/.test(title)&&/감자국/.test(title))return references.soup;
     if(/돼지목살|목살/.test(title))return references.neck;
     if(/돼지/.test(title))return references.pork;
+    if(/닭/.test(title)&&/국|탕|수프/.test(title))return null;
     if(/닭/.test(title))return references.chicken;
     if(/생선|고등어/.test(title))return references.fish;
     if(/소고기|한우/.test(title))return references.beef;
@@ -102,6 +107,17 @@
       "아이용 닭고기를 조리 후 약 40~50g 덜어 연골·질긴 부위를 제거하고 잘게 자릅니다. 감자도 부드러운 부분을 덜어냅니다.",
       "어른 분량만 진간장 ½~1큰술·다진 마늘 ½작은술·올리고당 ½작은술로 만든 소스를 팬에서 1~2분 끓여 묻혀 줍니다."
     ];
+    if(/국/.test(t)&&/구이와|볶음과/.test(t)){
+      const vegetable=/시금치/.test(t)?"시금치":/애호박/.test(t)?"애호박":"감자";
+      const mainProtein=/닭/.test(t)?"닭다리살":/돼지/.test(t)?"돼지고기":"소고기";
+      return [
+        "국에 넣을 "+vegetable+"와 양파를 작게 썹니다. 감자는 0.5~1cm로 썰고, 시금치는 줄기까지 여러 번 씻어 준비합니다.",
+        "냄비에 물 약 550~650mL를 넣습니다. 감자라면 8~12분 먼저 끓이고, 애호박이라면 5~7분, 시금치는 마지막 3~4분에 넣어 부드럽게 끓입니다.",
+        mainProtein+"를 조리 전 기준 상단 식단표의 중량대로 준비합니다. 팬에 식용유 1작은술을 두르고 중불에서 앞뒤로 충분히 익힙니다. 닭고기는 중심 온도 74℃ 이상을 확인하세요.",
+        "첫째에게는 익힌 고기 약 40~50g, 부드럽게 익힌 채소 약 30~50g, 싱거운 국물 80~120mL를 미리 덜어 작게 자릅니다.",
+        "어른 국에만 국간장 1작은술과 다진 마늘 ½작은술을 넣고, 어른 고기에는 진간장 ½~1큰술 또는 후추를 취향에 맞게 곁들입니다. 밥은 따로 냅니다."
+      ];
+    }
     if(/생선|고등어/.test(t))return [
       "순살 생선을 냉장 해동해 물기를 종이타월로 닦고, 포장에 염장 여부가 적혀 있는지 확인합니다.",
       "식용유 약 1작은술을 두른 팬을 중약불로 달구고, 생선의 두께에 따라 한 면 4~6분씩 굽습니다. 속살이 불투명해지고 쉽게 갈라질 정도로 완전히 익힙니다.",
