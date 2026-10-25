@@ -7,7 +7,7 @@
   const safeUrl = value => { try { const u = new URL(value); return u.protocol==="https:" && (u.hostname==="www.kurly.com"||u.hostname==="kurly.com") ? u.href : null; } catch {return null;} };
   const fmt = v => Number(v).toLocaleString("ko-KR");
   const search = n => "https://www.kurly.com/search?sword=" + encodeURIComponent(n);
-  let catalog = {}, feed = {products:{},updated_at:null}, state="가격 공급자 연결 대기";
+  let catalog = {}, feed = {products:{},updated_at:null}, observed = {products:{},observed_on:null}, state="확인된 판매가격 확인 중";
   const main = $("#mainContent");
   if(!main) return;
   let currentPage=null;
@@ -18,19 +18,28 @@
     const original=catalog[id]; if(original?.product_id && q.product_id && String(q.product_id)!==String(original.product_id)) return null;
     return q;
   }
+  function observation(id){
+    const x=observed.products?.[id], meta=catalog[id];
+    if(!x || !meta || String(x.product_id)!==String(meta.product_id) || !safeUrl(x.url)) return null;
+    if(!Number.isSafeInteger(Number(x.price)) || Number(x.price)<=0) return null;
+    return x;
+  }
   function dateTime(v){const t=Date.parse(v||"");return Number.isFinite(t)?new Date(t).toLocaleString("ko-KR",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}):"미확인";}
   async function fetchData(){
     state="정보 확인 중"; decorate(true);
     try{
-      const [cat,quote]=await Promise.all([
+      const [cat,quote,history]=await Promise.all([
         fetch("./kurly-products.json",{cache:"no-store"}).then(r=>r.ok?r.json():null),
-        fetch("./kurly-price-feed.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null)
+        fetch("./kurly-price-feed.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null),
+        fetch("./kurly-observed-prices.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
       ]);
       catalog=cat?.version===1 && cat.products && typeof cat.products==="object" ? cat.products : {};
       const good=quote?.version===1 && quote.products && typeof quote.products==="object" && quote.updated_at;
       feed=good?quote:{products:{},updated_at:null};
+      observed=history?.version===1 && history.products && typeof history.products==="object" ? history : {products:{},observed_on:null};
       const n=Object.keys(feed.products).filter(k=>quotation(k)).length;
-      state=n? `최근 확인 ${n}개 · ${dateTime(feed.updated_at)} 기준` : "가격 데이터 미연결 또는 2시간 초과";
+      const h=Object.keys(observed.products).filter(k=>!quotation(k)&&observation(k)).length;
+      state=n? `자동 조회 ${n}품목 · ${dateTime(feed.updated_at)} 기준` : h? `공개 상품페이지 조회 시 확인된 표시가 ${h}품목 · 현재가/재고는 미확인` : "확인된 판매가 없음 · 상품페이지 직접 확인 필요";
     }catch{state="가격 서버 접근 불가 · 컬리에서 직접 확인";}
     decorate(true);
   }
@@ -48,14 +57,14 @@
     top.append(caption,refresh);
     const sub=page.querySelector(".counter");
     if(sub)sub.insertAdjacentElement("afterend",top);else page.prepend(top);
-    let estimated=0,quotedCount=0,unpriced=0,soldCount=0;
+    let estimated=0,quotedCount=0,unpriced=0,soldCount=0,observedTotal=0,observedCount=0;
     $$(".shopitem",page).forEach(row=>{
       const input=$("input[data-price]",row);
       if(!input)return;
       const id=input.dataset.price,info=catalog[id];
       const name=$(".shopname",row)?.firstChild?.textContent?.trim()||id;
       const itemUrl=safeUrl(info?.url)||search(name);
-      const q=quotation(id);
+      const q=quotation(id), obs=observation(id);
       const div=document.createElement("div");
       div.style.cssText="font-size:12px;line-height:1.6;padding-top:6px;";
       const a=document.createElement("a");a.href=itemUrl;a.target="_blank";a.rel="noopener noreferrer";a.className="textlink";a.textContent=info ? "확인된 컬리 상품 페이지 ↗" : "컬리 상품 검색 ↗";
@@ -69,8 +78,16 @@
         const apply=document.createElement("button");apply.className="textlink";apply.style.marginLeft="10px";apply.textContent="이 가격으로 계산";apply.type="button";
         apply.addEventListener("click",()=>{const latest=$(`input[data-price="${id}"]`);if(latest){latest.value=String(q.price);latest.dispatchEvent(new Event("change",{bubbles:true}));}});
         status.append(" ",apply);
+      } else if(obs) {
+        status.textContent=`컬리 상품페이지 조회 시 표시가 ${fmt(obs.price)}원 · 조회 기록 ${observed.observed_on||"시점 미확인"} · 실시간 현재가·재고 미확인`;
+        const quantity=row.querySelector(".shopname .meta")?.textContent||"";
+        const packs=parseInt(quantity,10);
+        if(Number.isFinite(packs)&&packs>0){observedTotal+=Number(obs.price)*packs;observedCount++;}
+        const apply=document.createElement("button");apply.type="button";apply.className="textlink";apply.style.marginLeft="10px";apply.textContent="이 확인가 입력";
+        apply.addEventListener("click",()=>{const input=$(`input[data-price="${id}"]`);if(input){input.value=String(obs.price);input.dispatchEvent(new Event("change",{bubbles:true}));}});
+        status.append(" ",apply);
       } else {
-        status.textContent="현재 판매가·품절 상태 미확인 (기존 추정 가격으로 간주하지 않음)";
+        status.textContent="판매가격 미확인 · 추정 금액 표시하지 않음";
         unpriced++;
       }
       div.append(status);
@@ -89,7 +106,11 @@
       nameTarget.insertAdjacentElement("afterend",div);
     });
     const foot=document.createElement("p");foot.className="note";
-    foot.textContent=quotedCount? `가격 확인된 구매 품목 ${quotedCount}개만 합계 ${fmt(estimated)}원 (미확인 품목 ${unpriced}개, 품절 표시 ${soldCount}개). 전체 주문액은 컬리 결제 화면 확인.` : "실시간 가격 공급자 미연결: 상품 링크에서 현재 가격과 배송지 기준 판매 여부를 확인하세요.";
+    const summary=[];
+    if(quotedCount)summary.push(`최근 자동 조회 ${quotedCount}품목 ${fmt(estimated)}원 · 품절 표시 ${soldCount}개`);
+    if(observedCount)summary.push(`공식 상품페이지에서 확인한 표시가 ${observedCount}품목의 조회 당시 소계 ${fmt(observedTotal)}원`);
+    summary.push(`판매가격 미확인 ${unpriced}품목. 이 소계는 전체 장보기 금액이나 실시간 결제금액이 아닙니다. 현재가는 컬리에서 확인하세요.`);
+    foot.textContent=summary.join(" · ");
     top.append(foot);
   }
   new MutationObserver(()=>decorate()).observe(main,{childList:true});
