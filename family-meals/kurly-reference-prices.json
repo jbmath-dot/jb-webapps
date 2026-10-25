@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "as_of": "2026-10-26",
+  "currency": "KRW",
+  "pricing_basis": "indicative typical Kurly Members shopping reference (first-purchase-only specials excluded), not authenticated",
+  "pricing_status": "ESTIMATED_NOT_VERIFIED",
+  "is_first_search_result_verified": false,
+  "notes": "기본값은 공개 컬리 상품가를 참고하거나 유사 중량 시세에 맞춘 대략적인 예상 1팩 가격이다. 컬리 회원 로그인·첫 검색 상품·실제 멤버스가는 확인하지 못했다. 사용자가 실제 확인한 가격이 있으면 우선 적용.",
+  "prices": {
+    "rice": {
+      "product_label": "쌀 2kg",
+      "reference_price_krw": 9900,
+      "member_price_verified": false
+    },
+    "kim": {
+      "product_label": "조미김 40g",
+      "reference_price_krw": 3990,
+      "member_price_verified": false
+    },
+    "chicken": {
+      "product_label": "순살 닭다리살 500g",
+      "reference_price_krw": 10170,
+      "member_price_verified": false
+    },
+    "pork": {
+      "product_label": "돼지 안심·등심 500g",
+      "reference_price_krw": 9090,
+      "member_price_verified": false
+    },
+    "neck": {
+      "product_label": "돼지 목살 500g",
+      "reference_price_krw": 16900,
+      "member_price_verified": false
+    },
+    "beef": {
+      "product_label": "소고기(불고기·등심) 300g",
+      "reference_price_krw": 9990,
+      "member_price_verified": false
+    },
+    "fish": {
+      "product_label": "순살 생선 400g",
+      "reference_price_krw": 10900,
+      "member_price_verified": false
+    },
+    "tofu": {
+      "product_label": "두부 300g",
+      "reference_price_krw": 2200,
+      "member_price_verified": false
+    },
+    "egg": {
+      "product_label": "달걀 약 550g",
+      "reference_price_krw": 4990,
+      "member_price_verified": false
+    },
+    "zucchini": {
+      "product_label": "애호박 약 250g",
+      "reference_price_krw": 3090,
+      "member_price_verified": false
+    },
+    "potato": {
+      "product_label": "감자 1kg",
+      "reference_price_krw": 3990,
+      "member_price_verified": false
+    },
+    "onion": {
+      "product_label": "양파 500g",
+      "reference_price_krw": 2290,
+      "member_price_verified": false
+    },
+    "broccoli": {
+      "product_label": "브로콜리 300g",
+      "reference_price_krw": 4290,
+      "member_price_verified": false
+    },
+    "carrot": {
+      "product_label": "당근 500g",
+      "reference_price_krw": 2990,
+      "member_price_verified": false
+    },
+    "spinach": {
+      "product_label": "시금치 250g",
+      "reference_price_krw": 4990,
+      "member_price_verified": false
+    },
+    "frozen": {
+      "product_label": "냉동 채소믹스 600g",
+      "reference_price_krw": 6990,
+      "member_price_verified": false
+    },
+    "cucumber": {
+      "product_label": "오이 300g",
+      "reference_price_krw": 2990,
+      "member_price_verified": false
+    },
+    "banana": {
+      "product_label": "바나나 1kg",
+      "reference_price_krw": 4990,
+      "member_price_verified": false
+    },
+    "apple": {
+      "product_label": "사과·배 1kg",
+      "reference_price_krw": 9900,
+      "member_price_verified": false
+    },
+    "toast": {
+      "product_label": "식빵 450g",
+      "reference_price_krw": 4490,
+      "member_price_verified": false
+    },
+    "oats": {
+      "product_label": "오트밀 500g",
+      "reference_price_krw": 5980,
+      "member_price_verified": false
+    },
+    "sweet": {
+      "product_label": "고구마 1kg",
+      "reference_price_krw": 6990,
+      "member_price_verified": false
+    },
+    "squash": {
+      "product_label": "단호박 500g",
+      "reference_price_krw": 4990,
+      "member_price_verified": false
+    },
+    "dumpling": {
+      "product_label": "냉동 물만두 600g",
+      "reference_price_krw": 6990,
+      "member_price_verified": false
+    },
+    "noodle": {
+      "product_label": "소면 500g",
+      "reference_price_krw": 2990,
+      "member_price_verified": false
+    }
+  }
+}
