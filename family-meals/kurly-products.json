@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "source": "마켓컬리 공개 상품페이지에서 확인한 대표 상품 링크. 가격과 재고는 포함하지 않음",
+  "products": {
+    "chicken": {
+      "product_id": "5090273",
+      "url": "https://www.kurly.com/goods/5090273",
+      "name": "[자연실록] 무항생제 닭 다리살 (정육) 500g",
+      "pack_g": 500
+    },
+    "pork": {
+      "product_id": "5059791",
+      "url": "https://www.kurly.com/goods/5059791",
+      "name": "[도드람한돈] 등심 카레용 500g (냉장)",
+      "pack_g": 500
+    },
+    "beef": {
+      "product_id": "1000120373",
+      "url": "https://www.kurly.com/goods/1000120373",
+      "name": "[Kim's butcher] 호주산 소고기 앞다리 불고기 300g",
+      "pack_g": 300
+    },
+    "potato": {
+      "product_id": "5026448",
+      "url": "https://www.kurly.com/goods/5026448",
+      "name": "[KF365] 감자 1kg",
+      "pack_g": 1000
+    },
+    "broccoli": {
+      "product_id": "5054660",
+      "url": "https://www.kurly.com/goods/5054660",
+      "name": "[KF365] 브로콜리 1입 (250g)",
+      "pack_g": 250
+    },
+    "zucchini": {
+      "product_id": "5030559",
+      "url": "https://www.kurly.com/goods/5030559",
+      "name": "[KF365] 애호박 1개",
+      "pack_g": null
+    }
+  }
+}
