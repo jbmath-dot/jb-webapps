@@ -16,3 +16,10 @@
 
 ## 배포
 저장소 Settings → Pages에서 main/(root) 배포가 활성화되어야 하며, 브라우저에서 주소 접속 후 홈 화면에 추가로 설치할 수 있다.
+
+## 컬리 가격·품절 연동
+- `kurly-products.json`: 공개 확인된 개별 컬리 상품 ID 및 링크(현재 6종). 실제 가격·재고를 의미하지 않음.
+- `kurly-price-feed.json`: 마지막 확인 시각이 있는 가격·품절 스냅샷. 현재는 **API 인증키 미설정으로 비어 있음**.
+- `kurly-live.js`: 컬리 상품 링크·업데이트 시각·품절 표시, 가격 확인 후 계산 적용 기능. 2시간이 지난 값은 현재 가격으로 인정하지 않음.
+- `.github/workflows/refresh-kurly-prices.yml`: 향후 APIFuse API의 `market-kurly` 범위가 허용된 키를 저장소의 Actions secret `APIFUSE_API_KEY`로 제공한 뒤 약 1시간마다 갱신하는 별도 워크플로(실시간 스트리밍 아님).
+- GitHub Pages는 정적 호스팅이므로 비밀 API 키를 브라우저 JS에 삽입하지 마세요. 정확한 수량 재고나 배송지별 구매 가능 상태는 이 API가 제공하지 않습니다. 최종 컬리 결제 화면이 기준입니다.
