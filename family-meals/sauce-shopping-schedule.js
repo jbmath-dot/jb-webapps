@@ -110,6 +110,7 @@ function refreshed(){
   const card=mk("div","rs-shop-row");
   card.append(mk("strong",null,p.name));
   card.append(mk("p","rs-note",(sel.length?"레시피 직접 선택 "+sel.length+"회 · ":"")+"추천 적용 "+rows.length+"끼 · 각 메뉴 기준 총 "+fmt(grams)+"g · "+p.pack+"g/팩"));
+  card.append(mk("p","rs-note","활용 날짜: "+[...new Set(rows.map(r=>r.date))].join(" · ")));
   const details=mk("details","rs-day-usage");
   const summary=mk("summary",null,"요일별 사용 메뉴·방법 펼쳐 보기 ("+rows.length+"끼)");
   details.append(summary);
@@ -171,7 +172,7 @@ function refreshed(){
  const base=Number(v.replace(/[^\d]/g,""));
  if(base>0)view.append(mk("div","rs-total","기본 식재료와 선택 소스의 참고 합계 "+fmt(base+sum)+"원"));
  view.append(mk("p","rs-note","소스의 시판 참고가격은 현재 로그인 계정의 정확한 멤버스가가 아닙니다. 다담 옵션·알레르겐·보관법·용량은 컬리 상품 페이지에서 확인하세요. 국에는 주요리용 소스를 넣지 않습니다. 첫째용은 양념 전에 덜고 둘째 이유식에는 사용하지 않습니다."));
- page.append(view);
+ const top=$(".btnrow",page);if(top)top.insertAdjacentElement("afterend",view);else page.append(view);
 }
 const style=mk("style");style.textContent=".rs-day-usage{background:#f2f7f1;border-radius:9px;padding:9px 12px;margin:10px 0}.rs-day-usage summary{cursor:pointer;font-size:13px;font-weight:700}.rs-day-item{border-top:1px solid #d8e4db;margin-top:8px;padding-top:7px}.rs-day-item strong{font-size:12px}.rs-day-item p{margin:3px 0 0}.rs-shop-row input[type=checkbox]{accent-color:#216544}";document.head.append(style);
 const main=$("#mainContent");
