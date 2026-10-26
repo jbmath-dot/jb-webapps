@@ -48,11 +48,10 @@ function canUse(id,title){
  if(id==="tofu")return /두부/.test(title)&&/조림|볶음|덮밥/.test(title);
  return false;
 }
-let synced=null;
 function menus(){
  const start=selectedWeek();if(!start)return [];
  const s=read(APP),p=selectedPlan();
- const all=(synced?.week_start===dateString(start)?synced.plans:null)||window.MEAL_PLANS;
+ const all=window.FamilyMealApp?.data().plans||window.MEAL_PLANS;
  const pack=all?.[p];if(!pack)return [];
  const out=[];
  for(let i=0;i<7;i++){
@@ -106,7 +105,7 @@ function refreshed(){
   const packs=active?(Number.isInteger(savedPacks)&&savedPacks>=0?savedPacks:autoPacks):0;
   const price=Number(state.prices?.[id])>0?Number(state.prices[id]):p.price;
   if(active){included++;sum+=packs*price;packSum+=packs;}
-  if(active&&packs>0)copySauces.push("□ "+p.name+": "+packs+"팩 ("+fmt(price)+"원/팩) / 사용: "+rows.map(r=>r.date+" "+r.type+" "+r.title+" "+r.grams+"g").join(", "));
+  if(active&&packs>0)copySauces.push("□ "+p.name+": "+packs+"팩 ("+(Number(state.prices?.[id])>0?"직접 입력가·회원가 미검증 ":"참고가 ")+fmt(price)+"원/팩) / 사용: "+rows.map(r=>r.date+" "+r.type+" "+r.title+" "+r.grams+"g").join(", "));
   const card=mk("div","rs-shop-row");
   card.append(mk("strong",null,p.name));
   card.append(mk("p","rs-note",(sel.length?"레시피 직접 선택 "+sel.length+"회 · ":"")+"추천 적용 "+rows.length+"끼 · 각 메뉴 기준 총 "+fmt(grams)+"g · "+p.pack+"g/팩"));
@@ -155,14 +154,10 @@ function refreshed(){
  copyButton.type="button";
  copyButton.style.margin="12px 0 5px";
  copyButton.onclick=async()=>{
-  const baseItems=Array.from(page.querySelectorAll(".shopitem")).flatMap(item=>{
-   const label=$(".shopname",item)?.textContent?.trim()||"";
-   const packs=$(".shopname .meta",item)?.textContent?.trim()||"";
-   if(!packs||packs==="추가 구매 없음")return [];
-   return ["□ "+label];
-  });
-  const lines=["우리집 식단 · "+week+" · 플랜 "+plan, ...baseItems,
-   ...(copySauces.length?["[선택한 시판 소스]",...copySauces]:[])];
+  const baseItems=window.FamilyMealApp?.shoppingLines()||[];
+  const lines=["우리집 식단 · "+week+" · 플랜 "+plan,...baseItems,
+   ...(copySauces.length?["[선택한 시판 소스]",...copySauces]:[]),
+   window.FamilyMealApp?.excluded||"기본 양념·배송비·둘째 이유식 제외"];
   try{await navigator.clipboard.writeText(lines.join("\n"));copyButton.textContent="전체 목록 복사 완료";}
   catch{copyButton.textContent="복사 불가 · 보안 연결 확인";}
  };
@@ -181,6 +176,5 @@ const dlg=$("#dialogContent");
 if(dlg)new MutationObserver(()=>{if($("#saucePlanShopping"))refreshed();}).observe(dlg,{childList:true,subtree:false});
 document.addEventListener("click",e=>{if(e.target.closest(".rs-option"))setTimeout(refreshed,0);});
 refreshed();
-fetch("./weekly-plans.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null)
-.then(v=>{if(v?.version===1&&v.plans&&v.week_start)synced=v;refreshed();}).catch(()=>{});
+
 })();

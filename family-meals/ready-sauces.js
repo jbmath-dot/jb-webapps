@@ -23,7 +23,7 @@ function context(){
  return {title,label,plan:plan(),week:week(),key:week()+"|"+plan()+"|"+label+"|"+title,breakfast:/아침/.test(label)};
 }
 function candidates(ctx){
- if(ctx.breakfast)return [];
+ if(ctx.breakfast||(/국|탕|수프|죽/.test(ctx.title)&&!/구이와|볶음과/.test(ctx.title)))return [];
  const t=ctx.title;
  // Sauces are for the main dish only. The separate soup stays homemade.
  const result=[];
@@ -61,17 +61,21 @@ function writeSelection(ctx,id,amount){
  return save(d);
 }
 function sauceSteps(ctx,p,grams){
- const type=p.kind;
+ const dipping=p.kind==='돼지고기 찍먹';
  const s=[
- "1. 기본 레시피의 재료표대로 고기·두부·채소를 손질합니다. 완성형 소스를 사용할 때는 별도의 간장·설탕·마늘 양념장을 미리 만들 필요가 없습니다.",
- "2. 팬 또는 냄비에서 고기·두부·채소를 먼저 충분히 익힙니다. 국이 있는 메뉴라면 국은 기존 레시피대로 별도로 만듭니다.",
- "3. 익힌 주요리에서 첫째 몫을 먼저 덜어냅니다(익힌 고기 약 40~50g 또는 두부 약 60~80g과 익힌 채소 30~60g은 예시량). 첫째 식판에는 소스를 넣지 않습니다.",
- "4. 어른용으로 남은 주요리에 완성형 소스 "+grams+"g을 계량해 넣습니다. 숟가락보다 저울 계량이 정확합니다. 필요하면 물 1~2큰술로 농도를 조절합니다.",
- "5. "+p.time+" 조리해 고루 묻힌 후 맛을 보고 추가 간장·올리고당을 중복해 넣지 않습니다. 소스 포장지의 조리법이 이 예시보다 우선합니다.",
- "6. 어른 두 사람의 접시에 나누어 담고, 아이는 미리 덜어 둔 싱거운 주재료와 흰밥을 따로 제공합니다."
+  '기본 레시피의 재료표대로 준비합니다. 주요리용 수제 양념장은 만들지 않고, 곁들임 국의 양념은 기존 상세 레시피를 따릅니다.',
+  '아래 상세 조리 과정에 따라 주요리와 채소를 완전히 익힙니다.',
+  '첫째 몫은 소스를 넣기 전에 덜어 작게 자릅니다. 첫째 식판에는 소스를 넣지 않습니다.'
  ];
- if(ctx.title.includes("국"))s.splice(3,0,"곁들임 국은 조리 후 아이용 싱거운 국물 80~120mL를 먼저 덜고, 어른 국에만 기존 상세 레시피의 국간장·마늘을 사용합니다. 완성형 소스를 국에 넣지 않습니다.");
- if(type==="돼지고기 찍먹"){s[3]="4. 어른 두 사람에게 소스 "+grams+"g을 작은 종지에 나누어 담습니다. 고기를 굽는 팬에 소스를 넣지 않습니다.";s[4]="5. 익힌 돼지고기를 어른 접시에 담아 소스를 찍어 먹습니다. 소스는 다시 가열하지 않아도 되며 제품 보관·사용 지침에 따릅니다.";}
+ if(/국|탕|수프/.test(ctx.title))s.push('곁들임 국은 따로 조리하고 아이 국물·건더기를 먼저 덜어낸 뒤 어른 국에만 기존 국간장·마늘 양념을 넣습니다. 주요리용 시판 소스는 국에 넣지 않습니다.');
+ if(dipping){
+  s.push('어른 두 사람에게 돈까스 소스 '+grams+'g을 작은 종지에 나누어 담습니다. 고기를 굽는 팬에는 넣지 않습니다.');
+  s.push('익힌 돼지고기를 어른 접시에 담아 소스를 찍어 먹습니다. 제품 보관·사용 지침에 따릅니다.');
+ }else{
+  s.push('어른 주요리에 시판 소스 '+grams+'g을 계량해 넣습니다. 필요하면 물 1~2큰술로 농도를 조절합니다.');
+  s.push(p.time+' 조리해 소스를 고루 묻힙니다. 간장·설탕·올리고당은 중복해서 넣지 않고 제품 포장의 조리법을 우선합니다.');
+ }
+ s.push('어른 음식은 두 접시에 나누고 아이에게는 미리 덜어 둔 음식을 제공합니다.');
  return s;
 }
 function recipe(){
@@ -112,12 +116,9 @@ function recipe(){
  // Keep the detailed handmade recipe. Hide only the two MAIN-dish homemade
  // seasoning instructions when the ready-made sauce is selected.
  const handmade=$("#familyRecipeExpanded",d);
- const sections=$$(".family-recipe-section",handmade);
- sections.forEach((section,i)=>{if(i===0)section.style.display=active?"none":"";});
- const ol=$("ol",d);
- if(ol)$$("li",ol).forEach(li=>{
-   const txt=li.textContent.trim();
-   li.style.display=active&&(/^(양념장 미리 만들기|어른 양념 넣고 마무리):/.test(txt))?"none":"";
+ $$('[data-seasoning="main"]',handmade).forEach(section=>{section.hidden=!!active;});
+ $$('ol[data-recipe-steps] > li[data-step-role]',d).forEach(li=>{
+   li.hidden=!!active&&['main-seasoning-prep','main-seasoning-finish'].includes(li.dataset.stepRole);
  });
  const chips=$(".ingredient-chips",d);
  (handmade||chips).insertAdjacentElement("afterend",block);
