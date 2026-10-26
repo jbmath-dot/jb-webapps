@@ -90,6 +90,7 @@ function refreshed(){
  view.append(mk("p","rs-note","추천만 표시된 소스는 구매합계에 포함하지 않습니다. '장보기 포함'을 선택하면 구매 수량과 금액이 추가됩니다. 레시피에서 이미 선택한 소스는 자동 포함됩니다."));
  const state=read(KEY),list=groups(),week=weekKey(),plan=selectedPlan();
  let sum=0,packSum=0,visible=0,included=0;
+ const copySauces=[];
  for(const [id,rows] of Object.entries(list)){
   if(!rows.length)continue;
   visible++;
@@ -105,6 +106,7 @@ function refreshed(){
   const packs=active?(Number.isInteger(savedPacks)&&savedPacks>=0?savedPacks:autoPacks):0;
   const price=Number(state.prices?.[id])>0?Number(state.prices[id]):p.price;
   if(active){included++;sum+=packs*price;packSum+=packs;}
+  if(active&&packs>0)copySauces.push("□ "+p.name+": "+packs+"팩 ("+fmt(price)+"원/팩) / 사용: "+rows.map(r=>r.date+" "+r.type+" "+r.title+" "+r.grams+"g").join(", "));
   const card=mk("div","rs-shop-row");
   card.append(mk("strong",null,p.name));
   card.append(mk("p","rs-note",(sel.length?"레시피 직접 선택 "+sel.length+"회 · ":"")+"추천 적용 "+rows.length+"끼 · 각 메뉴 기준 총 "+fmt(grams)+"g · "+p.pack+"g/팩"));
@@ -147,6 +149,24 @@ function refreshed(){
  }
  if(!visible)view.append(mk("p","rs-note","현재 플랜에서 이 제품들과 어울리는 메뉴가 없습니다."));
  view.append(mk("div","rs-total","선택한 시판 소스 추가 금액 "+fmt(sum)+"원 · "+packSum+"팩 / 전체 추천 "+visible+"종 중 "+included+"종 반영"));
+ 
+ const copyButton=mk("button","btn secondary tiny","소스 포함 장보기 목록 복사");
+ copyButton.type="button";
+ copyButton.style.margin="12px 0 5px";
+ copyButton.onclick=async()=>{
+  const baseItems=Array.from(page.querySelectorAll(".shopitem")).flatMap(item=>{
+   const label=$(".shopname",item)?.textContent?.trim()||"";
+   const packs=$(".shopname .meta",item)?.textContent?.trim()||"";
+   if(!packs||packs==="추가 구매 없음")return [];
+   return ["□ "+label];
+  });
+  const lines=["우리집 식단 · "+week+" · 플랜 "+plan, ...baseItems,
+   ...(copySauces.length?["[선택한 시판 소스]",...copySauces]:[])];
+  try{await navigator.clipboard.writeText(lines.join("\n"));copyButton.textContent="전체 목록 복사 완료";}
+  catch{copyButton.textContent="복사 불가 · 보안 연결 확인";}
+ };
+ view.append(copyButton);
+
  const v=$(".counter .stat:last-child .stat-val",page)?.textContent||"";
  const base=Number(v.replace(/[^\d]/g,""));
  if(base>0)view.append(mk("div","rs-total","기본 식재료와 선택 소스의 참고 합계 "+fmt(base+sum)+"원"));
