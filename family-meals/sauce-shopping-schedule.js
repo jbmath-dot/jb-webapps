@@ -30,8 +30,9 @@ function plannedSauce(title){
  if(/국|탕|수프|죽/.test(title)&&!/구이와|볶음과/.test(title))return null;
  if(/불고기|한우/.test(title))return "bulgogi";
  if(/소고기/.test(title)&&/구이|볶음|조림|찜/.test(title))return "bulgogi";
+ if(/닭/.test(title)&&/구이|에어프라이어/.test(title))return "teriyaki";
  if(/닭/.test(title)&&/조림|찜|감자/.test(title))return "jjimdak";
- if(/닭/.test(title)&&/구이|볶음|채소/.test(title))return "teriyaki";
+ if(/닭/.test(title)&&/볶음|채소/.test(title))return "teriyaki";
  if(/돼지|목살|등심|안심/.test(title)&&/구이/.test(title))return "cutlet";
  if(/돼지|목살|등심|안심/.test(title)&&/볶음|조림|찜/.test(title))return "teriyaki";
  if(/두부/.test(title)&&/조림|볶음|덮밥/.test(title))return "tofu";
@@ -41,8 +42,8 @@ function canUse(id,title){
  if(/국|탕|수프|죽/.test(title)&&!/구이와|볶음과/.test(title))return false;
  if(!id||!SAUCES[id])return false;
  if(id==="bulgogi")return /불고기|소고기|한우/.test(title)&&/불고기|구이|볶음|조림|찜/.test(title);
- if(id==="jjimdak")return /닭/.test(title)&&/구이|볶음|조림|감자|채소/.test(title);
- if(id==="teriyaki")return /닭|돼지|목살|등심|안심|소고기/.test(title)&&/구이|볶음|조림|감자|채소|찜/.test(title);
+ if(id==="jjimdak")return /닭/.test(title)&&/구이|볶음|조림|찜|감자|채소/.test(title);
+ if(id==="teriyaki")return /닭|돼지|목살|등심|안심|소고기/.test(title)&&/구이|볶음|조림|감자|채소|찜|에어프라이어/.test(title);
  if(id==="cutlet")return /돼지|목살|등심|안심/.test(title)&&/구이|볶음|조림|찜/.test(title);
  if(id==="tofu")return /두부/.test(title)&&/조림|볶음|덮밥/.test(title);
  return false;
