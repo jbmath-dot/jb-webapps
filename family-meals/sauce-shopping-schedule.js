@@ -27,6 +27,7 @@ function selectedWeek(){
 }
 function weekKey(){return ($("#deliveryText")?.textContent.match(/(\d{4})년/)||[])[1]+"|"+($("#weekHeading")?.textContent||"week");}
 function plannedSauce(title){
+ if(/국|탕|수프|죽/.test(title)&&!/구이와|볶음과/.test(title))return null;
  if(/불고기|한우/.test(title))return "bulgogi";
  if(/소고기/.test(title)&&/구이|볶음|조림|찜/.test(title))return "bulgogi";
  if(/닭/.test(title)&&/조림|찜|감자/.test(title))return "jjimdak";
@@ -37,6 +38,7 @@ function plannedSauce(title){
  return null;
 }
 function canUse(id,title){
+ if(/국|탕|수프|죽/.test(title)&&!/구이와|볶음과/.test(title))return false;
  if(!id||!SAUCES[id])return false;
  if(id==="bulgogi")return /불고기|소고기|한우/.test(title)&&/불고기|구이|볶음|조림|찜/.test(title);
  if(id==="jjimdak")return /닭/.test(title)&&/구이|볶음|조림|감자|채소/.test(title);
