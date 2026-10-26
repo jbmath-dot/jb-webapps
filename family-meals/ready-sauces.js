@@ -122,40 +122,7 @@ function recipe(){
  const chips=$(".ingredient-chips",d);
  (handmade||chips).insertAdjacentElement("afterend",block);
 }
-function shopping(){
- const root=$("#mainContent"),page=$(".page",root);
- if(!page||!page.querySelector(".shopitem"))return;
- // Idempotent; protect against MutationObserver loops.
- if($("#readySauceShopping",page))return;
- const currWeek=week(),currPlan=plan(),d=read(),selected=Object.entries(d.selected||{}).filter(([key,v])=>v.week===currWeek&&v.plan===currPlan&&CATALOG[v.id]);
- const grouped={};selected.forEach(([key,v])=>{const p=CATALOG[v.id];const g=grouped[v.id]||(grouped[v.id]={grams:0,meals:[]});g.grams+=Math.max(5,Number(v.grams)||p.dose);g.meals.push(v.label+": "+v.title);});
- const box=el("section","rs-shopping");box.id="readySauceShopping";
- box.append(el("h3",null,"선택한 완성형 소스 장보기"));
- box.append(el("p","rs-note","레시피에서 시판 소스를 선택하면 구매 목록에 자동으로 반영됩니다. 소스 한 병은 여러 끼에 공유하도록 합산하며 금액은 참고가격입니다."));
- let total=0,allPacks=0;
- Object.entries(grouped).forEach(([id,row])=>{
-  const p=CATALOG[id],stored=d.stock?.[id]||0,net=Math.max(0,row.grams-stored),packs=Math.ceil(net/p.pack),price=(d.prices?.[id]??p.price),cost=packs*price;total+=cost;allPacks+=packs;
-  const container=el("div","rs-shop-row");
-  container.append(el("strong",null,p.name+" "+p.variant));
-  container.append(el("div","rs-note","사용 "+row.grams+"g · 집에 있는 양 "+stored+"g · 구매 "+packs+"팩 · 계산상 남는 양 "+(stored+packs*p.pack-row.grams)+"g"));
-  container.append(el("div","rs-note",row.meals.join(" / ")));
-  const line=el("div","rs-qty");
-  const stockL=el("label",null,"집에 보유(g)"),stock=el("input");stock.type="number";stock.min="0";stock.value=String(stored);stock.onchange=()=>{const x=read();x.stock=x.stock||{};x.stock[id]=Math.max(0,Number(stock.value)||0);save(x);box.remove();shopping();};stockL.append(stock);line.append(stockL);
-  const priceL=el("label",null,"1팩 가격(원)"),costInput=el("input");costInput.type="number";costInput.min="0";costInput.value=String(price);costInput.onchange=()=>{const x=read();x.prices=x.prices||{};x.prices[id]=Math.max(0,Number(costInput.value)||0);save(x);box.remove();shopping();};priceL.append(costInput);line.append(priceL);container.append(line);
-  const link=el("a",null,"컬리 상품 확인");link.href=p.url;link.target="_blank";link.rel="noopener noreferrer";link.style.cssText="color:#096649;text-decoration:underline;";container.append(link);
-  const checkLabel=el("label");checkLabel.style.marginLeft="12px";
-  const check=el("input");check.type="checkbox";const k=currWeek+"|"+currPlan+"|"+id;check.checked=!!d.checked?.[k];check.onchange=()=>{const x=read();x.checked=x.checked||{};x.checked[k]=check.checked;save(x);};checkLabel.append(check,document.createTextNode("구매함"));container.append(checkLabel);
-  box.append(container);
- });
- if(!selected.length)box.append(el("p","rs-note","아직 선택한 완성형 소스가 없습니다. 오늘 또는 주간 식단에서 고기·두부 메뉴를 열고 소스를 선택할 수 있습니다."));
- const tail=el("div","rs-total","선택 소스 추가 구매금액 "+money(total)+" ("+allPacks+"팩)");
- box.append(tail);
- const baseText=$(".counter .stat:last-child .stat-val",page)?.textContent||"";
- const baseAmount=Number(baseText.replace(/[^\d]/g,""));
- if(baseAmount>0&&allPacks>0)box.append(el("div","rs-total","기본 식재료와 소스 합계 참고액 "+money(baseAmount+total)));
- box.append(el("p","rs-note","매운 양념은 어른만 사용합니다. 모든 소스는 밀·대두 등 알레르겐과 나트륨 함량을 제품 라벨에서 확인하세요. 둘째 이유식에는 사용하지 않습니다. 쿠폰·배송비·컬리멤버스가·재고와 상품 검색 첫 순위는 미확인입니다."));
- page.append(box);
-}
+function shopping(){ /* Shopping UI is owned by sauce-shopping-schedule.js */ }
 const detail=$("#dialogContent"),main=$("#mainContent");
 if(detail)new MutationObserver(()=>recipe()).observe(detail,{childList:true,subtree:true});
 if(main)new MutationObserver(()=>shopping()).observe(main,{childList:true});
