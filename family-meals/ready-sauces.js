@@ -28,7 +28,7 @@ function candidates(ctx){
  // Sauces are for the main dish only. The separate soup stays homemade.
  const result=[];
  if(/한우|소고기|불고기/.test(t)&&/불고기|구이|볶음|양파찜|당근조림/.test(t))result.push("bulgogi","teriyaki");
- if(/닭|찜닭/.test(t)&&/구이|볶음|조림|감자|채소/.test(t))result.push("teriyaki","jjimdak");
+ if(/닭|찜닭/.test(t)&&/구이|볶음|조림|찜|감자|채소/.test(t))result.push("teriyaki","jjimdak");
  if(/돼지|목살|등심|안심/.test(t)&&/구이|볶음|조림|찜/.test(t))result.push("teriyaki","cutlet");
  if(/두부/.test(t)&&/조림|볶음|덮밥/.test(t))result.push("tofu");
  return [...new Set(result)];
