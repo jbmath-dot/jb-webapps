@@ -1023,8 +1023,8 @@
     // 매니페스트 바로가기(?tab=) 지원
     try {
       const t = new URLSearchParams(location.search).get("tab");
-      if (t === "log") { switchTab("tab-log"); }
-      else if (t === "coach") { switchTab("tab-coach"); }
+      const map = { coach: "tab-coach", programs: "tab-programs", pads: "tab-pads", stretch: "tab-stretch", log: "tab-log" };
+      if (t && map[t]) switchTab(map[t]);
     } catch (e) {}
     // 서비스 워커
     if ("serviceWorker" in navigator) {
