@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>어깨 재활 가이드</title>
+<meta name="description" content="콤펙스 SP 4.0 모드·패드 부착 가이드와 어깨 스트레칭 루틴을 한 화면에서 여는 개인 재활 앱">
+<meta name="theme-color" content="#2563eb">
+<meta name="color-scheme" content="light">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="어깨재활">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png" type="image/png">
+<style>
+  :root {
+    --blue: #2563eb;
+    --blue-dark: #1d4ed8;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --safe-b: env(safe-area-inset-bottom, 0px);
+    --safe-t: env(safe-area-inset-top, 0px);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard",
+      "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: calc(var(--safe-t) + 18px) 16px calc(var(--safe-b) + 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .hero {
+    background: linear-gradient(140deg, #1e40af 0%, var(--blue) 62%, #3b82f6 100%);
+    color: #fff;
+    border-radius: 22px;
+    padding: 20px 20px 22px;
+    box-shadow: 0 10px 26px rgba(37, 99, 235, 0.24);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero img {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: #fff;
+    flex: 0 0 auto;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18);
+  }
+  .hero .eyebrow {
+    margin: 0 0 3px;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    opacity: 0.78;
+  }
+  .hero h1 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .hero .sub {
+    margin: 4px 0 0;
+    font-size: 12.5px;
+    opacity: 0.9;
+  }
+
+  main { display: flex; flex-direction: column; gap: 14px; }
+
+  .tile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 104px;
+    padding: 18px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+  }
+  .tile:active {
+    transform: scale(0.985);
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+    border-color: #c7d7f7;
+  }
+  .tile .ico {
+    flex: 0 0 auto;
+    width: 54px; height: 54px;
+    display: grid;
+    place-items: center;
+    font-size: 26px;
+    line-height: 1;
+    border-radius: 16px;
+    background: #eff6ff;
+  }
+  .tile .body { flex: 1 1 auto; min-width: 0; }
+  .tile h2 {
+    margin: 0;
+    font-size: 16.5px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    word-break: keep-all;
+  }
+  .tile p {
+    margin: 5px 0 0;
+    font-size: 12.5px;
+    color: var(--muted);
+    word-break: keep-all;
+  }
+  .tile .chev {
+    flex: 0 0 auto;
+    color: #cbd5e1;
+    font-size: 24px;
+    line-height: 1;
+    padding-left: 2px;
+  }
+
+  footer { margin-top: 2px; }
+  .hint {
+    margin: 0;
+    padding: 13px 15px;
+    background: #fff;
+    border: 1px dashed #cbd5e1;
+    border-radius: 14px;
+    font-size: 12.5px;
+    color: #475569;
+    text-align: center;
+    word-break: keep-all;
+  }
+  .hint b { color: var(--blue-dark); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <img src="icon-192.png" alt="" width="52" height="52">
+    <div>
+      <p class="eyebrow">SHOULDER REHAB</p>
+      <h1>어깨 재활 가이드</h1>
+      <p class="sub">콤펙스 SP 4.0 · 어깨 스트레칭</p>
+    </div>
+  </header>
+
+  <main>
+    <a class="tile" href="./compex.html">
+      <span class="ico" aria-hidden="true">⚡</span>
+      <span class="body">
+        <h2>콤펙스 SP 4.0 전체 가이드</h2>
+        <p>30개 모드 · 패드 부착 위치 · 금기 주의사항</p>
+      </span>
+      <span class="chev" aria-hidden="true">›</span>
+    </a>
+
+    <a class="tile" href="./stretching.html">
+      <span class="ico" aria-hidden="true">🧘</span>
+      <span class="body">
+        <h2>어깨 스트레칭 가이드</h2>
+        <p>진자 운동 · 테이블 슬라이드 · 외회전 · 문틀 가슴 펴기</p>
+      </span>
+      <span class="chev" aria-hidden="true">›</span>
+    </a>
+  </main>
+
+  <footer>
+    <p class="hint">📱 안드로이드 크롬에서 <b>⋮ → 홈 화면에 추가</b>를 누르면 앱처럼 열려요.</p>
+  </footer>
+</div>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js').catch(function () {});
+    });
+  }
+</script>
+</body>
+</html>
