@@ -71,6 +71,7 @@ window.PROGRAMS = [
       "부위 선택 후 <span class='kbd'>Ch 4 +</span> → 근육이 톡톡 튀는 선까지 강도 올리기"
     ],
     diagrams: ["calf", "thigh"],
+    tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 허리 엉치 다리 쥐 경련 근경련 Prevention of cramps 야간 쥐",
     pads: "쥐가 잘 나는 근육(종아리·햄스트링·발바닥 위 종아리) 중앙과 끝",
     pose: "편안한 휴식 자세(운동 전 또는 잠자기 전)",
     intensity: "근육이 톡톡 튀는 수준",
@@ -85,8 +86,9 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Muscle relaxation</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위 선택 후 <span class='kbd'>Ch 4 +</span> → 가볍게 톡톡 튕기는 수준까지 올리기"
     ],
-    diagrams: ["shoulder", "both_shoulders", "back", "calf"],
-    pads: "뭉친 근육(어깨 뒤 후면 삼각근·승모근, 목 뒤 아래 등) 양 끝",
+    diagrams: ["shoulder", "both_shoulders", "back", "thigh", "calf"],
+    tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 허리 긴장 이완 스트레칭 후 허리 보호",
+    pads: "뭉친 근육(어깨 뒤 후면 삼각근·승모근, 허벅지 뒤 햄스트링, 등) 양 끝",
     pose: "어깨 힘을 뺀 편안한 자세",
     intensity: "가볍게 근육이 톡톡 튕기는 수준",
     caution: "목 앞쪽(경동맥)이나 쇄골 바로 위 신경 부위 피하기."
@@ -133,6 +135,7 @@ window.PROGRAMS = [
       "부위 선택 → <span class='kbd'>Ch 4 +</span> → MI-RANGE 범위(톡톡 튕김)까지 강도 올리기"
     ],
     diagrams: ["thigh", "calf", "shoulder", "back", "arm"],
+    tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 계단 걷기 운동 후 회복",
     pads: "운동을 많이 한 근육(허벅지·종아리·어깨 뒤·등) 중앙과 끝",
     pose: "운동 종료 후 3시간 이내, 편안한 휴식 자세",
     intensity: "근육이 눈에 띄게 톡톡 튀는 범위(MI-RANGE 확인)",
@@ -162,8 +165,9 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Relaxing massage</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위 선택 → <span class='kbd'>Ch 4 +</span> → 기분 좋게 톡톡 튕기는 선까지 올리기"
     ],
-    diagrams: ["both_shoulders", "shoulder", "back", "calf"],
-    pads: "긴장된 부위(승모근·어깨 뒤·등·종아리) 양 끝",
+    diagrams: ["both_shoulders", "shoulder", "back", "thigh", "calf"],
+    tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 허리 가벼운 이완 마사지",
+    pads: "긴장된 부위(승모근·어깨 뒤·등·허벅지 뒤·종아리) 양 끝",
     pose: "긴장을 푼 편안한 자세",
     intensity: "부드럽고 기분 좋게 톡톡 튕기는 수준",
     caution: "목 앞쪽·심장 부위 부착 금지. 운전 중 사용 금지."
@@ -377,6 +381,7 @@ window.PROGRAMS = [
       "부위 선택 → <span class='kbd'>Ch 4 +</span> → MI-RANGE(톡톡 튕김) 범위까지 올리기"
     ],
     diagrams: ["calf", "thigh", "shoulder", "back"],
+    tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 허리 혈류 순환",
     pads: "혈류를 늘리고 싶은 근육(종아리·허벅지·어깨 뒤·등)",
     pose: "편안한 휴식 자세",
     intensity: "눈에 보이는 근경련(톡톡 튕김) 범위(MI-RANGE 확인)",
@@ -512,7 +517,7 @@ window.PARTS = {
   "전신":      { key: "full",          program: "Training recovery",  minutes: 20, intensity: "근육이 편안하게 톡톡 튀는 선", days: [1, 3, 5] }
 };
 
-/* ── 기본 목표 8종: 요일별 권장 루틴 ──
+/* ── 기본 목표 9종: 요일별 권장 루틴 ──
    days: 1=월 … 7=일, 0=매일
    program 은 PROGRAMS 의 en 값과 정확히 일치해야 한다 */
 window.BUILTIN_GOALS = [
@@ -591,6 +596,17 @@ window.BUILTIN_GOALS = [
     items: [
       { days: [1, 3, 5], program: "Training recovery", minutes: 20, intensity: "근육이 편안하게 톡톡 튀는 선", note: "운동한 날 저녁" },
       { days: [7], program: "Relaxing massage", minutes: 20, intensity: "편안하게 튕기는 선", note: "주말 회복" }
+    ]
+  },
+  {
+    id: "hamstring-hip", name: "햄스트링 유연성·허리 보호", emoji: "🦵", tone: "teal",
+    desc: "허벅지 뒤(햄스트링) 긴장을 풀어 골반을 세우고 허리로 버티는 부담을 줄입니다. 스트레칭 3종 + 이완 모드 주 4회.",
+    parts: ["엉덩이·허벅지"], stretch: true,
+    items: [
+      { days: [1], program: "Muscle relaxation", minutes: 20, intensity: "허벅지 뒤가 가볍게 톡톡 튀는 선", note: "스트레칭 3종 직후 — 엉덩이·허벅지 뒤 중앙과 위아래" },
+      { days: [3], program: "Relaxing massage", minutes: 15, intensity: "살짝 튕기는 약한 선", note: "뻐근한 날은 강도를 한 단계 더 낮게" },
+      { days: [5], program: "Training recovery", minutes: 20, intensity: "톡톡 튀는 선", note: "걷기·계단 오른 날 저녁" },
+      { days: [6], program: "Cramp prevention", minutes: 15, intensity: "톡톡 튀는 선", note: "야간 다리 쥐·뭉침 예방" }
     ]
   }
 ];
@@ -674,7 +690,7 @@ window.PAD_AREAS = [
 /* ── 스트레칭 4종 (탭 4) ── */
 window.STRETCHES = [
   {
-    id: 0, step: "STEP 1 · 관절 공간 열기", title: "진자 운동", en: "Pendulum",
+    id: 0, group: "shoulder", step: "STEP 1 · 관절 공간 열기", title: "진자 운동", en: "Pendulum",
     sub: "가장 먼저 어깨 관절에 힘을 빼고 공간을 벌려 주는 준비 동작이에요.",
     img: "stretch_1_pendulum", anim: "pendulum", seconds: 60, sets: 1,
     timerLabel: "권장 타이머 (시계/반시계 30초씩)",
@@ -686,7 +702,7 @@ window.STRETCHES = [
     warn: "팔에 힘이 들어가거나 원이 너무 커지면 오히려 어깨가 찝힐 수 있어요. 작고 가볍게 흔드세요."
   },
   {
-    id: 1, step: "STEP 2 · 안전하게 팔 올리기", title: "테이블 슬라이드", en: "Table Slide",
+    id: 1, group: "shoulder", step: "STEP 2 · 안전하게 팔 올리기", title: "테이블 슬라이드", en: "Table Slide",
     sub: "팔 무게를 식탁에 실어 충돌증후군 통증 각도를 피하면서 가동범위를 늘려요.",
     img: "stretch_2_table_slide", anim: "slide", seconds: 10, sets: 5,
     timerLabel: "끝 지점 유지 타이머 (10초 × 5회)",
@@ -698,7 +714,7 @@ window.STRETCHES = [
     warn: "어깨 앞이나 옆이 찌릿하게 찝히면 거기서 멈추고 반보만 덜 밀어 주세요."
   },
   {
-    id: 2, step: "STEP 3 · 굳은 관절낭 풀기", title: "외회전 스트레칭", en: "External Rotation",
+    id: 2, group: "shoulder", step: "STEP 3 · 굳은 관절낭 풀기", title: "외회전 스트레칭", en: "External Rotation",
     sub: "유착성 관절낭염에서 가장 먼저 굳는 바깥 회전 각도를 안전하게 늘려요.",
     img: "stretch_3_external_rotation", anim: "extrot", seconds: 20, sets: 5,
     timerLabel: "지그시 유지 타이머 (20초 × 5회)",
@@ -710,7 +726,7 @@ window.STRETCHES = [
     warn: "팔꿈치가 옆구리에서 떨어지거나 몸통이 같이 돌아가면 효과가 줄어요."
   },
   {
-    id: 3, step: "STEP 4 · 라운드숄더 펴기", title: "문틀 가슴 펴기", en: "Doorway Pec",
+    id: 3, group: "shoulder", step: "STEP 4 · 라운드숄더 펴기", title: "문틀 가슴 펴기", en: "Doorway Pec",
     sub: "앞으로 말린 어깨와 뭉친 가슴 근육(소흉근·대흉근)을 부드럽게 열어 줘요.",
     img: "stretch_4_doorway_pec", anim: "door", seconds: 20, sets: 3,
     timerLabel: "가슴 펴기 유지 타이머 (20초 × 3회)",
@@ -720,6 +736,48 @@ window.STRETCHES = [
       "가슴 앞쪽이 시원하게 늘어나는 선에서 20초 유지합니다."
     ],
     warn: "팔꿈치를 어깨보다 높이 올리면 충돌증후군 부위가 찝힐 수 있으니 팔꿈치를 살짝 낮추세요."
+  },
+  {
+    id: 4, group: "hamstring", step: "STEP 1 · 허리 바닥 고정", title: "누워서 수건으로 다리 들기",
+    en: "Supine Towel Hamstring",
+    sub: "허리를 바닥에 붙인 채 수건으로 다리를 당기면, 허리를 말지 않고 햄스트링만 생겁게 늘릴 수 있어요.",
+    img: "stretch_ham_1_supine_towel", anim: "hamtowel", seconds: 20, sets: 3,
+    timerLabel: "지그시 유지 타이머 (20초 × 3회)",
+    steps: [
+      "바닥에 누워 양 무릎을 세우고 허리를 바닥에 붙입니다(손이 들어갈 틈도 없게).",
+      "한쪽 발바닥에 수건을 걸고 양손으로 수건 끝을 잡습니다.",
+      "반대쪽 발은 바닥에 두고 무릎을 편 채, 수건으로 다리를 천천히 당겨 허벅지 뒤가 당기는 지점에서 20초 멈춥니다."
+    ],
+    warn: "허리 둥글게 말지 않기 — 허리가 바닥에서 뜨거나 골반이 들리면 다리를 낙추세요. 무릎 뒤가 찌릿하면 각도를 줄이세요.",
+    course: { program: "Muscle relaxation", minutes: 20, when: "허벅지 뒤·둔근에 패드, 가볍게 톡톡 튀는 선까지", alt: "Relaxing massage" }
+  },
+  {
+    id: 5, group: "hamstring", step: "STEP 2 · 앉아서 골반만", title: "의자 끝에 앉아 골반 숙이기",
+    en: "Seated Hip Hinge Reach",
+    sub: "허리를 꼬꼬 세운 채 골반만 앞으로 기울여, 허리를 말지 않고 햄스트링을 늘려요.",
+    img: "stretch_ham_2_seated_reach", anim: "hamseated", seconds: 20, sets: 3,
+    timerLabel: "지그시 유지 타이머 (20초 × 3회)",
+    steps: [
+      "의자 앞쪽 끝에 걸테 앉아 한쪽 다리를 앞으로 펴고 발끝을 위로 세웁니다.",
+      "가슴을 살짝 들어 허리를 꼬꼬 세우고, 배꼽을 앞쪽으로 내미는 느낌으로 골반만 앞으로 기울입니다.",
+      "허벅지 뒤가 당기는 지점에서 20초 유지하고 천천히 돌아옵니다."
+    ],
+    warn: "허리 둥글게 말지 않기 — 손이 발에 닿지 않아도 됩니다. 무릎 뒤가 찌릿하면 다리를 살짝 굽히고 각도를 줄이세요.",
+    course: { program: "Relaxing massage", minutes: 15, when: "허벅지 뒤가 뻐근할 때, 살짝 튕기는 약한 선", alt: "Muscle relaxation" }
+  },
+  {
+    id: 6, group: "hamstring", step: "STEP 3 · 서서 힙 힌지", title: "발 올리고 힙 힌지",
+    en: "Elevated Hip Hinge",
+    sub: "낙은 의자·계단에 발을 올리고 등을 편 채 골반을 뒤로 빼면 허리 부담 없이 햄스트링이 늘어나요.",
+    img: "stretch_ham_3_elevated_hinge", anim: "hamhinge", seconds: 20, sets: 3,
+    timerLabel: "지그시 유지 타이머 (20초 × 3회)",
+    steps: [
+      "낙은 의자나 계단에 한쪽 발 뒤꿉치를 올리고 발끝을 위로 세웁니다.",
+      "서 있는 다른 발에 무게를 두고, 손은 골반에 올린 채 엉덩이를 뒤로 빼며 상체를 앞으로 숙입니다.",
+      "등이 곱아지지 않는 범위에서 허벅지 뒤가 당기면 20초 유지합니다."
+    ],
+    warn: "허리 둥글게 말지 않기 — 숙이는 각도보다 등이 곱지 않은 것이 중요합니다. 무릎 뒤가 찌릿하면 발을 더 낙추세요.",
+    course: { program: "Training recovery", minutes: 20, when: "걷기·계단 오른 날 저녁, 톡톡 튀는 선", alt: "Pain management TENS" }
   }
 ];
 
@@ -729,4 +787,12 @@ window.STRETCH_COURSE = [
   { title: "뻐근함·통증이 남았다면", program: "Pain management TENS", minutes: 20, when: "움직임 없이 찌릿한 선까지만" },
   { title: "컨디션 좋고 혈류를 돌리고 싶다면", program: "Training recovery", minutes: 20, when: "톡톡 튀는 선" },
   { title: "재활 단계 (익숙해진 뒤)", program: "Muscle atrophy", minutes: 15, when: "아주 약하게" }
+];
+
+/* ── 햄스트링 스트레칭 직후 추천 콤펙스 코스 ── */
+window.STRETCH_COURSE_HAM = [
+  { title: "햄스트링 루틴 직후 기본", program: "Muscle relaxation", minutes: 20, when: "허벅지 뒤·둔근에 패드, 가볍게 톡톡 튀는 선까지", alt: "Relaxing massage" },
+  { title: "뻐근함이 남았다면", program: "Pain management TENS", minutes: 20, when: "움직임 없이 찌릿한 선까지만", alt: "Relaxing massage (약하게)" },
+  { title: "걷기·계단 오른 날 저녁", program: "Training recovery", minutes: 20, when: "톡톡 튀는 선" },
+  { title: "밤에 다리 쥐가 잦다면", program: "Cramp prevention", minutes: 15, when: "허벅지 뒤·종아리에 톡톡 튀는 선" }
 ];

@@ -9,7 +9,10 @@
     pendulum: "<svg viewBox=\"0 0 300 190\" width=\"300\" height=\"190\" style=\"width:100%;max-width:300px;height:auto\"><!-- Table --><rect x=\"195\" y=\"105\" width=\"75\" height=\"8\" rx=\"3\" fill=\"#64748b\"/><rect x=\"205\" y=\"113\" width=\"6\" height=\"65\" fill=\"#94a3b8\"/><rect x=\"255\" y=\"113\" width=\"6\" height=\"65\" fill=\"#94a3b8\"/><!-- Body leaning --><line x1=\"75\" y1=\"175\" x2=\"88\" y2=\"115\" stroke=\"#334155\" stroke-width=\"10\" stroke-linecap=\"round\"/><line x1=\"88\" y1=\"115\" x2=\"128\" y2=\"68\" stroke=\"#2563eb\" stroke-width=\"16\" stroke-linecap=\"round\"/><circle cx=\"144\" cy=\"54\" r=\"14\" fill=\"#fde68a\" stroke=\"#334155\" stroke-width=\"2\"/><!-- Supporting arm --><line x1=\"132\" y1=\"72\" x2=\"205\" y2=\"105\" stroke=\"#94a3b8\" stroke-width=\"7\" stroke-linecap=\"round\"/><!-- Pendulum circle guide --><ellipse cx=\"120\" cy=\"148\" rx=\"22\" ry=\"7\" fill=\"none\" stroke=\"#3b82f6\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><!-- Relaxed hanging arm --><g class=\"anim-pendulum\"><circle cx=\"120\" cy=\"68\" r=\"8\" fill=\"#fef08a\" stroke=\"#f59e0b\" stroke-width=\"2\"/><line x1=\"120\" y1=\"70\" x2=\"120\" y2=\"145\" stroke=\"#f59e0b\" stroke-width=\"8\" stroke-linecap=\"round\"/><circle cx=\"120\" cy=\"148\" r=\"6\" fill=\"#f59e0b\"/></g></svg>",
     slide: "<svg viewBox=\"0 0 300 190\" width=\"300\" height=\"190\" style=\"width:100%;max-width:300px;height:auto\"><!-- Chair --><path d=\"M52 105 L52 155 L95 155\" fill=\"none\" stroke=\"#64748b\" stroke-width=\"6\" stroke-linecap=\"round\"/><line x1=\"60\" y1=\"155\" x2=\"60\" y2=\"180\" stroke=\"#94a3b8\" stroke-width=\"5\"/><line x1=\"90\" y1=\"155\" x2=\"90\" y2=\"180\" stroke=\"#94a3b8\" stroke-width=\"5\"/><!-- Table --><rect x=\"145\" y=\"112\" width=\"135\" height=\"8\" rx=\"3\" fill=\"#cbd5e1\" stroke=\"#64748b\" stroke-width=\"1.5\"/><line x1=\"210\" y1=\"120\" x2=\"210\" y2=\"180\" stroke=\"#94a3b8\" stroke-width=\"6\"/><!-- Legs --><path d=\"M85 150 L125 150 L125 180\" fill=\"none\" stroke=\"#334155\" stroke-width=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><!-- Torso + sliding arm --><g class=\"anim-torso\"><line x1=\"85\" y1=\"150\" x2=\"92\" y2=\"95\" stroke=\"#2563eb\" stroke-width=\"16\" stroke-linecap=\"round\"/><circle cx=\"96\" cy=\"75\" r=\"13\" fill=\"#fde68a\" stroke=\"#334155\" stroke-width=\"2\"/></g><g class=\"anim-slide\"><rect x=\"165\" y=\"103\" width=\"26\" height=\"8\" rx=\"3\" fill=\"#60a5fa\"/><line x1=\"100\" y1=\"98\" x2=\"175\" y2=\"106\" stroke=\"#f59e0b\" stroke-width=\"8\" stroke-linecap=\"round\"/></g><!-- Arrow --><line x1=\"195\" y1=\"92\" x2=\"245\" y2=\"92\" stroke=\"#2563eb\" stroke-width=\"3\" stroke-dasharray=\"5 3\"/><polygon points=\"245,87 255,92 245,97\" fill=\"#2563eb\"/></svg>",
     extrot: "<svg viewBox=\"0 0 300 190\" width=\"300\" height=\"190\" style=\"width:100%;max-width:300px;height:auto\"><!-- Torso top-down / front schematic --><rect x=\"115\" y=\"55\" width=\"70\" height=\"95\" rx=\"16\" fill=\"#dbeafe\" stroke=\"#2563eb\" stroke-width=\"2\"/><circle cx=\"150\" cy=\"34\" r=\"14\" fill=\"#fde68a\" stroke=\"#334155\" stroke-width=\"2\"/><!-- Fixed elbow marker --><circle cx=\"115\" cy=\"100\" r=\"13\" fill=\"none\" stroke=\"#ef4444\" stroke-width=\"2\" stroke-dasharray=\"3 3\"/><text x=\"58\" y=\"165\" font-size=\"11\" fill=\"#ef4444\" font-weight=\"700\">팔꿈치 옆구리 고정</text><!-- Rotating forearm + stick --><g class=\"anim-extrot\"><line x1=\"115\" y1=\"100\" x2=\"115\" y2=\"140\" stroke=\"#f59e0b\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"70\" y1=\"140\" x2=\"215\" y2=\"140\" stroke=\"#92400e\" stroke-width=\"5\" stroke-linecap=\"round\"/><circle cx=\"115\" cy=\"140\" r=\"5\" fill=\"#f59e0b\"/></g><!-- Healthy pushing hand --><line x1=\"185\" y1=\"100\" x2=\"195\" y2=\"140\" stroke=\"#64748b\" stroke-width=\"7\" stroke-linecap=\"round\"/><!-- Outward arrow --><path d=\"M 92 150 Q 68 142 62 122\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"2.5\"/><polygon points=\"58,125 61,115 67,123\" fill=\"#2563eb\"/></svg>",
-    door: "<svg viewBox=\"0 0 300 190\" width=\"300\" height=\"190\" style=\"width:100%;max-width:300px;height:auto\"><!-- Doorframe --><rect x=\"65\" y=\"18\" width=\"12\" height=\"162\" fill=\"#d6c4a8\"/><rect x=\"223\" y=\"18\" width=\"12\" height=\"162\" fill=\"#d6c4a8\"/><rect x=\"65\" y=\"18\" width=\"170\" height=\"12\" fill=\"#d6c4a8\"/><!-- Forearms on frame --><line x1=\"77\" y1=\"68\" x2=\"77\" y2=\"108\" stroke=\"#f59e0b\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"223\" y1=\"68\" x2=\"223\" y2=\"108\" stroke=\"#f59e0b\" stroke-width=\"7\" stroke-linecap=\"round\"/><!-- Moving chest --><g class=\"anim-door\"><line x1=\"77\" y1=\"108\" x2=\"122\" y2=\"96\" stroke=\"#f59e0b\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"223\" y1=\"108\" x2=\"178\" y2=\"96\" stroke=\"#f59e0b\" stroke-width=\"7\" stroke-linecap=\"round\"/><rect x=\"120\" y=\"75\" width=\"60\" height=\"82\" rx=\"14\" fill=\"#fee2e2\" stroke=\"#ef4444\" stroke-width=\"2\"/><circle cx=\"150\" cy=\"52\" r=\"14\" fill=\"#fde68a\" stroke=\"#334155\" stroke-width=\"2\"/><polygon points=\"145,120 165,120 165,114 176,124 165,134 165,128 145,128\" fill=\"#2563eb\"/></g></svg>"
+    door: "<svg viewBox=\"0 0 300 190\" width=\"300\" height=\"190\" style=\"width:100%;max-width:300px;height:auto\"><!-- Doorframe --><rect x=\"65\" y=\"18\" width=\"12\" height=\"162\" fill=\"#d6c4a8\"/><rect x=\"223\" y=\"18\" width=\"12\" height=\"162\" fill=\"#d6c4a8\"/><rect x=\"65\" y=\"18\" width=\"170\" height=\"12\" fill=\"#d6c4a8\"/><!-- Forearms on frame --><line x1=\"77\" y1=\"68\" x2=\"77\" y2=\"108\" stroke=\"#f59e0b\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"223\" y1=\"68\" x2=\"223\" y2=\"108\" stroke=\"#f59e0b\" stroke-width=\"7\" stroke-linecap=\"round\"/><!-- Moving chest --><g class=\"anim-door\"><line x1=\"77\" y1=\"108\" x2=\"122\" y2=\"96\" stroke=\"#f59e0b\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"223\" y1=\"108\" x2=\"178\" y2=\"96\" stroke=\"#f59e0b\" stroke-width=\"7\" stroke-linecap=\"round\"/><rect x=\"120\" y=\"75\" width=\"60\" height=\"82\" rx=\"14\" fill=\"#fee2e2\" stroke=\"#ef4444\" stroke-width=\"2\"/><circle cx=\"150\" cy=\"52\" r=\"14\" fill=\"#fde68a\" stroke=\"#334155\" stroke-width=\"2\"/><polygon points=\"145,120 165,120 165,114 176,124 165,134 165,128 145,128\" fill=\"#2563eb\"/></g></svg>",
+    hamtowel: "<svg viewBox=\"0 0 300 190\" width=\"300\" height=\"190\" style=\"width:100%;max-width:300px;height:auto\"><!-- Mat --><rect x=\"18\" y=\"166\" width=\"264\" height=\"9\" rx=\"4\" fill=\"#cbd5e1\"/><text x=\"150\" y=\"188\" font-size=\"10\" fill=\"#94a3b8\" text-anchor=\"middle\">허리를 바닥에 붙인 채</text><!-- Torso lying --><line x1=\"60\" y1=\"148\" x2=\"132\" y2=\"150\" stroke=\"#2563eb\" stroke-width=\"16\" stroke-linecap=\"round\"/><circle cx=\"47\" cy=\"143\" r=\"13\" fill=\"#fde68a\" stroke=\"#334155\" stroke-width=\"2\"/><!-- Other leg bent, foot on floor --><path d=\"M132 148 L176 116 L210 164\" fill=\"none\" stroke=\"#64748b\" stroke-width=\"11\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><!-- Hip fixed marker --><circle cx=\"132\" cy=\"148\" r=\"10\" fill=\"none\" stroke=\"#ef4444\" stroke-width=\"2\" stroke-dasharray=\"3 3\"/><!-- Raised leg + towel --><g class=\"anim-hamtowel\"><line x1=\"132\" y1=\"148\" x2=\"222\" y2=\"54\" stroke=\"#334155\" stroke-width=\"12\" stroke-linecap=\"round\"/><ellipse cx=\"178\" cy=\"96\" rx=\"9\" ry=\"20\" fill=\"#22c55e\" opacity=\".32\" transform=\"rotate(-43 178 96)\"/><circle cx=\"230\" cy=\"44\" r=\"9\" fill=\"#f59e0b\"/><path d=\"M230 44 Q182 66 152 94\" fill=\"none\" stroke=\"#60a5fa\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M234 50 Q190 76 160 102\" fill=\"none\" stroke=\"#93c5fd\" stroke-width=\"6\" stroke-linecap=\"round\"/><circle cx=\"150\" cy=\"99\" r=\"8\" fill=\"#f59e0b\"/></g><!-- Pull arrow --><path d=\"M256 78 Q236 52 210 40\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"2.5\" stroke-dasharray=\"5 3\"/><polygon points=\"206,34 218,38 211,45\" fill=\"#2563eb\"/></svg>",
+    hamseated: "<svg viewBox=\"0 0 300 190\" width=\"300\" height=\"190\" style=\"width:100%;max-width:300px;height:auto\"><!-- Floor --><line x1=\"20\" y1=\"172\" x2=\"286\" y2=\"172\" stroke=\"#cbd5e1\" stroke-width=\"4\"/><!-- Chair --><rect x=\"44\" y=\"126\" width=\"66\" height=\"8\" rx=\"3\" fill=\"#64748b\"/><rect x=\"34\" y=\"84\" width=\"9\" height=\"44\" rx=\"3\" fill=\"#94a3b8\"/><line x1=\"56\" y1=\"134\" x2=\"56\" y2=\"172\" stroke=\"#94a3b8\" stroke-width=\"5\"/><line x1=\"96\" y1=\"134\" x2=\"96\" y2=\"172\" stroke=\"#94a3b8\" stroke-width=\"5\"/><!-- Extended leg --><line x1=\"108\" y1=\"130\" x2=\"232\" y2=\"152\" stroke=\"#334155\" stroke-width=\"12\" stroke-linecap=\"round\"/><ellipse cx=\"176\" cy=\"146\" rx=\"20\" ry=\"7\" fill=\"#22c55e\" opacity=\".32\" transform=\"rotate(12 176 146)\"/><circle cx=\"238\" cy=\"156\" r=\"8\" fill=\"#f59e0b\"/><text x=\"244\" y=\"178\" font-size=\"10\" fill=\"#94a3b8\" text-anchor=\"end\">발끝 위로</text><!-- Hinge torso --><g class=\"anim-hamseated\"><line x1=\"108\" y1=\"128\" x2=\"116\" y2=\"74\" stroke=\"#2563eb\" stroke-width=\"16\" stroke-linecap=\"round\"/><line x1=\"114\" y1=\"88\" x2=\"182\" y2=\"136\" stroke=\"#f59e0b\" stroke-width=\"7\" stroke-linecap=\"round\"/><circle cx=\"121\" cy=\"58\" r=\"13\" fill=\"#fde68a\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"108\" y1=\"124\" x2=\"118\" y2=\"68\" stroke=\"#ef4444\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/></g><!-- Hip arrow --><path d=\"M92 132 Q76 116 92 102\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"2.5\"/><polygon points=\"88,98 97,104 89,110\" fill=\"#2563eb\"/><text x=\"210\" y=\"46\" font-size=\"10\" fill=\"#ef4444\" font-weight=\"700\">허리 꼿꼿이</text></svg>",
+    hamhinge: "<svg viewBox=\"0 0 300 190\" width=\"300\" height=\"190\" style=\"width:100%;max-width:300px;height:auto\"><!-- Floor --><line x1=\"18\" y1=\"172\" x2=\"286\" y2=\"172\" stroke=\"#cbd5e1\" stroke-width=\"4\"/><!-- Stool --><rect x=\"30\" y=\"102\" width=\"60\" height=\"8\" rx=\"3\" fill=\"#cbd5e1\" stroke=\"#64748b\" stroke-width=\"1.5\"/><line x1=\"38\" y1=\"110\" x2=\"38\" y2=\"172\" stroke=\"#94a3b8\" stroke-width=\"5\"/><line x1=\"82\" y1=\"110\" x2=\"82\" y2=\"172\" stroke=\"#94a3b8\" stroke-width=\"5\"/><!-- Standing leg --><path d=\"M158 104 L162 142 L168 172\" fill=\"none\" stroke=\"#64748b\" stroke-width=\"12\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"156\" y1=\"172\" x2=\"184\" y2=\"172\" stroke=\"#64748b\" stroke-width=\"6\" stroke-linecap=\"round\"/><!-- Raised leg on stool --><line x1=\"158\" y1=\"102\" x2=\"92\" y2=\"102\" stroke=\"#334155\" stroke-width=\"12\" stroke-linecap=\"round\"/><path d=\"M92 102 L86 88\" stroke=\"#f59e0b\" stroke-width=\"7\" stroke-linecap=\"round\"/><ellipse cx=\"132\" cy=\"112\" rx=\"22\" ry=\"8\" fill=\"#22c55e\" opacity=\".32\"/><!-- Hinged torso --><g class=\"anim-hamhinge\"><line x1=\"158\" y1=\"98\" x2=\"198\" y2=\"64\" stroke=\"#2563eb\" stroke-width=\"16\" stroke-linecap=\"round\"/><line x1=\"196\" y1=\"70\" x2=\"164\" y2=\"96\" stroke=\"#f59e0b\" stroke-width=\"6\" stroke-linecap=\"round\"/><circle cx=\"209\" cy=\"55\" r=\"13\" fill=\"#fde68a\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"160\" y1=\"96\" x2=\"203\" y2=\"63\" stroke=\"#ef4444\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/></g><!-- Hip arrow --><path d=\"M170 118 Q152 126 150 110\" fill=\"none\" stroke=\"#2563eb\" stroke-width=\"2.5\"/><polygon points=\"146,108 156,104 155,115\" fill=\"#2563eb\"/><text x=\"226\" y=\"92\" font-size=\"10\" fill=\"#ef4444\" font-weight=\"700\">등을 편 채</text></svg>"
   };
 
   /* ─────────── 유틸 ─────────── */
@@ -340,7 +343,7 @@
       const catOk = progCat === "ALL" || p.cat === progCat;
       if (!catOk) return false;
       if (!q) return true;
-      const hay = [p.cat, p.en, p.ko, p.desc, p.pads, p.pose, p.intensity, p.caution, stripTags(p.steps.join(" "))].join(" ").toLowerCase();
+      const hay = [p.cat, p.en, p.ko, p.desc, p.pads, p.pose, p.intensity, p.caution, p.tags || "", stripTags(p.steps.join(" "))].join(" ").toLowerCase();
       return hay.indexOf(q) >= 0;
     });
     $("#progList").innerHTML = rows.length
@@ -365,9 +368,11 @@
 
   /* ─────────── 탭 4: 스트레칭 ─────────── */
   const timers = {};
+  let stretchFilter = "all";
+  const stById = (id) => window.STRETCHES.find((x) => x.id === Number(id)) || window.STRETCHES[0];
   function tState(id) {
     if (!timers[id]) {
-      const st = window.STRETCHES[id];
+      const st = stById(id);
       timers[id] = { remain: st.seconds, sets: 0, running: false, iv: null };
     }
     return timers[id];
@@ -399,7 +404,7 @@
     }
   }
   function paintTimer(id) {
-    const st = window.STRETCHES[id];
+    const st = stById(id);
     const t = tState(id);
     const val = $("#tval" + id);
     if (!val) return;
@@ -416,7 +421,7 @@
     t.running = false;
   }
   function startTimer(id) {
-    const st = window.STRETCHES[id];
+    const st = stById(id);
     const t = tState(id);
     if (t.sets >= st.sets) {
       t.sets = 0;
@@ -447,7 +452,7 @@
     }, 1000);
   }
   function resetTimer(id) {
-    const st = window.STRETCHES[id];
+    const st = stById(id);
     const t = tState(id);
     stopTimer(id);
     t.remain = st.seconds;
@@ -455,14 +460,57 @@
     paintTimer(id);
   }
 
+  function renderStretchFilter() {
+    const el = $("#stretchFilter");
+    if (!el) return;
+    const groups = [
+      { k: "all", label: "전체" },
+      { k: "shoulder", label: "어깨" },
+      { k: "hamstring", label: "햄스트링" }
+    ];
+    el.innerHTML = groups
+      .map((g) => {
+        const n = g.k === "all" ? window.STRETCHES.length : window.STRETCHES.filter((s) => s.group === g.k).length;
+        return '<button class="chip ' + (stretchFilter === g.k ? "active" : "") + '" type="button" data-sfilter="' + g.k + '">' + g.label + " (" + n + ")</button>";
+      })
+      .join("");
+  }
+  function courseData() {
+    const ham = window.STRETCH_COURSE_HAM || [];
+    if (stretchFilter === "hamstring") return ham;
+    if (stretchFilter === "shoulder") return window.STRETCH_COURSE;
+    return window.STRETCH_COURSE.concat(ham);
+  }
+  function courseHTML(c) {
+    return (
+      '<div class="course-item"><div class="ct">' + esc(c.title) + "</div>" +
+      '<div class="cp"><b>' + esc(c.program) + "</b> · " + c.minutes + '분 <span style="color:#94a3b8">(' + esc(c.when) + ")</span></div>" +
+      (c.alt ? '<div class="cw">또는 ' + esc(c.alt) + "</div>" : "") +
+      '<div class="ca"><button type="button" data-map="' + esc(c.program) + '">패드 그림</button>' +
+      '<button type="button" data-rec="' + esc(c.program) + '">＋ 기록</button></div></div>'
+    );
+  }
+  function stCourseHTML(c) {
+    if (!c) return "";
+    return (
+      '<div class="st-course"><div class="sc-t">⚡ 마무리 콤펙스</div>' +
+      '<div class="sc-p"><b>' + esc(c.program) + "</b> · " + c.minutes + '분 <span>(' + esc(c.when) + ")</span></div>" +
+      (c.alt ? '<div class="sc-alt">또는 ' + esc(c.alt) + "</div>" : "") +
+      '<div class="ca"><button type="button" data-map="' + esc(c.program) + '">패드 그림</button>' +
+      '<button type="button" data-rec="' + esc(c.program) + '">＋ 기록</button></div></div>'
+    );
+  }
+
   function renderStretch() {
+    renderStretchFilter();
     const list = $("#stretchList");
-    list.innerHTML = window.STRETCHES.map((st) => {
+    const items = window.STRETCHES.filter((s) => stretchFilter === "all" || s.group === stretchFilter);
+    list.innerHTML = items.map((st, idx) => {
       const t = tState(st.id);
       return (
-        '<div class="card st-card" data-sid="' + st.id + '">' +
-        '<div class="st-head"><span class="num">' + (st.id + 1) + "</span>" +
-        '<div class="t"><b>' + esc(st.title) + "</b><span>" + esc(st.step) + "</span></div>" +
+        '<div class="card st-card" data-sid="' + st.id + '" data-group="' + esc(st.group || "shoulder") + '">' +
+        '<div class="st-head"><span class="num">' + (idx + 1) + "</span>" +
+        '<div class="t"><b>' + esc(st.title) + "</b><span>" + (st.group === "hamstring" ? "햄스트링 · " : st.group === "shoulder" ? "어깨 · " : "") + esc(st.step) + "</span></div>" +
         '<span class="arrow">▾</span></div>' +
         '<div class="st-body"><p class="sub">' + esc(st.sub) + "</p>" +
         '<div class="anim-box" id="anim' + st.id + '"><div class="anim-head"><span>움직임 예시</span>' +
@@ -476,17 +524,11 @@
         '<button class="btn btn-ghost btn-sm" type="button" data-reset="' + st.id + '">초기화</button></div></div>' +
         '<img class="st-photo" src="assets/' + st.img + '.jpg" alt="' + esc(st.title) + ' 일러스트" loading="lazy">' +
         "<ol class=\"st-steps\">" + st.steps.map((s) => "<li>" + s + "</li>").join("") + "</ol>" +
-        '<div class="warn">⚠️ ' + esc(st.warn) + "</div></div></div>"
+        '<div class="warn">⚠️ ' + esc(st.warn) + "</div>" +
+        stCourseHTML(st.course) + "</div></div>"
       );
     }).join("");
-    $("#courseList").innerHTML = window.STRETCH_COURSE.map(
-      (c) =>
-        '<div class="course-item"><div class="ct">' + esc(c.title) + "</div>" +
-        '<div class="cp"><b>' + esc(c.program) + "</b> · " + c.minutes + '분 <span style="color:#94a3b8">(' + esc(c.when) + ")</span></div>" +
-        (c.alt ? '<div class="cw">또는 ' + esc(c.alt) + "</div>" : "") +
-        '<div class="ca"><button type="button" data-map="' + esc(c.program) + '">패드 그림</button>' +
-        '<button type="button" data-rec="' + esc(c.program) + '">＋ 기록</button></div></div>'
-    ).join("");
+    $("#courseList").innerHTML = courseData().map(courseHTML).join("");
     // feedback toggle
     $$("#fbToggle button").forEach((b) => b.classList.toggle("active", b.dataset.fb === state.settings.fb));
   }
@@ -937,7 +979,20 @@
     if (a) openLog({ area: a.label });
   });
 
+  const sfEl = $("#stretchFilter");
+  if (sfEl) {
+    sfEl.addEventListener("click", (e) => {
+      const b = e.target.closest("button[data-sfilter]");
+      if (!b) return;
+      stretchFilter = b.dataset.sfilter;
+      renderStretch();
+    });
+  }
   $("#stretchList").addEventListener("click", (e) => {
+    const map = e.target.closest("button[data-map]");
+    if (map) { openPadSheet(map.dataset.map); return; }
+    const rec = e.target.closest("button[data-rec]");
+    if (rec) { openLog({ program: rec.dataset.rec, area: areaLabelFor(rec.dataset.rec) }); return; }
     const head = e.target.closest(".st-head");
     if (head) {
       const card = head.closest(".st-card");

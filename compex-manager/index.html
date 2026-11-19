@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>컴팩스 매니저 · 목표 · 프로그램 · 기록</title>
-<meta name="description" content="콤펙스 SP 4.0 30개 프로그램, 부위별 패드 부착, 어깨 스트레칭, 세션·워크로드 기록을 한 곳에서. 오프라인에서도 동작하는 개인용 PWA.">
+<meta name="description" content="콤펙스 SP 4.0 30개 프로그램, 부위별 패드 부착, 어깨·햄스트링 스트레칭, 세션·워크로드 기록을 한 곳에서. 오프라인에서도 동작하는 개인용 PWA.">
 <meta name="theme-color" content="#0f172a">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -144,9 +144,13 @@
     <!-- 탭 4 · 스트레칭 -->
     <section class="tabpane" id="tab-stretch">
       <div class="card">
-        <h2>🧘 어깨 스트레칭 4종</h2>
-        <p class="hint">라운드숄더 · 충돌증후군 · 유착성 관절낭염 안전 루틴. 통증 직전까지만, 호흡은 멈추지 않기.</p>
+        <h2>🧘 스트레칭 루틴</h2>
+        <p class="hint">어깨 4종 · 햄스트링 3종. 부위를 골라 그날 필요한 루틴만 보고, 통증 직전까지만 · 호흡은 멈추지 않기.</p>
         <div class="field">
+          <label>부위 필터</label>
+          <div class="part-chips" id="stretchFilter"></div>
+        </div>
+        <div class="field" style="margin-top:12px">
           <label>타이머 알림 방식</label>
           <div class="fb-toggle" id="fbToggle">
             <button type="button" data-fb="vibrate">📳 진동</button>
@@ -157,8 +161,24 @@
       </div>
       <div id="stretchList"></div>
       <div class="card">
+        <h2>🦵 햄스트링 · 허리 보호 원칙</h2>
+        <p class="hint">허벅지 뒤가 짧으면 골반이 당기고 그 부담이 허리로 갑니다. 세 가지만 지키세요.</p>
+        <div class="step-mini">
+          <div class="n" style="background:#0d9488">1</div>
+          <div class="t"><b>허리 둥글게 말지 않기</b> — 숙이는 각도보다 등과 허리가 곧은 게 먼저입니다. 손이 발에 닿지 않아도 충분해요.</div>
+        </div>
+        <div class="step-mini">
+          <div class="n" style="background:#0d9488">2</div>
+          <div class="t"><b>무릎 뒤가 찌릿하면 각도 줄이기</b> — 저릿한 통증은 근육이 아니라 신경이 눌리는 신호입니다. 다리를 낙추거나 무릎을 살짝 굽히세요.</div>
+        </div>
+        <div class="step-mini">
+          <div class="n" style="background:#0d9488">3</div>
+          <div class="t"><b>20초 × 3회, 호흡 멈추지 않기</b> — 반동 없이 지그시. 좌우 한 번씩이면 6세트, 약 4분입니다.</div>
+        </div>
+      </div>
+      <div class="card">
         <h2>⚡ 스트레칭 직후 컴팩스 코스</h2>
-        <p class="hint">근육·관절을 풀어 준 직후, 현재 상태에 맞춰 연결하세요.</p>
+        <p class="hint">근육·관절을 풀어 준 직후, 현재 상태에 맞춰 연결하세요. 위 부위 필터에 맞춰 코스가 바뀝니다.</p>
         <div id="courseList"></div>
       </div>
     </section>
