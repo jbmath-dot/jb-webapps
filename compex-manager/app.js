@@ -223,7 +223,7 @@
       html +=
         '<div class="day ' + (isToday ? "today" : "") + '">' +
         '<div class="day-head"><span class="d">' + DAYS[d] + "</span>" +
-        '<span class="dt">' + date.getMonth() + 1 + "/" + date.getDate() + "</span>" +
+        '<span class="dt">' + (date.getMonth() + 1) + "/" + date.getDate() + "</span>" +
         '<span class="cnt">' + cnt + "</span></div>" +
         '<div class="day-body">' +
         (items.length
@@ -1001,6 +1001,7 @@
   /* ─────────── 초기 렌더 ─────────── */
   function renderAll() {
     renderGoals();
+    renderPartChips();
     renderWeek();
     renderCatBar();
     renderPrograms();

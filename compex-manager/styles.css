@@ -287,8 +287,8 @@ main{padding:14px 14px calc(78px + var(--safe-b))}
 .tabbar button.active .ic{filter:none}
 
 /* ── 시트 / 모달 ── */
-.backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:60;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
-.backdrop.show{opacity:1;pointer-events:auto}
+.backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:60;display:flex;align-items:flex-end;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,visibility .2s}
+.backdrop.show{opacity:1;visibility:visible;pointer-events:auto}
 .sheet{
   width:100%;max-width:520px;background:#fff;border-radius:20px 20px 0 0;padding:16px 16px calc(18px + var(--safe-b));
   max-height:88dvh;overflow-y:auto;transform:translateY(14px);transition:transform .22s
