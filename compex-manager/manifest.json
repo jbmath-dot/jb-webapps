@@ -1,0 +1,23 @@
+{
+  "name": "컴팩스 매니저",
+  "short_name": "컴팩스매니저",
+  "description": "콤펙스 SP 4.0 30개 프로그램, 부위별 패드 부착, 어깨 스트레칭, 세션·워크로드 기록을 한 곳에서. 오프라인에서도 완전히 동작합니다.",
+  "lang": "ko",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8fafc",
+  "theme_color": "#0f172a",
+  "categories": ["health", "medical", "fitness", "lifestyle"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "오늘 플랜", "short_name": "플랜", "url": "./?tab=coach", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "세션 기록", "short_name": "기록", "url": "./?tab=log", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] }
+  ]
+}

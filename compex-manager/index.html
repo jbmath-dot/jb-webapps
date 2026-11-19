@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>컴팩스 매니저 · 목표 · 프로그램 · 기록</title>
+<meta name="description" content="콤펙스 SP 4.0 30개 프로그램, 부위별 패드 부착, 어깨 스트레칭, 세션·워크로드 기록을 한 곳에서. 오프라인에서도 동작하는 개인용 PWA.">
+<meta name="theme-color" content="#0f172a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="컴팩스매니저">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <header class="topbar">
+    <div class="row">
+      <div>
+        <h1><span class="bolt">⚡</span> 컴팩스 매니저</h1>
+        <p class="sub" id="topSub">콤펙스 SP 4.0 · 나의 재활 코치</p>
+      </div>
+      <button class="icon-btn" id="quickRecord" type="button">＋ 기록</button>
+    </div>
+    <div class="weekstat" id="weekStat">
+      <div class="ws"><b id="wsSessions">0</b><span>이번 주 세션</span></div>
+      <div class="ws"><b id="wsMinutes">0</b><span>이번 주 분</span></div>
+      <div class="ws"><b id="wsStreak">0</b><span>연속 일수</span></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 탭 1 · 코치 -->
+    <section class="tabpane active" id="tab-coach">
+      <div class="sec-title">
+        <h2>🎯 내 목표</h2>
+        <button class="more" id="addGoalBtn" type="button">＋ 목표 추가</button>
+      </div>
+      <div class="card">
+        <h2>목표를 고르면 주간 플랜이 만들어집니다</h2>
+        <p class="hint">켜 둔 목표의 요일별 추천 모드가 아래 주간 플랜에 합쳐집니다. 이름은 ✏️ 로 바꿀 수 있어요.</p>
+        <div class="goal-list" id="goalList"></div>
+        <div style="margin-top:13px" class="field">
+          <label>원하는 부위 직접 지정</label>
+          <div class="part-chips" id="partChips"></div>
+        </div>
+      </div>
+
+      <div class="sec-title">
+        <h2>📅 이번 주 플랜</h2>
+        <span class="more" id="weekRange"></span>
+      </div>
+      <div class="week" id="weekPlan"></div>
+
+      <div class="card" style="margin-top:13px">
+        <h2>🧭 자극 유형별 3가지 원칙</h2>
+        <p class="hint">모드마다 패드·자세·강도 기준이 다릅니다.</p>
+        <div class="step-mini">
+          <div class="n" style="background:#1e40af">T</div>
+          <div class="t"><b>진통 TENS</b> (Pain management TENS, Tendinitis)<br>패드: 아픈 부위 양옆·위아래 감싸기 · 자세: 편안한 휴식 · 강도: 기분 좋은 찌릿함(근수축이 나면 MI-TENS가 자동 하향)</div>
+        </div>
+        <div class="step-mini">
+          <div class="n" style="background:#0d9488">R</div>
+          <div class="t"><b>근육 튕김·이완</b> (회복/마사지 전체, Muscle pain, Capillarisation 등)<br>패드: 목표 근육 중앙·양 끝 · 자세: 편안한 휴식 · 강도: 근육이 눈에 보일 만큼 톡톡 튀는 범위(MI-RANGE 체크 확인)</div>
+        </div>
+        <div class="step-mini">
+          <div class="n" style="background:#b45309">E</div>
+          <div class="t"><b>강력한 근수축</b> (Conditioning, Rehabilitation, Fitness)<br>패드: 큰 패드+작은 패드(운동점+근육 끝) · 자세: 관절을 고정한 등척성 · 강도: 참을 수 있는 최대치(아픈 관절·염증기에는 약하게 또는 보류)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 탭 2 · 프로그램 -->
+    <section class="tabpane" id="tab-programs">
+      <div class="card">
+        <h2>⚡ SP 4.0 30개 프로그램</h2>
+        <p class="hint">기기 메뉴의 영문명 그대로입니다. 검색·필터 후 펼쳐서 진입 순서와 패드 그림을 확인하세요.</p>
+        <div class="search-wrap">
+          <input id="progSearch" type="search" placeholder="영문명·한글 뜻·부위 검색 (예: TENS, 어깨, 허리)" autocomplete="off">
+        </div>
+        <div class="catbar" id="catBar"></div>
+      </div>
+      <div id="progList"></div>
+    </section>
+
+    <!-- 탭 3 · 패드·배선 -->
+    <section class="tabpane" id="tab-pads">
+      <div class="card">
+        <h2>🩹 부위별 패드 부착</h2>
+        <p class="hint">부위를 고르면 공식 부착 위치 그림과 주의점이 나옵니다.</p>
+        <div class="part-chips" id="areaChips"></div>
+        <div id="areaDetail"></div>
+      </div>
+
+      <div class="card">
+        <h2>🔌 5×10cm 단자 2개 패드 연결법</h2>
+        <p class="hint">큰 패드에 스냅 단자가 2개 있을 때는 3가지만 기억하면 됩니다. 패드 자체에는 극이 없고 <b>꽂는 선 색깔</b>로만 구분됩니다.</p>
+        <div class="pad-hero" style="margin-top:0">
+          <img src="assets/compex_double_snap_pad_wiring.jpg" alt="5x10cm 단자 2개 패드 케이블 연결법" loading="lazy" width="1000" height="549">
+          <div class="cap">
+            <p>① 1채널만 쓸 땐 1개만 꽂고 1개 비우기(정상)</p>
+            <p>② 2채널 쓸 땐 같은 색(+)끼리 나란히</p>
+            <p>③ 같은 패드에 빨강(+) + 검정(-) 동시 연결 금지</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🎛️ 버튼 위치와 역할</h2>
+        <div class="pad-hero" style="margin-top:0">
+          <img src="assets/compex_sp4_buttons_guide.jpg" alt="콤펙스 SP 4.0 버튼 도해" loading="lazy" width="1000" height="1500">
+          <div class="cap">
+            <p>전원(좌측 하단) · <b>Ch 1 +/-</b> 메뉴 이동 · <b>Ch 4 +/-</b> 확인·시작 · <b>i</b> 버튼(최근 5개 / 동시 강도 조절)</p>
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="step-mini"><div class="n">1</div><div class="t"><b>패드 부착 후 전원</b> — 피부에 패드를 먼저 붙이고 리드선을 연결한 뒤 On/Off. 하나의 케이블 양쪽 끝에는 반드시 서로 다른 패드.</div></div>
+          <div class="step-mini"><div class="n">2</div><div class="t"><b>카테고리 선택</b> — Ch 1 +/- 로 이동 → Ch 4 +/- 로 확인.</div></div>
+          <div class="step-mini"><div class="n">3</div><div class="t"><b>세부 프로그램 선택</b> — 일부 근력 프로그램은 1~5단계 사이클 선택이 뜨고, 처음엔 1단계부터 주 3회 4~6주.</div></div>
+          <div class="step-mini"><div class="n">4</div><div class="t"><b>MI-SCAN 자동 측정</b> — MI 센서 연결 시 시작 직전 잠깐 가만히.</div></div>
+          <div class="step-mini"><div class="n">5</div><div class="t"><b>채널별 강도 올리기</b> — Ch 1~4 +. i 버튼은 여러 채널 동시 조절, On/Off 짧게 누르면 일시정지.</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>⚠️ 절대 금기 &amp; 주의사항</h2>
+        <div class="warn-box">
+          <b>모든 모드 공통</b>
+          <ul>
+            <li><b>부착 금지 부위:</b> 목 앞쪽(경동맥), 가슴 정면 심장 부위(전류가 심장을 가로지르는 배치), 머리·안면, 상처·발진·정맥류·주사 바늘 자국 바로 위</li>
+            <li><b>사용 금지 대상:</b> 심박조율기 등 체내 이식형 전자장치 보유자, 임신 중 복부·허리, 간질 병력, 심부정맥 혈전증</li>
+            <li><b>사용 환경:</b> 운전 중, 수면 중, 욕실·물가에서 절대 사용 금지</li>
+            <li><b>통증 관절:</b> 염증·통증이 있는 관절 주변에는 고강도 근수축(Conditioning/Fitness) 대신 TENS → 회복/마사지 순서로</li>
+            <li><b>패드 관리:</b> 젤이 마르거나 따가우면 즉시 멈추고 위치를 옮기거나 새 패드로 교체</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 탭 4 · 스트레칭 -->
+    <section class="tabpane" id="tab-stretch">
+      <div class="card">
+        <h2>🧘 어깨 스트레칭 4종</h2>
+        <p class="hint">라운드숄더 · 충돌증후군 · 유착성 관절낭염 안전 루틴. 통증 직전까지만, 호흡은 멈추지 않기.</p>
+        <div class="field">
+          <label>타이머 알림 방식</label>
+          <div class="fb-toggle" id="fbToggle">
+            <button type="button" data-fb="vibrate">📳 진동</button>
+            <button type="button" data-fb="beep">🔔 비프음</button>
+            <button type="button" data-fb="both">📳+🔔 둘 다</button>
+          </div>
+        </div>
+      </div>
+      <div id="stretchList"></div>
+      <div class="card">
+        <h2>⚡ 스트레칭 직후 컴팩스 코스</h2>
+        <p class="hint">근육·관절을 풀어 준 직후, 현재 상태에 맞춰 연결하세요.</p>
+        <div id="courseList"></div>
+      </div>
+    </section>
+
+    <!-- 탭 5 · 기록 -->
+    <section class="tabpane" id="tab-log">
+      <div class="card">
+        <h2>📊 이번 주 워크로드</h2>
+        <div class="stat-grid">
+          <div class="stat"><b id="stSessions">0</b><span>세션</span></div>
+          <div class="stat"><b id="stMinutes">0</b><span>총 분</span></div>
+          <div class="stat"><b id="stAvg">–</b><span>평균 강도</span></div>
+        </div>
+        <div id="freqList"></div>
+      </div>
+
+      <div class="card">
+        <h2 id="logFormTitle">➕ 세션 기록</h2>
+        <p class="hint">기기를 마친 뒤 강도·시간·체감을 남겨 두면 다음 주 조절에 쓸 수 있습니다.</p>
+        <div class="form-grid">
+          <div class="two">
+            <div class="field"><label for="fDate">날짜</label><input id="fDate" type="date"></div>
+            <div class="field"><label for="fMinutes">시간(분)</label><input id="fMinutes" type="number" inputmode="numeric" min="1" max="180" step="1" value="20"></div>
+          </div>
+          <div class="field"><label for="fArea">부위</label><select id="fArea"></select></div>
+          <div class="field"><label for="fProgram">프로그램</label><select id="fProgram"></select></div>
+          <div class="two">
+            <div class="field"><label for="fIntensity">강도 (기기 표시 숫자)</label><input id="fIntensity" type="number" inputmode="numeric" min="1" max="60" step="1" placeholder="예: 12"></div>
+            <div class="field"><label for="fFeel">자극·통증 체감</label>
+              <div class="feel" id="feelBtns">
+                <button type="button" data-v="1">1</button><button type="button" data-v="2">2</button>
+                <button type="button" data-v="3" class="active">3</button><button type="button" data-v="4">4</button>
+                <button type="button" data-v="5">5</button>
+              </div>
+            </div>
+          </div>
+          <div class="field"><label for="fMemo">메모</label><textarea id="fMemo" placeholder="예: 오른쪽 어깨 뒤가 시원함, 다음엔 강도 1 올려보기"></textarea></div>
+          <div class="btn-row">
+            <button class="btn btn-primary" id="saveLog" type="button">저장</button>
+            <button class="btn btn-ghost" id="resetLog" type="button">입력 지우기</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sec-title" style="margin:0 0 8px">
+          <h2>🗂 최근 기록</h2>
+          <span class="more" id="logCount"></span>
+        </div>
+        <div id="logList"></div>
+      </div>
+
+      <div class="card">
+        <h2>💾 백업</h2>
+        <p class="hint">기록·목표는 이 브라우저에만 저장됩니다. JSON으로 내보내 두면 기기를 바꿔도 이어집니다.</p>
+        <div class="btn-row">
+          <button class="btn btn-ghost" id="exportBtn" type="button">JSON 내보내기</button>
+          <button class="btn btn-ghost" id="importBtn" type="button">JSON 불러오기</button>
+        </div>
+        <input type="file" id="importFile" accept="application/json,.json" style="display:none">
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabbar" id="tabbar">
+    <button type="button" data-tab="tab-coach" class="active"><span class="ic">🎯</span>코치</button>
+    <button type="button" data-tab="tab-programs"><span class="ic">⚡</span>프로그램</button>
+    <button type="button" data-tab="tab-pads"><span class="ic">🩹</span>패드·배선</button>
+    <button type="button" data-tab="tab-stretch"><span class="ic">🧘</span>스트레칭</button>
+    <button type="button" data-tab="tab-log"><span class="ic">📊</span>기록</button>
+  </nav>
+</div>
+
+<div class="backdrop" id="backdrop">
+  <div class="sheet" id="sheet">
+    <div class="sheet-head">
+      <h3 id="sheetTitle">제목</h3>
+      <button class="sheet-close" id="sheetClose" type="button">✕</button>
+    </div>
+    <div id="sheetBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
