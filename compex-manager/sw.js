@@ -1,6 +1,6 @@
 /* 컴팩스 매니저 서비스 워커 — 오프라인 완전 동작
    내용을 고칠 때는 CACHE 이름의 v 번호를 올린다. */
-const CACHE = "compex-manager-v2";
+const CACHE = "compex-manager-v3";
 
 const PRECACHE = [
   "./",
@@ -53,10 +53,18 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
 
-  // 페이지 이동: 캐시의 index.html 우선, 없으면 네트워크
+  // 페이지 이동: 네트워크 우선(항상 최신 index.html), 오프라인이면 캐시
   if (req.mode === "navigate") {
     event.respondWith(
-      caches.match("index.html").then((hit) => hit || fetch(req).catch(() => caches.match("./")))
+      fetch(req)
+        .then((res) => {
+          if (res && res.ok && new URL(req.url).pathname.endsWith("/compex-manager/")) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put("index.html", copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match("index.html").then((hit) => hit || caches.match("./")))
     );
     return;
   }
