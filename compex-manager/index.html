@@ -185,14 +185,12 @@
           </div>
           <div class="field"><label for="fArea">부위</label><select id="fArea"></select></div>
           <div class="field"><label for="fProgram">프로그램</label><select id="fProgram"></select></div>
-          <div class="two">
-            <div class="field"><label for="fIntensity">강도 (기기 표시 숫자)</label><input id="fIntensity" type="number" inputmode="numeric" min="1" max="60" step="1" placeholder="예: 12"></div>
-            <div class="field"><label for="fFeel">자극·통증 체감</label>
-              <div class="feel" id="feelBtns">
-                <button type="button" data-v="1">1</button><button type="button" data-v="2">2</button>
-                <button type="button" data-v="3" class="active">3</button><button type="button" data-v="4">4</button>
-                <button type="button" data-v="5">5</button>
-              </div>
+          <div class="field"><label for="fIntensity">강도 (기기 표시 숫자)</label><input id="fIntensity" type="number" inputmode="numeric" min="1" max="60" step="1" placeholder="예: 12"></div>
+          <div class="field"><label>자극·통증 체감 (1 약함 ~ 5 강함)</label>
+            <div class="feel" id="feelBtns">
+              <button type="button" data-v="1">1</button><button type="button" data-v="2">2</button>
+              <button type="button" data-v="3" class="active">3</button><button type="button" data-v="4">4</button>
+              <button type="button" data-v="5">5</button>
             </div>
           </div>
           <div class="field"><label for="fMemo">메모</label><textarea id="fMemo" placeholder="예: 오른쪽 어깨 뒤가 시원함, 다음엔 강도 1 올려보기"></textarea></div>
