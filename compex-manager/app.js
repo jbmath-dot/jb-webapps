@@ -994,7 +994,12 @@
     const map = e.target.closest("button[data-map]");
     if (map) { openPadSheet(map.dataset.map); return; }
     const rec = e.target.closest("button[data-rec]");
-    if (rec) { openLog({ program: rec.dataset.rec, area: areaLabelFor(rec.dataset.rec) }); return; }
+    if (rec) {
+      const card = rec.closest(".st-card");
+      const ham = card && card.dataset.group === "hamstring";
+      openLog({ program: rec.dataset.rec, area: ham ? "엉덩이·허벅지" : areaLabelFor(rec.dataset.rec) });
+      return;
+    }
     const head = e.target.closest(".st-head");
     if (head) {
       const card = head.closest(".st-card");
