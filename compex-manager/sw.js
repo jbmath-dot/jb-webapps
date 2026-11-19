@@ -1,6 +1,6 @@
 /* 컴팩스 매니저 서비스 워커 — 오프라인 완전 동작
    내용을 고칠 때는 CACHE 이름의 v 번호를 올린다. */
-const CACHE = "compex-manager-v1";
+const CACHE = "compex-manager-v2";
 
 const PRECACHE = [
   "./",

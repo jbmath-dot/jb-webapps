@@ -155,12 +155,12 @@
     el.innerHTML = goals
       .map((g) => {
         const on = state.active.indexOf(g.id) >= 0;
-        const sub = g.desc || (g.part ? g.part + " · 주 " + (g.freq || 3) + "회" : "");
+        const sub = stripTags(g.desc || (g.part ? g.part + " · 주 " + (g.freq || 3) + "회" : ""));
         return (
           '<div class="goal-row ' + (on ? "on" : "") + '" data-goal="' + esc(g.id) + '" role="button" tabindex="0">' +
           '<span class="emoji">' + (g.emoji || "🎯") + "</span>" +
-          '<div class="txt"><div class="nm">' + esc(g.name) + (on ? "" : "") + "</div>" +
-          '<div class="ds">' + esc(stripTags(sub)) + (on ? " · 주 " + goalWeekCount(g) + "회" : "") + "</div></div>" +
+          '<div class="txt"><div class="nm">' + esc(g.name) + "</div>" +
+          '<div class="ds">' + esc(sub) + (on && sub.indexOf("주 ") < 0 ? " · 주 " + goalWeekCount(g) + "회" : "") + "</div></div>" +
           '<button class="edit" type="button" data-edit="' + esc(g.id) + '" aria-label="목표 이름·설정 수정">✏️</button>' +
           '<span class="check">' + (on ? "✓" : "") + "</span></div>"
         );
@@ -748,7 +748,9 @@
       $("#gsMin").value = p.minutes;
       $("#gsInt").value = p.intensity;
       $("#gsProg").value = p.program;
-      if (!$("#gsName").value.trim() || " 케어" === $("#gsName").value.slice(-3)) $("#gsName").value = $("#gsPart").value + " 케어";
+      if (p.days) $("#gsFreq").value = String(Math.min(7, p.days.length));
+      const nm = $("#gsName").value.trim();
+      if (!nm || nm.slice(-2) === "케어") $("#gsName").value = $("#gsPart").value + " 케어";
     };
     $("#gsSave").onclick = () => {
       const name = $("#gsName").value.trim() || $("#gsPart").value + " 케어";
