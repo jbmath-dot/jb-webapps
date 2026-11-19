@@ -2,7 +2,7 @@
    내용을 고칠 때는 CACHE 이름의 v 번호를 올린다.
    - 페이지·스크립트·스타일: 네트워크 우선(항상 최신), 실패하면 캐시
    - 이미지: 캐시 우선 + 백그라운드 갱신(빠른 로딩) */
-const CACHE = "compex-manager-v6";
+const CACHE = "compex-manager-v7";
 
 const PRECACHE = [
   "./",
@@ -62,7 +62,11 @@ self.addEventListener("activate", (event) => {
 /* 네트워크 우선 + 캐시 갱신 */
 function networkFirst(event, req) {
   // 문서는 항상 서버에 물어 최신본을 받는다(중간 캐시 무시)
-  const target = req.mode === "navigate" ? new Request(req.url, { cache: "reload", credentials: "same-origin" }) : req;
+  // 스크립트·스타일도 HTTP 캐시(max-age)에 묶이지 않게 재검증한다
+  const target =
+    req.mode === "navigate"
+      ? new Request(req.url, { cache: "reload", credentials: "same-origin" })
+      : new Request(req.url, { cache: "no-cache" });
   event.respondWith(
     fetch(target)
       .then((res) => {
