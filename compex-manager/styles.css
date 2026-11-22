@@ -179,6 +179,7 @@ main{padding:14px 14px calc(78px + var(--safe-b))}
 .diag-img{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#fff;margin-bottom:8px}
 .diag-img img{display:block;width:100%;height:auto}
 .diag-cap{padding:6px 9px;font-size:11px;color:#64748b;background:#f8fafc;border-top:1px solid var(--line)}
+.diag-tip{margin:6px 0 0;padding:8px 10px;font-size:11.5px;line-height:1.5;color:#334155;background:#eff6ff;border:1px solid #d3e3fd;border-radius:9px;font-weight:600}
 
 /* ── 패드 ── */
 .pad-hero{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;margin-top:10px}

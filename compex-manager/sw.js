@@ -2,7 +2,7 @@
    내용을 고칠 때는 CACHE 이름의 v 번호를 올린다.
    - 페이지·스크립트·스타일: 네트워크 우선(항상 최신), 실패하면 캐시
    - 이미지: 캐시 우선 + 백그라운드 갱신(빠른 로딩) */
-const CACHE = "compex-manager-v7";
+const CACHE = "compex-manager-v8";
 
 const PRECACHE = [
   "./",
@@ -17,6 +17,7 @@ const PRECACHE = [
   "assets/compex_sp4_buttons_guide.jpg",
   "assets/compex_double_snap_pad_wiring.jpg",
   "assets/compex_shoulder_pad_placement.jpg",
+  "assets/compex_neck_pad_placement.jpg",
   "assets/compex_both_shoulders_placement.jpg",
   "assets/compex_both_scapula_pad_placement.jpg",
   "assets/compex_arm_pad_placement.jpg",

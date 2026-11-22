@@ -10,11 +10,12 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> 로 <strong>Pain management TENS</strong> 선택 → <span class='kbd'>Ch 4 +</span> 확인",
       "MI 센서 연결 시 <strong>MI-TENS</strong> 자동 활성 → 사용 채널 <span class='kbd'>Ch 1~4 +</span> 로 찌릿한 선까지 올리기"
     ],
-    diagrams: ["shoulder", "both_shoulders", "arm", "back", "thigh", "calf"],
-    pads: "가장 아픈 부위(어깨·무릎·손목 등) 양옆 또는 위아래로 감싸 부착 (양쪽 어깨는 채널 분리)",
+    diagrams: ["shoulder", "neck", "both_shoulders", "arm", "back", "thigh", "calf"],
+    tags: "목 통증 경추 승모근 목뒤 담 결림 거북목 Neck pain",
+    pads: "아픈 지점을 사이에 두고 전극 2장을 마주 보게 부착(양옆 또는 위아래로 감싸기) — 어깨·관절은 앞뒤·위아래로, 목은 척추 뼈 비우고 좌우로, 무릎·팔꿈치는 관절 위·아래로. 양쪽 어깨는 채널을 좌우로 분리",
     pose: "편안히 기대거나 누운 정적 휴식 자세",
     intensity: "피부 아래 기분 좋게 찌릿·따끔한 느낌(근육이 튕기지 않게, MI-TENS 자동 제어)",
-    caution: "주사 바늘 자국 바로 위 피하기. 통증만 가려주므로 무리한 움직임 주의. 5일 이상 호전 없으면 진료."
+    caution: "주사 바늘 자국 바로 위·가슴(심장)을 가로지르는 부착 금지. 통증만 가려주므로 무리한 움직임 주의. 5일 이상 호전 없으면 진료."
   },
   {
     cat: "Pain management", en: "Muscle pain", ko: "근육통 완화 (만성 뭉침·결림)", type: "twitch",
@@ -25,9 +26,10 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Muscle pain</strong> 선택 → <span class='kbd'>Ch 4 +</span>",
       "부위 선택 화면이 뜨면 <span class='kbd'>Ch 1 +/-</span> 로 부위 선택 → <span class='kbd'>Ch 4 +</span> 후 강도 조절"
     ],
-    diagrams: ["shoulder", "both_shoulders", "back", "arm", "thigh", "calf"],
-    pads: "뻐근한 근육(승모근·허리 기립근·종아리 등) 중앙과 양 끝",
-    pose: "편안한 휴식 자세",
+    diagrams: ["neck", "shoulder", "both_scapula", "back", "arm", "thigh", "calf"],
+    tags: "목 통증 경추 승모근 목뒤 담 결림 거북목 Neck pain 근육통 결림",
+    pads: "뻐근한 근육을 따라 근복 중앙과 위·아래 끝에 2장 — 승모근은 목델미 안쪽부터 어깨 끝, 허리는 척추 뼈 비우고 좌우 대칭, 종아리는 근육 두 갈래에 위아래로",
+    pose: "편안한 휴식 자세(의자에 기대거나 엎드려 목 힘을 뺀 자세)",
     intensity: "근육이 눈에 보일 정도로 톡톡 튀는 범위(MI-RANGE 체크 표시 확인)",
     caution: "급성 염좌나 붓기·열감이 심한 부위는 피하고, 척추 뼈 정중앙 직접 부착 금지."
   },
@@ -41,7 +43,7 @@ window.PROGRAMS = [
       "MI-SCAN 측정 후 <span class='kbd'>Ch 1~4 +</span> 로 근육이 톡톡 튀는 수준까지 올리기"
     ],
     diagrams: ["back"],
-    pads: "허리·등 척추 뼈를 비우고 좌우 양옆 척추기립근에 대칭 부착",
+    pads: "척추 뼈 정중앙을 비우고 좌우 척추기립근에 대칭으로 2장씩(4채널이면 허리·등 두 높이)",
     pose: "엎드리거나 의자에 기대어 허리 긴장을 푼 자세",
     intensity: "기분 좋게 근육이 톡톡 튀는 수준",
     caution: "디스크 급성기(다리 저림 동반)나 척추 뼈 바로 위 부착 금지."
@@ -56,7 +58,7 @@ window.PROGRAMS = [
       "사용 채널 <span class='kbd'>Ch 1~4 +</span> 로 종아리가 규칙적으로 톡톡 튕길 때까지 올리기"
     ],
     diagrams: ["calf", "thigh"],
-    pads: "양쪽 종아리 근육 안쪽·바깥쪽 위아래(또는 허벅지 뒤)",
+    pads: "종아리 근육 안쪽·바깥쪽 두 갈래에 위·아래로 2장씩 — 허벅지까지 무거우면 허벅지 뒤 중앙+무릎 위, 발목 부종엔 종아리 아래쪽. 오금·아킬레스건 바로 위는 피하기",
     pose: "다리를 살짝 올리고 편히 눕거나 앉은 자세",
     intensity: "종아리가 규칙적으로 톡톡 튕길 정도",
     caution: "심부정맥 혈전증·심한 정맥류 부위에는 사용 금지."
@@ -72,7 +74,7 @@ window.PROGRAMS = [
     ],
     diagrams: ["calf", "thigh"],
     tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 허리 엉치 다리 쥐 경련 근경련 Prevention of cramps 야간 쥐",
-    pads: "쥐가 잘 나는 근육(종아리·햄스트링·발바닥 위 종아리) 중앙과 끝",
+    pads: "쥐가 잘 나는 근육의 근복 중앙과 끝에 2장 — 종아리(가장 흔함)는 두 갈래 위아래, 햄스트링은 허벅지 뒤 중앙+무릎 위, 발가락 쥐는 정강이 바깥 근육",
     pose: "편안한 휴식 자세(운동 전 또는 잠자기 전)",
     intensity: "근육이 톡톡 튀는 수준",
     caution: "현재 쥐가 난 직후 통증이 심할 땐 강도를 아주 약하게 시작."
@@ -86,12 +88,12 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Muscle relaxation</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위 선택 후 <span class='kbd'>Ch 4 +</span> → 가볍게 톡톡 튕기는 수준까지 올리기"
     ],
-    diagrams: ["shoulder", "both_shoulders", "back", "thigh", "calf"],
+    diagrams: ["shoulder", "neck", "both_scapula", "back", "thigh", "calf"],
     tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 허리 긴장 이완 스트레칭 후 허리 보호",
-    pads: "뭉친 근육(어깨 뒤 후면 삼각근·승모근, 허벅지 뒤 햄스트링, 등) 양 끝",
+    pads: "뭉친 근육의 양 끝에 2장 — 목·승모근은 목델미 안쪽에서 어깨 끝까지, 어깨는 상부 승모근↔후면 삼각근, 등은 견갑골 안쪽 모서리(또는 양쪽 견갑골), 허벅지 뒤는 중앙과 무릎 위",
     pose: "어깨 힘을 뺀 편안한 자세",
     intensity: "가볍게 근육이 톡톡 튕기는 수준",
-    caution: "목 앞쪽(경동맥)이나 쇄골 바로 위 신경 부위 피하기."
+    caution: "목 앞쪽(경동맥)·목젖 부위와 쇄골 바로 위 신경 부위 피하기. 고강도 근수축은 목 통증 급성기에 금지."
   },
   {
     cat: "Pain management", en: "Tendinitis", ko: "건염(힘줄염) 통증 완화", type: "tens",
@@ -103,7 +105,7 @@ window.PROGRAMS = [
       "MI 센서 연결 시 <strong>MI-TENS</strong> 자동 활성 → 기분 좋은 찌릿한 선까지만 올리기"
     ],
     diagrams: ["shoulder", "arm", "calf"],
-    pads: "통증이 있는 힘줄 부위(어깨 힘줄·팔꿈치·아킬레스건 주변) 양옆 감싸기",
+    pads: "통증이 있는 힘줄을 사이에 두고 양옆 또는 위아래로 감싸 부착(가장 아픈 점을 가운데 두기) — 어깨 극상건(팔 들 때 아픈 곳)은 어깨 앞·위쪽에서 위아래로, 테니스엘보는 팔꿈치 바깥 뼈 양옆, 아킬레스건은 힘줄 좌우로",
     pose: "관절을 편하게 둔 정적 휴식 자세",
     intensity: "찌릿한 감각 수준(MI-TENS로 근수축 방지)",
     caution: "주사 맞은 직후 48시간은 바늘 자국 위 피하기. 염증성 열감이 심할 땐 냉찜질 우선."
@@ -117,8 +119,8 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Endorphinic</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위 선택 후 <span class='kbd'>Ch 4 +</span> → 리듬이 분명히 느껴지는 수준까지 올리기"
     ],
-    diagrams: ["shoulder", "both_shoulders", "back", "thigh"],
-    pads: "만성으로 뻐근한 근육(어깨·등·허리 등) 중앙",
+    diagrams: ["shoulder", "neck", "back", "thigh"],
+    pads: "만성으로 뻐근한 부위를 가운데 두고 4장을 둘러 부착 — 어깨 뒤·목 뒤 승모근·등·허리는 척추 뼈 비우고 좌우 대칭",
     pose: "편안히 눕거나 앉은 자세",
     intensity: "톡톡 튀는 리듬이 분명히 느껴지는 수준(약 20~25분)",
     caution: "아픈 관절이 강하게 흔들리지 않도록 강도 조절."
@@ -136,7 +138,7 @@ window.PROGRAMS = [
     ],
     diagrams: ["thigh", "calf", "shoulder", "back", "arm"],
     tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 계단 걷기 운동 후 회복",
-    pads: "운동을 많이 한 근육(허벅지·종아리·어깨 뒤·등) 중앙과 끝",
+    pads: "운동을 많이 한 근육을 큰 패드로 넓게 덮기 — 허벅지는 앞·뒤 근육 전반, 종아리는 두 갈래, 어깨 뒤·등은 근육 결 따라 2장씩(4채널 권장)",
     pose: "운동 종료 후 3시간 이내, 편안한 휴식 자세",
     intensity: "근육이 눈에 띄게 톡톡 튀는 범위(MI-RANGE 확인)",
     caution: "근육 찢어짐(열상)·급성 부상이 의심되면 사용 금지."
@@ -151,7 +153,7 @@ window.PROGRAMS = [
       "부위 선택 → <span class='kbd'>Ch 4 +</span> → 눈에 보이는 근경련 수준까지 서서히 올리기"
     ],
     diagrams: ["thigh", "calf", "back", "shoulder"],
-    pads: "피로가 큰 주요 근육(하체·등·어깨 등) 4채널 권장",
+    pads: "피로가 큰 대근육 위주로 4채널 — 허벅지 앞·뒤, 종아리, 등, 어깨 뒤에 큰 패드 2장씩",
     pose: "편안히 누운 휴식 자세",
     intensity: "눈에 보이는 근경련(톡톡 튕김) 수준까지 서서히",
     caution: "탈수·어지럼증이 있을 땐 수분 섭취 후 사용."
@@ -165,9 +167,9 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Relaxing massage</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위 선택 → <span class='kbd'>Ch 4 +</span> → 기분 좋게 톡톡 튕기는 선까지 올리기"
     ],
-    diagrams: ["both_shoulders", "shoulder", "back", "thigh", "calf"],
-    tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 허리 가벼운 이완 마사지",
-    pads: "긴장된 부위(승모근·어깨 뒤·등·허벅지 뒤·종아리) 양 끝",
+    diagrams: ["shoulder", "neck", "both_scapula", "back", "thigh", "calf"],
+    tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 허리 가벼운 이완 마사지 목 승모근 경추 견갑골",
+    pads: "긴장된 부위의 양 끝에 2장 — 어깨는 상부 승모근+후면 삼각근, 목은 척추 비우고 좌우 승모근 상부, 등은 견갑골 안쪽(또는 양쪽 견갑골), 허벅지 뒤·종아리는 근육 결 따라",
     pose: "긴장을 푼 편안한 자세",
     intensity: "부드럽고 기분 좋게 톡톡 튕기는 수준",
     caution: "목 앞쪽·심장 부위 부착 금지. 운전 중 사용 금지."
@@ -182,7 +184,7 @@ window.PROGRAMS = [
       "부위 선택 → <span class='kbd'>Ch 4 +</span> → 통증 없는 선에서 톡톡 튕길 때까지 올리기"
     ],
     diagrams: ["thigh", "calf", "arm", "shoulder"],
-    pads: "운동 다음 날 뻐근한 근육(허벅지·종아리·어깨 등)",
+    pads: "운동 다음 날 뻐근한 근육을 따라 2장씩 — 허벅지 앞·뒤, 종아리, 어깨 뒤. 알이 배긴 곳을 가운데 두고 위·아래로",
     pose: "편안한 휴식 자세",
     intensity: "통증이 유발되지 않는 선에서 근육이 톡톡 튕길 정도",
     caution: "이미 알이 심하게 배겼을 때 강도를 너무 높이면 오히려 아플 수 있음."
@@ -196,8 +198,9 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Reviving massage</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위 선택 → <span class='kbd'>Ch 4 +</span> → 리드미컬하게 튕기는 수준까지 올리기"
     ],
-    diagrams: ["calf", "thigh", "both_shoulders"],
-    pads: "피곤하고 무거운 근육(종아리·허벅지·승모근)",
+    diagrams: ["calf", "thigh", "shoulder", "neck"],
+    pads: "피곤하고 무거운 근육(종아리·허벅지·상부 승모근·어깨 뒤) 근복 중앙과 끝",
+    tags: "목 승모근 경추 어깨 뒤 담 결림",
     pose: "앉거나 누운 편안한 자세",
     intensity: "리드미컬하게 근육이 톡톡 튕기는 수준",
     caution: "취침 직전엔 각성감이 들 수 있어 저녁 시간대 권장."
@@ -213,8 +216,8 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Muscle atrophy</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위·단계 선택(처음엔 <strong>Level 1</strong>) → <span class='kbd'>Ch 4 +</span> 후 수축 시 자세 고정"
     ],
-    diagrams: ["shoulder", "thigh", "arm", "calf"],
-    pads: "힘이 빠진 근육(후면 삼각근·승모근, 허벅지 대퇴사두 등) 운동점+끝",
+    diagrams: ["shoulder", "neck", "thigh", "arm", "calf"],
+    pads: "어깨: 큰 패드 = 삼각근 근복(옆·뒤 볼록한 곳), 작은 패드 = 상부 승모근 또는 후면 삼각근 끝 — 허벅지·팔은 근복 중앙 2장을 근육 결 따라(관절 건너지 않기)",
     pose: "관절이 과하게 꺾이지 않는 안정된 자세(등척성 버티기)",
     intensity: "부드럽게 근수축이 일어나는 선부터 점진적 상향",
     caution: "어깨 염증·주사 직후 48시간은 보류. 수축 시 관절 통증이 나면 즉시 강도 하향."
@@ -228,8 +231,8 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Reinforcement</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위·레벨 선택(<strong>Level 1</strong>부터) → <span class='kbd'>Ch 4 +</span> 후 등척성 고정 자세 유지"
     ],
-    diagrams: ["shoulder", "thigh", "arm"],
-    pads: "회복된 목표 근육(어깨 주변·무릎 주변 허벅지 등) 큰+작은 패드",
+    diagrams: ["shoulder", "neck", "thigh", "arm"],
+    pads: "회복된 목표 근육의 근복 중앙(+)와 끝(−) — 어깨는 큰 패드 = 삼각근 근복, 작은 패드 = 상부 승모근/후면 삼각근 끝, 허벅지는 중앙+무릎 위",
     pose: "팔·다리를 고정한 등척성 자세(수축 중 관절 튕김 방지)",
     intensity: "Muscle atrophy에 충분히 적응한 뒤 참을 수 있는 중·고강도",
     caution: "통증이 남아 있는 관절이나 급성 염증기에는 사용 금지."
@@ -245,8 +248,8 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Endurance</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위·레벨 선택(<strong>Level 1</strong> 권장) → <span class='kbd'>Ch 4 +</span> 후 수축 시 고정 버티기"
     ],
-    diagrams: ["thigh", "calf", "back", "abs"],
-    pads: "장시간 쓰는 근육(허벅지·종아리·등·복부) 4채널 권장",
+    diagrams: ["thigh", "calf", "back"],
+    pads: "하체 중심 — 대퇴사두(허벅지 앞 위쪽 근복+무릎 위), 햄스트링(뒤 중앙+무릎 위), 종아리 두 갈래에 2장씩. 허리까지 넣으면 척추 비우고 기립근",
     pose: "등척성 고정 자세(앉아서 발목 고정 등)",
     intensity: "통증 없는 범위 내 높은 수축 강도",
     caution: "아픈 관절(현재 치료 중인 어깨)에는 통증 완전히 가라앉기 전까지 비추천."
@@ -260,8 +263,8 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Resistance</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위·레벨 선택 → <span class='kbd'>Ch 4 +</span> 후 단단히 버티며 강도 조절"
     ],
-    diagrams: ["thigh", "back", "arm"],
-    pads: "대근육(허벅지·둔근·등·가슴)",
+    diagrams: ["thigh", "calf", "back", "arm"],
+    pads: "대근육(대퇴사두·둔근·삼두·등)의 근복 중앙과 끝에 2장씩 — 4채널 권장, 관절 건너지 않기",
     pose: "단단히 버티는 등척성 자세",
     intensity: "참을 수 있는 최대 강도 목표(3~5회 수축마다 조금씩 증량)",
     caution: "초보자·통증 부위 바로 적용 금지. 충분한 워밍업 후 사용."
@@ -276,7 +279,7 @@ window.PROGRAMS = [
       "부위·레벨 선택(<strong>Level 1</strong> 시작) → <span class='kbd'>Ch 4 +</span> 후 관절 고정 유지"
     ],
     diagrams: ["thigh", "arm", "back"],
-    pads: "목표 근육(대퇴사두·이두·삼두·가슴·등) 운동점+양 끝",
+    pads: "운동점(+) + 끝(−) — 대퇴사두는 허벅지 앞 위쪽 근복과 무릎 위, 이두는 볼록한 중앙과 팔꿈치 위, 삼두·등도 근복+끝",
     pose: "관절이 짧아지지 않게 고정한 등척성 자세",
     intensity: "고강도 근수축(근육 쥐 남 방지 위해 자세 고정 필수)",
     caution: "유착성 관절낭염·충돌증후군이 있는 어깨에는 의사 확인 전 사용 보류."
@@ -291,7 +294,7 @@ window.PROGRAMS = [
       "부위·레벨 선택 → <span class='kbd'>Ch 4 +</span> 후 아주 단단히 고정한 자세로 진행"
     ],
     diagrams: ["thigh", "calf"],
-    pads: "하체(대퇴사두·종아리·둔근) 또는 상체 대근육",
+    pads: "하체 대근육(대퇴사두·둔근·종아리)에 2장씩 — 힘줄·관절을 넘지 않게, 가슴은 좌우로 가로지르지 않기",
     pose: "아주 단단한 등척성 자세(수축이 매우 짧고 강함)",
     intensity: "최대 허용 강도",
     caution: "수축이 갑자기 강하게 들어오므로 힘줄·관절 부상 이력 부위는 피하기."
@@ -306,7 +309,7 @@ window.PROGRAMS = [
       "부위·레벨 선택 → <span class='kbd'>Ch 4 +</span> 후 동작 또는 고정 자세 병행"
     ],
     diagrams: ["thigh", "abs", "arm", "back"],
-    pads: "전신 주요 근육군 중 선택한 부위(하체·코어·상체)",
+    pads: "그날 쓸 주요 근육군(하체·코어·상체)을 골라 근복 중앙+끝에 2장씩 — 채널당 한 근육 안에서만",
     pose: "동작과 결합하거나 등척성 고정 자세",
     intensity: "중~고강도",
     caution: "동작과 병행 시 전선에 걸리거나 자세가 무너지지 않게 주의."
@@ -321,7 +324,7 @@ window.PROGRAMS = [
       "레벨 선택(<strong>Level 1</strong>) → <span class='kbd'>Ch 4 +</span> 후 무릎 세우고 복부 힘주며 시작"
     ],
     diagrams: ["abs", "back"],
-    pads: "복부(배꼽 양옆) + 허리 기립근(척추 뼈 피해서 좌우 대칭)",
+    pads: "복부(배꼽 양옆 복직근) + 허리 기립근(척추 뼈 비우고 좌우 대칭) — 4채널이면 복부 2장 + 허리 2장",
     pose: "플랭크 변형 또는 무릎 세우고 누워 배에 힘주는 자세",
     intensity: "복부와 허리가 단단히 조여지는 수준",
     caution: "허리 디스크 급성 통증 시 보류, 임산부 금지."
@@ -335,8 +338,8 @@ window.PROGRAMS = [
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Hypertrophy</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위·레벨 선택 → <span class='kbd'>Ch 4 +</span> 후 관절을 고정한 채 강도 올리기"
     ],
-    diagrams: ["arm", "thigh", "abs"],
-    pads: "키우려는 근육(이두·가슴·허벅지·어깨 삼각근) 근복",
+    diagrams: ["arm", "thigh", "abs", "shoulder"],
+    pads: "키우려는 근육의 근복 중앙(+)와 끝(−) — 이두·삼두는 팔꿈치 위, 허벅지는 무릎 위, 삼각근은 어깨 끝(가슴·목은 가로지르지 않게)",
     pose: "등척성 자세",
     intensity: "고강도(휴식 시간 포함, 주 3회 권장)",
     caution: "통증이 있는 어깨 관절 주변에는 추천하지 않음."
@@ -351,7 +354,7 @@ window.PROGRAMS = [
       "부위·레벨 선택(<strong>Level 1</strong>) → <span class='kbd'>Ch 4 +</span> 후 자세 고정"
     ],
     diagrams: ["thigh", "arm", "abs", "back"],
-    pads: "목표 근육 중앙과 끝",
+    pads: "목표 근육의 중앙과 끝에 2장 — 이두·대퇴사두·복직근·등 기립근 순으로, 초보는 큰 근육 한 곳부터",
     pose: "등척성 자세",
     intensity: "중~고강도",
     caution: "관절 통증 시 중단. 회복 프로그램과 병행 권장."
@@ -366,7 +369,7 @@ window.PROGRAMS = [
       "부위 선택 → <span class='kbd'>Ch 4 +</span> → 근육이 가볍게 톡톡 튕길 때까지 올리기"
     ],
     diagrams: ["thigh", "calf", "shoulder", "back"],
-    pads: "운동할 주요 근육(허벅지·종아리·어깨 뒤 등)",
+    pads: "운동할 주요 근육(허벅지·종아리·어깨 뒤 삼각근·승모근)의 근복 중앙과 끝",
     pose: "편안히 앉거나 선 자세",
     intensity: "근육이 가볍게 톡톡 튕기며 따뜻해지는 느낌",
     caution: "실제 스트레칭·관절 풀기를 완전히 대체할 수는 없음."
@@ -382,7 +385,7 @@ window.PROGRAMS = [
     ],
     diagrams: ["calf", "thigh", "shoulder", "back"],
     tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 허리 혈류 순환",
-    pads: "혈류를 늘리고 싶은 근육(종아리·허벅지·어깨 뒤·등)",
+    pads: "혈류를 늘리고 싶은 근육을 큰 패드로 넓게 덮기(종아리·허벅지·어깨 뒤·등) — 위치 정밀도는 덜 중요",
     pose: "편안한 휴식 자세",
     intensity: "눈에 보이는 근경련(톡톡 튕김) 범위(MI-RANGE 확인)",
     caution: "심한 정맥류·출혈성 질환 부위 피하기."
@@ -399,7 +402,7 @@ window.PROGRAMS = [
       "레벨 선택(<strong>Level 1</strong>) → <span class='kbd'>Ch 4 +</span> 후 팔꿈치를 몸에 붙이고 진행"
     ],
     diagrams: ["arm"],
-    pads: "팔 앞쪽(이두) 또는 뒤쪽(삼두) 위아래",
+    pads: "이두: 팔 앞 볼록한 근복 중앙 + 팔꿈치 바로 위 / 삼두: 팔 뒤 중앙 + 팔꿈치 뒤 위 — 팔꿈치 관절·거드랑이·손목 뼈 피하기",
     pose: "팔꿈치를 몸통에 붙이고 각도를 고정한 자세",
     intensity: "팔 근육이 단단히 수축되는 중~고강도",
     caution: "어깨가 아프면 팔을 들지 말고 몸에 붙인 채로만 시행."
@@ -414,7 +417,7 @@ window.PROGRAMS = [
       "레벨 선택(<strong>Level 1</strong>) → <span class='kbd'>Ch 4 +</span> 후 의자에 앉아 발목 고정"
     ],
     diagrams: ["thigh"],
-    pads: "대퇴사두(허벅지 앞) 또는 햄스트링(뒤) 4채널",
+    pads: "대퇴사두: 허벅지 앞 위쪽 근복 + 무릎 바로 위 / 햄스트링: 허벅지 뒤 중앙 + 무릎 뒤 위 / 둔근: 엉덩이 볼록한 곳 위·아래 — 4채널이면 좌우 나눠",
     pose: "의자에 앉아 발목을 고정(무릎 펴짐 방지)",
     intensity: "중~고강도",
     caution: "무릎이 튕기지 않게 발목 고정 필수."
@@ -429,7 +432,7 @@ window.PROGRAMS = [
       "레벨 선택(<strong>Level 1</strong>) → <span class='kbd'>Ch 4 +</span> 후 무릎 굽히고 누워서 진행"
     ],
     diagrams: ["abs"],
-    pads: "배꼽 좌우 복직근 상·하 대칭 4채널",
+    pads: "배꼽 좌우 복직근에 상·하 2쌍(4채널) — 배꼽 바로 위는 비우고 좌우 대칭",
     pose: "무릎 굽히고 누워 숨 내쉬며 복부 살짝 긴장",
     intensity: "참을 수 있는 중~고강도",
     caution: "식사 직후·임신 중·복부 수술 부위 금지."
@@ -444,7 +447,7 @@ window.PROGRAMS = [
       "레벨 선택 → <span class='kbd'>Ch 4 +</span> 후 팔꿈치 90도 고정 상태로 강도 올리기"
     ],
     diagrams: ["arm"],
-    pads: "이두근 볼록한 중앙 + 팔꿈치 안쪽 위",
+    pads: "이두 볼록한 중앙(+)과 팔꿈치 안쪽 바로 위(−) — 팔꿈치 관절·손목 뼈 피하기",
     pose: "팔꿈치를 90도로 고정하고 손바닥 위로 향하게 버티기",
     intensity: "중~고강도",
     caution: "어깨 앞쪽 힘줄(이두건)에 통증이 있으면 중단."
@@ -459,7 +462,7 @@ window.PROGRAMS = [
       "레벨 선택(<strong>Level 1</strong>) → <span class='kbd'>Ch 4 +</span> 후 무릎 세우고 누워 진행"
     ],
     diagrams: ["abs"],
-    pads: "배꼽 양옆 및 옆구리(복사근) 대칭 부착",
+    pads: "배꼽 양옆 복직근 + 옆구리(복사근)에 대칭으로 — 허리를 감싸듯 좌우로, 식후 1시간 이후",
     pose: "무릎 세우고 누운 자세",
     intensity: "중강도 이상",
     caution: "생리통 심할 때나 식후 직후 피하기."
@@ -487,6 +490,8 @@ window.TYPE_LABEL = {
 window.DIAGRAM_LABELS = {
   both_shoulders: "양쪽 어깨",
   shoulder: "한쪽 어깨",
+  neck: "목·승모근",
+  both_scapula: "양쪽 견갑골",
   arm: "팔·전완",
   back: "등·허리",
   abs: "복부·코어",
@@ -497,6 +502,8 @@ window.DIAGRAM_LABELS = {
 window.DIAGRAM_IMG = {
   both_shoulders: "assets/compex_both_shoulders_placement.jpg",
   shoulder: "assets/compex_shoulder_pad_placement.jpg",
+  neck: "assets/compex_neck_pad_placement.jpg",
+  both_scapula: "assets/compex_both_scapula_pad_placement.jpg",
   arm: "assets/compex_arm_pad_placement.jpg",
   back: "assets/compex_back_pad_placement.jpg",
   abs: "assets/compex_abs_pad_placement.jpg",
@@ -504,8 +511,34 @@ window.DIAGRAM_IMG = {
   calf: "assets/compex_calf_shin_pad_placement.jpg"
 };
 
+/* ── 도해 키 → 기록·부위 탭에서 쓰는 부위 이름 ── */
+window.DIAGRAM_AREA_LABEL = {
+  shoulder: "어깨 단독",
+  neck: "목·승모근",
+  both_shoulders: "양쪽 어깨",
+  both_scapula: "양쪽 견갑골",
+  arm: "팔·전완",
+  back: "등·허리",
+  abs: "복부·코어",
+  thigh: "엉덩이·허벅지",
+  calf: "종아리·정강이",
+  full: "전신"
+};
 
-/* ── 부위 프리셋: 부위를 직접 고르면 기본 프로그램·강도·빈도가 정해진다 ── */
+/* ── 도해별 한 줄 부착 팁(도해 탭을 바꿈 때마다 같이 보여 준다) ── */
+window.DIAGRAM_TIPS = {
+  shoulder: "큰 패드 = 어깨 뒤·앞의 삼각근 근복, 작은 패드 = 상부 승모근(목덜미) 또는 어깨 끝. 통증 모드는 아픈 지점을 위아래로 감싸기만, 근수축은 만들지 않기.",
+  both_shoulders: "채널 1 = 왼어깨, 채널 2 = 오른어깨. 한 채널의 +/− 두 장은 반드시 같은 쪽 어깨 안에서만 — 가슴·목을 가로지르면 심장으로 전류가 지나갑니다.",
+  neck: "목 뒤 좌우 승모근 상부에 2장씩 세로로. 척추 뼈 정중앙은 비우고, 목 앞쪽(경동맥)·목뼈 돌기 위는 절대 피하기.",
+  both_scapula: "견갑골 안쪽 모서리를 따라 작은 패드 2장씩. 척추를 가로지르지 말고 좌우 따로.",
+  arm: "이두·삼두는 근복 중앙 + 팔꿈치 위쪽 끝. 전완은 팔꿈치 아래 근육 위아래로, 관절·손목 뼈 위는 피하기.",
+  back: "척추 뼈 정중앙을 비우고 좌우 척추기립근에 2장씩 대칭으로. 뼈 돌기 바로 위는 피하기.",
+  abs: "배꼽 좌우 복직근에 대칭으로 2장씩(총 4장). 식사 직후·임신 중·복부 수술 부위는 금지.",
+  thigh: "대퇴사두는 허벅지 위쪽 근복 + 무릎 위쪽, 햄스트링·둔근은 엉덩이 볼록한 곳과 허벅지 뒤 중앙·위아래. 무릎·사타구니 뼈 위는 피하기.",
+  calf: "종아리 근육 안쪽·바깥쪽 두 갈래에 위아래로, 정강이는 뼈 바깥쪽 근육(전경골근). 오금·정강이 뼈 앞날은 피하기."
+};
+
+/* ─── 부위 프리셋: 부위를 직접 고르면 기본 프로그램·강도·빈도가 정해진다 ── */
 window.PARTS = {
   "어깨":      { key: "shoulder",      program: "Muscle relaxation",  minutes: 20, intensity: "근육이 가볍게 톡톡 튀는 선", days: [1, 3, 5] },
   "목·승모근": { key: "neck",          program: "Muscle relaxation",  minutes: 15, intensity: "가볍게 톡톡 튕기는 선", days: [1, 3, 5] },
@@ -614,11 +647,22 @@ window.BUILTIN_GOALS = [
 /* ── 패드 부위 안내 (탭 3) ── */
 window.PAD_AREAS = [
   {
-    key: "shoulder-single", label: "어깨 단독", img: "compex_shoulder_pad_placement",
-    title: "한쪽 어깨 · 승모근 (TENS / EMS)",
+    key: "neck", label: "목·승모근", img: "compex_neck_pad_placement",
+    title: "목 뒤 · 승모근 (Neck / Upper trapezius)",
     lines: [
-      "TENS(통증): 가장 아픈 지점 양옆·위아래로 감싸 배치 (MI-TENS 자동 제어)",
-      "EMS/회복: 삼각근 중앙(큰 패드) + 상·중부 승모근(작은 패드)"
+      "뒷모습 기준 — 목 뒤쪽 좌우 승모근 상부~경추 기립근에 채널을 좌·우로 나눠 세로로 2장씩 (각 채널 +/−는 같은 쪽 안에서 위·아래)",
+      "왼쪽 승모근 Ch 1 / 오른쪽 승모근 Ch 2 — 어깨 안쪽과 목이 만나는 지점에서 2~3cm 위쪽부터",
+      "척추 뼈 정중앙과 머리카락 안쪽은 비우기"
+    ],
+    note: "목 앞쪽(경동맥) 부착 절대 금지 · 목뼈 돌기 위·목이 아플 때 고강도 근수축 금지"
+  },
+  {
+    key: "shoulder-single", label: "어깨 단독", img: "compex_shoulder_pad_placement",
+    title: "한쪽 어깨 · 승모근 (TENS / EMS / 재활)",
+    lines: [
+      "TENS·건염(통증): 가장 아픈 지점을 양옆·위아래로 감싸 배치 (MI-TENS 자동 제어)",
+      "이완·마사지·근육통: 상부 승모근↔후면 삼각근에 위아래로 (목 뒤가 main이면 목·승모근 도해 사용)",
+      "재활·근수축: 큰 패드 = 삼각근 근복 중앙, 작은 패드 = 상부 승모근 또는 후면 삼각근 끝"
     ],
     note: "목 앞쪽(경동맥)·어깨뼈 돌출부·주사 바늘 자국 위 피하기"
   },
@@ -632,11 +676,11 @@ window.PAD_AREAS = [
     note: "MI 센서 케이블은 1개뿐 — 센서가 없는 반대쪽은 근육이 튕기지 않게 수동 조절"
   },
   {
-    key: "scapula", label: "양쪽 견갑골", img: "compex_both_scapula_pad_placement",
+    key: "both_scapula", label: "양쪽 견갑골", img: "compex_both_scapula_pad_placement",
     title: "양쪽 견갑골 (작은 패드 2장씩)",
     lines: [
       "왼쪽 견갑골 Ch 1 / 오른쪽 견갑골 Ch 2",
-      "견갑골 안쪽 모서리를 따라 작은 패드 2장씩 나란히"
+      "견갑골 안쪽 모서리를 따라 작은 패드 2장씩 세로로 나란히"
     ],
     note: "절대 척추 중앙을 가로지르지 않게. 뼈 돌출부 위는 피하기"
   },

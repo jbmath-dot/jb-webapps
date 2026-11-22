@@ -181,8 +181,10 @@
   function planItemHTML(x) {
     const p = window.PROGRAM_BY_EN[x.item.program] || {};
     const t = window.TYPE_LABEL[p.type] || {};
+    const pkey = partPresetKey(x.goal);
+    const dkey = partDiagramKey(x.goal, (p.diagrams && p.diagrams[0]) || "");
     return (
-      '<div class="pi" data-prog="' + esc(x.item.program) + '">' +
+      '<div class="pi" data-prog="' + esc(x.item.program) + '" data-part="' + esc(pkey) + '" data-diag="' + esc(dkey) + '">' +
       '<div class="pi-top"><span class="pi-goal t-' + esc(x.goal.tone || "blue") + '">' +
       (x.goal.emoji || "🎯") + " " + esc(x.goal.name) + "</span>" +
       (t.text ? '<span class="badge ' + t.cls + '">' + t.short + "</span>" : "") +
@@ -191,7 +193,7 @@
       '<div class="pi-meta"><span>⏱ ' + (x.item.minutes || 20) + "분</span>" +
       '<span>🎚 ' + esc(x.item.intensity || "편안한 선까지") + "</span></div>" +
       (x.item.note ? '<div class="pi-note">' + esc(x.item.note) + "</div>" : "") +
-      '<div class="pi-actions"><button type="button" data-act="map">🩹 패드 그림</button>' +
+      '<div class="pi-actions"><button type="button" data-act="map">🩹 패드 그림' + (dkey && window.DIAGRAM_LABELS[dkey] ? " · " + esc(window.DIAGRAM_LABELS[dkey]) : "") + "</button>" +
       '<button type="button" data-act="rec" class="rec">＋ 세션 기록</button></div></div>'
     );
   }
@@ -241,18 +243,24 @@
   function diagramHTML(key, label) {
     const src = window.DIAGRAM_IMG[key];
     if (!src) return "";
+    const tip = (window.DIAGRAM_TIPS || {})[key] || "";
     return (
       '<div class="diag-img"><img src="' + src + '" alt="' + esc(label || "") + ' 패드 부착 위치" loading="lazy" style="max-height:58dvh;object-fit:contain;margin:0 auto"></div>' +
-      '<div class="diag-cap">' + esc(label || "") + " · 공식 부착 위치</div>"
+      '<div class="diag-cap">' + esc(label || "") + " · 공식 부착 위치</div>" +
+      (tip ? '<div class="diag-tip">' + esc(tip) + "</div>" : "")
     );
   }
-  function openPadSheet(programEn) {
+  /* 목표 부위(PARTS 키)·도해 키를 모두 받아 그 부위 도해를 첫 화면으로 연다 */
+  function openPadSheet(programEn, preferredKey) {
     const p = window.PROGRAM_BY_EN[programEn];
     if (!p) {
       openSheet("패드 부착", '<div class="empty">이 프로그램의 패드 그림이 없습니다.</div>');
       return;
     }
-    const keys = p.diagrams && p.diagrams.length ? p.diagrams : ["shoulder"];
+    let keys = p.diagrams && p.diagrams.length ? p.diagrams.slice() : ["shoulder"];
+    if (preferredKey && window.DIAGRAM_IMG[preferredKey]) {
+      keys = [preferredKey].concat(keys.filter((k) => k !== preferredKey));
+    }
     const first = keys[0];
     const html =
       '<div style="margin-bottom:10px"><div style="font-size:15.5px;font-weight:800;letter-spacing:-.01em">' + esc(p.ko) + "</div>" +
@@ -268,32 +276,40 @@
       '<div class="btn-row" style="margin-top:12px"><button class="btn btn-primary" id="padSheetRec" type="button">이 프로그램으로 기록</button></div>';
     openSheet("🩹 패드 부착 위치", html);
     const body = $("#sheetBody");
+    let curKey = first;
     body.onclick = (e) => {
       const b = e.target.closest("button[data-dkey]");
       if (b) {
+        curKey = b.dataset.dkey;
         $$("button[data-dkey]", body).forEach((x) => x.classList.toggle("active", x === b));
-        $("#padSheetImg").innerHTML = diagramHTML(b.dataset.dkey, window.DIAGRAM_LABELS[b.dataset.dkey]);
+        $("#padSheetImg").innerHTML = diagramHTML(curKey, window.DIAGRAM_LABELS[curKey]);
       }
       if (e.target.id === "padSheetRec") {
         closeSheet();
-        openLog({ program: p.en });
+        openLog({ program: p.en, area: areaLabelFor(p.en, curKey) });
       }
     };
   }
 
-  function areaLabelFor(programEn) {
+  function areaLabelFor(programEn, partKey) {
+    const map = window.DIAGRAM_AREA_LABEL || {};
+    if (partKey && map[partKey]) return map[partKey];
     const p = window.PROGRAM_BY_EN[programEn];
     if (!p || !p.diagrams || !p.diagrams.length) return "어깨 단독";
-    const map = {
-      shoulder: "어깨 단독",
-      both_shoulders: "양쪽 어깨",
-      arm: "팔·전완",
-      back: "등·허리",
-      abs: "복부·코어",
-      thigh: "엉덩이·허벅지",
-      calf: "종아리·정강이"
-    };
     return map[p.diagrams[0]] || "어깨 단독";
+  }
+
+  /* 목표의 부위(PARTS 이름) → PARTS 키 (전신은 도해가 없다) */
+  function partPresetKey(goal) {
+    const name = (goal && goal.parts && goal.parts[0]) || (goal && goal.part) || "";
+    const preset = window.PARTS[name];
+    return (preset && preset.key) || "";
+  }
+  /* 목표 부위에 맞는 도해 키 (도해가 없는 부위면 프로그램 기본 도해로) */
+  function partDiagramKey(goal, fallback) {
+    const key = partPresetKey(goal);
+    if (key && window.DIAGRAM_IMG[key]) return key;
+    return fallback || "";
   }
 
   /* ─────────── 탭 2: 프로그램 ─────────── */
@@ -931,8 +947,8 @@
     if (!btn) return;
     const pi = btn.closest(".pi");
     const prog = pi.dataset.prog;
-    if (btn.dataset.act === "map") openPadSheet(prog);
-    else openLog({ program: prog, minutes: (window.PROGRAM_BY_EN[prog] || {}).type === "tens" ? 20 : 20, area: areaLabelFor(prog) });
+    if (btn.dataset.act === "map") openPadSheet(prog, pi.dataset.diag || "");
+    else openLog({ program: prog, minutes: (window.PROGRAM_BY_EN[prog] || {}).type === "tens" ? 20 : 20, area: areaLabelFor(prog, pi.dataset.part || "") });
   });
 
   $("#progSearch").addEventListener("input", renderPrograms);
@@ -946,7 +962,10 @@
   $("#progList").addEventListener("click", (e) => {
     const rec = e.target.closest("button[data-rec]");
     if (rec) {
-      openLog({ program: rec.dataset.rec, area: areaLabelFor(rec.dataset.rec) });
+      const card = rec.closest(".prog");
+      const pid = card && card.dataset.pid;
+      const dkey = (pid && progDiag[pid]) || "";
+      openLog({ program: rec.dataset.rec, area: areaLabelFor(rec.dataset.rec, dkey) });
       return;
     }
     const pill = e.target.closest(".diag-pills button[data-dkey]");
