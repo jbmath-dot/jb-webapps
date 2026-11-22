@@ -11,7 +11,7 @@ window.PROGRAMS = [
       "MI 센서 연결 시 <strong>MI-TENS</strong> 자동 활성 → 사용 채널 <span class='kbd'>Ch 1~4 +</span> 로 찌릿한 선까지 올리기"
     ],
     diagrams: ["shoulder", "neck", "both_shoulders", "arm", "back", "thigh", "calf"],
-    tags: "목 통증 경추 승모근 목뒤 담 결림 거북목 Neck pain",
+    tags: "목 통증 경추 승모근 목뒤 담 결림 거북목",
     pads: "아픈 지점을 사이에 두고 전극 2장을 마주 보게 부착(양옆 또는 위아래로 감싸기) — 어깨·관절은 앞뒤·위아래로, 목은 척추 뼈 비우고 좌우로, 무릎·팔꿈치는 관절 위·아래로, 등·허리는 척추 비우고 좌우, 허벅지·종아리는 근육 결 따라. 양쪽 어깨는 채널을 좌우로 분리",
     pose: "편안히 기대거나 누운 정적 휴식 자세",
     intensity: "피부 아래 기분 좋게 찌릿·따끔한 느낌(근육이 튕기지 않게, MI-TENS 자동 제어)",
