@@ -493,27 +493,27 @@
   }
   function courseSections() {
     const out = [];
-    if (stretchFilter !== "hamstring") out.push({ label: "어깨 루틴 직후", items: window.STRETCH_COURSE });
-    if (stretchFilter !== "shoulder") out.push({ label: "햄스트링 루틴 직후", items: window.STRETCH_COURSE_HAM || [] });
+    if (stretchFilter !== "hamstring") out.push({ label: "어깨 루틴 직후", dkey: "shoulder", items: window.STRETCH_COURSE });
+    if (stretchFilter !== "shoulder") out.push({ label: "햄스트링 루틴 직후", dkey: "thigh", items: window.STRETCH_COURSE_HAM || [] });
     return out;
   }
-  function courseHTML(c) {
+  function courseHTML(c, dkey) {
     return (
       '<div class="course-item"><div class="ct">' + esc(c.title) + "</div>" +
       '<div class="cp"><b>' + esc(c.program) + "</b> · " + c.minutes + '분 <span style="color:#94a3b8">(' + esc(c.when) + ")</span></div>" +
       (c.alt ? '<div class="cw">또는 ' + esc(c.alt) + "</div>" : "") +
-      '<div class="ca"><button type="button" data-map="' + esc(c.program) + '">패드 그림</button>' +
-      '<button type="button" data-rec="' + esc(c.program) + '">＋ 기록</button></div></div>'
+      '<div class="ca"><button type="button" data-map="' + esc(c.program) + '" data-diag="' + esc(dkey || "") + '">패드 그림</button>' +
+      '<button type="button" data-rec="' + esc(c.program) + '" data-diag="' + esc(dkey || "") + '">＋ 기록</button></div></div>'
     );
   }
-  function stCourseHTML(c) {
+  function stCourseHTML(c, dkey) {
     if (!c) return "";
     return (
       '<div class="st-course"><div class="sc-t">⚡ 마무리 콤펙스</div>' +
       '<div class="sc-p"><b>' + esc(c.program) + "</b> · " + c.minutes + '분 <span>(' + esc(c.when) + ")</span></div>" +
       (c.alt ? '<div class="sc-alt">또는 ' + esc(c.alt) + "</div>" : "") +
-      '<div class="ca"><button type="button" data-map="' + esc(c.program) + '">패드 그림</button>' +
-      '<button type="button" data-rec="' + esc(c.program) + '">＋ 기록</button></div></div>'
+      '<div class="ca"><button type="button" data-map="' + esc(c.program) + '" data-diag="' + esc(dkey || "") + '">패드 그림</button>' +
+      '<button type="button" data-rec="' + esc(c.program) + '" data-diag="' + esc(dkey || "") + '">＋ 기록</button></div></div>'
     );
   }
 
@@ -541,11 +541,11 @@
         '<img class="st-photo" src="assets/' + st.img + '.jpg" alt="' + esc(st.title) + ' 일러스트" loading="lazy">' +
         "<ol class=\"st-steps\">" + st.steps.map((s) => "<li>" + s + "</li>").join("") + "</ol>" +
         '<div class="warn">⚠️ ' + esc(st.warn) + "</div>" +
-        stCourseHTML(st.course) + "</div></div>"
+        stCourseHTML(st.course, st.group === "hamstring" ? "thigh" : "shoulder") + "</div></div>"
       );
     }).join("");
     $("#courseList").innerHTML = courseSections()
-      .map((sec) => '<div class="cs-label">' + sec.label + "</div>" + sec.items.map(courseHTML).join(""))
+      .map((sec) => '<div class="cs-label">' + sec.label + "</div>" + sec.items.map((c) => courseHTML(c, sec.dkey)).join(""))
       .join("");
     // feedback toggle
     $$("#fbToggle button").forEach((b) => b.classList.toggle("active", b.dataset.fb === state.settings.fb));
@@ -1011,12 +1011,12 @@
   }
   $("#stretchList").addEventListener("click", (e) => {
     const map = e.target.closest("button[data-map]");
-    if (map) { openPadSheet(map.dataset.map); return; }
+    if (map) { openPadSheet(map.dataset.map, map.dataset.diag || ""); return; }
     const rec = e.target.closest("button[data-rec]");
     if (rec) {
       const card = rec.closest(".st-card");
       const ham = card && card.dataset.group === "hamstring";
-      openLog({ program: rec.dataset.rec, area: ham ? "엉덩이·허벅지" : areaLabelFor(rec.dataset.rec) });
+      openLog({ program: rec.dataset.rec, area: areaLabelFor(rec.dataset.rec, rec.dataset.diag || (ham ? "thigh" : "shoulder")) });
       return;
     }
     const head = e.target.closest(".st-head");
@@ -1038,9 +1038,9 @@
   });
   $("#courseList").addEventListener("click", (e) => {
     const map = e.target.closest("button[data-map]");
-    if (map) { openPadSheet(map.dataset.map); return; }
+    if (map) { openPadSheet(map.dataset.map, map.dataset.diag || ""); return; }
     const rec = e.target.closest("button[data-rec]");
-    if (rec) openLog({ program: rec.dataset.rec, area: areaLabelFor(rec.dataset.rec) });
+    if (rec) openLog({ program: rec.dataset.rec, area: areaLabelFor(rec.dataset.rec, rec.dataset.diag || "") });
   });
   $("#fbToggle").addEventListener("click", (e) => {
     const b = e.target.closest("button[data-fb]");

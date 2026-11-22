@@ -647,16 +647,6 @@ window.BUILTIN_GOALS = [
 /* ── 패드 부위 안내 (탭 3) ── */
 window.PAD_AREAS = [
   {
-    key: "neck", label: "목·승모근", img: "compex_neck_pad_placement",
-    title: "목 뒤 · 승모근 (Neck / Upper trapezius)",
-    lines: [
-      "뒷모습 기준 — 목 뒤쪽 좌우 승모근 상부~경추 기립근에 채널을 좌·우로 나눠 세로로 2장씩 (각 채널 +/−는 같은 쪽 안에서 위·아래)",
-      "왼쪽 승모근 Ch 1 / 오른쪽 승모근 Ch 2 — 어깨 안쪽과 목이 만나는 지점에서 2~3cm 위쪽부터",
-      "척추 뼈 정중앙과 머리카락 안쪽은 비우기"
-    ],
-    note: "목 앞쪽(경동맥) 부착 절대 금지 · 목뼈 돌기 위·목이 아플 때 고강도 근수축 금지"
-  },
-  {
     key: "shoulder-single", label: "어깨 단독", img: "compex_shoulder_pad_placement",
     title: "한쪽 어깨 · 승모근 (TENS / EMS / 재활)",
     lines: [
@@ -665,6 +655,16 @@ window.PAD_AREAS = [
       "재활·근수축: 큰 패드 = 삼각근 근복 중앙, 작은 패드 = 상부 승모근 또는 후면 삼각근 끝"
     ],
     note: "목 앞쪽(경동맥)·어깨뼈 돌출부·주사 바늘 자국 위 피하기"
+  },
+  {
+    key: "neck", label: "목·승모근", img: "compex_neck_pad_placement",
+    title: "목 뒤 · 승모근 (Neck / Upper trapezius)",
+    lines: [
+      "뒷모습 기준 — 목 뒤쪽 좌우 승모근 상부~경추 기립근에 채널을 좌·우로 나눠 세로로 2장씩 (각 채널 +/−는 같은 쪽 안에서 위·아래)",
+      "왼쪽 승모근 Ch 1 / 오른쪽 승모근 Ch 2 — 어깨 안쪽과 목이 만나는 지점에서 2~3cm 위쪽부터",
+      "척추 뼈 정중앙과 머리카락 안쪽은 비우기"
+    ],
+    note: "목 앞쪽(경동맥) 부착 절대 금지 · 목뼈 돌기 위·목이 아플 때 고강도 근수축 금지"
   },
   {
     key: "both-shoulders", label: "양쪽 어깨", img: "compex_both_shoulders_placement",
