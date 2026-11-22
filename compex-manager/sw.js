@@ -62,12 +62,9 @@ self.addEventListener("activate", (event) => {
 
 /* 네트워크 우선 + 캐시 갱신 */
 function networkFirst(event, req) {
-  // 문서는 항상 서버에 물어 최신본을 받는다(중간 캐시 무시)
-  // 스크립트·스타일도 HTTP 캐시(max-age)에 묶이지 않게 재검증한다
-  const target =
-    req.mode === "navigate"
-      ? new Request(req.url, { cache: "reload", credentials: "same-origin" })
-      : new Request(req.url, { cache: "no-cache" });
+  // 문서·스크립트·스타일 모두 서버에 직접 물어 최신본을 받는다(중간 HTTP 캐시 무시)
+  // GitHub Pages CDN·브라우저 캐시가 옛 app.js를 물고 오는 문제를 막는다.
+  const target = new Request(req.url, { cache: "reload", credentials: "same-origin" });
   event.respondWith(
     fetch(target)
       .then((res) => {
