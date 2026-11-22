@@ -52,6 +52,11 @@
       settings: { fb: "vibrate" }
     };
   }
+  /* 옛 프로그램 이름 → 현재 공식 이름 (localStorage에 남은 기록 호환) */
+  function normProgramEn(en) {
+    const map = window.LEGACY_PROGRAM_EN || {};
+    return map[en] || en;
+  }
   function loadState() {
     try {
       const raw = localStorage.getItem(LS);
@@ -63,8 +68,12 @@
         version: 1,
         active: Array.isArray(s.active) ? s.active : d.active,
         goalNames: s.goalNames && typeof s.goalNames === "object" ? s.goalNames : {},
-        customGoals: Array.isArray(s.customGoals) ? s.customGoals : [],
-        sessions: Array.isArray(s.sessions) ? s.sessions : [],
+        customGoals: (Array.isArray(s.customGoals) ? s.customGoals : []).map((g) =>
+          Object.assign({}, g, { program: normProgramEn(g.program) })
+        ),
+        sessions: (Array.isArray(s.sessions) ? s.sessions : []).map((r) =>
+          Object.assign({}, r, { program: normProgramEn(r.program) })
+        ),
         settings: Object.assign({}, d.settings, s.settings || {})
       };
     } catch (e) {

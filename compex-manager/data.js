@@ -27,7 +27,7 @@ window.PROGRAMS = [
       "부위 선택 화면이 뜨면 <span class='kbd'>Ch 1 +/-</span> 로 부위 선택 → <span class='kbd'>Ch 4 +</span> 후 강도 조절"
     ],
     diagrams: ["neck", "shoulder", "both_scapula", "back", "arm", "thigh", "calf"],
-    tags: "목 통증 경추 승모근 목뒤 담 결림 거북목 Neck pain 근육통 결림",
+    tags: "목 통증 경추 승모근 목뒤 담 결림 거북목 근육통 결림",
     pads: "뻐근한 근육을 따라 근복 중앙과 위·아래 끝에 2장 — 승모근은 목델미 안쪽부터 어깨 끝, 허리는 척추 뼈 비우고 좌우 대칭, 견갑골 안쪽은 작은 패드 2장씩, 팔은 이두·삼두 근복, 허벅지는 중앙과 무릎 위, 종아리는 두 갈래에 위아래로",
     pose: "편안한 휴식 자세(의자에 기대거나 엎드려 목 힘을 뺀 자세)",
     intensity: "근육이 눈에 보일 정도로 톡톡 튀는 범위(MI-RANGE 체크 표시 확인)",
@@ -80,16 +80,16 @@ window.PROGRAMS = [
     caution: "현재 쥐가 난 직후 통증이 심할 땐 강도를 아주 약하게 시작."
   },
   {
-    cat: "Pain management", en: "Muscle relaxation", ko: "근육 이완 (긴장·경직 풀기)", type: "twitch",
+    cat: "Pain management", en: "Reduce muscle tension", ko: "근긴장 완화 (뭉침·경직 풀기)", type: "twitch",
     desc: "스트레스나 잘못된 자세로 뻣뻣하게 굳은 근육의 긴장을 낮추고 부드럽게 이완시킵니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Pain management</strong> → <span class='kbd'>Ch 4 +</span>",
-      "<span class='kbd'>Ch 1 +/-</span> → <strong>Muscle relaxation</strong> → <span class='kbd'>Ch 4 +</span>",
+      "<span class='kbd'>Ch 1 +/-</span> → <strong>Reduce muscle tension</strong> → <span class='kbd'>Ch 4 +</span>",
       "부위 선택 후 <span class='kbd'>Ch 4 +</span> → 가볍게 톡톡 튕기는 수준까지 올리기"
     ],
     diagrams: ["shoulder", "neck", "both_scapula", "back", "thigh", "calf"],
-    tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 허리 긴장 이완 스트레칭 후 허리 보호 목 승모근 경추 목뒤 거북목 담 결림 Neck pain",
+    tags: "햄스트링 허벅지 뒤쪽 뒤허벅지 둔근 엉덩이 골반 허리 긴장 이완 스트레칭 후 허리 보호 목 승모근 경추 목뒤 거북목 담 결림",
     pads: "뭉친 근육의 양 끝에 2장 — 목·승모근은 목델미 안쪽에서 어깨 끝까지, 어깨는 상부 승모근↔후면 삼각근, 등은 견갑골 안쪽 모서리(또는 양쪽 견갑골), 허벅지 뒤는 중앙과 무릎 위, 종아리는 근육 두 갈래에 위아래로",
     pose: "어깨 힘을 뺀 편안한 자세",
     intensity: "가볍게 근육이 톡톡 튕기는 수준",
@@ -111,19 +111,20 @@ window.PROGRAMS = [
     caution: "주사 맞은 직후 48시간은 바늘 자국 위 피하기. 염증성 열감이 심할 땐 냉찜질 우선."
   },
   {
-    cat: "Pain management", en: "Endorphinic", ko: "만성 통증 완화 (엔도르핀 분비)", type: "twitch",
-    desc: "오래 지속된 둔한 통증 부위에 저주파 박동을 주어 체내 진통 물질(엔도르핀) 분비를 유도합니다.",
+    cat: "Pain management", en: "Neck pain", ko: "목 통증 완화 (목 뒤·승모근)", type: "twitch",
+    desc: "목 뒤와 승모근의 뻣뻣한 긴장을 낮추고 혈류를 늘려 목 통증·담 결림을 완화합니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Pain management</strong> → <span class='kbd'>Ch 4 +</span>",
-      "<span class='kbd'>Ch 1 +/-</span> → <strong>Endorphinic</strong> → <span class='kbd'>Ch 4 +</span>",
-      "부위 선택 후 <span class='kbd'>Ch 4 +</span> → 리듬이 분명히 느껴지는 수준까지 올리기"
+      "<span class='kbd'>Ch 1 +/-</span> → <strong>Neck pain</strong> → <span class='kbd'>Ch 4 +</span>",
+      "부위 선택 후 <span class='kbd'>Ch 4 +</span> → 목 뒤 근육이 가볍게 톡톡 튀는 선까지 올리기"
     ],
-    diagrams: ["shoulder", "neck", "back", "thigh"],
-    pads: "만성으로 뻐근한 부위를 가운데 두고 4장을 둘러 부착 — 어깨 뒤·목 뒤 승모근·등·허리는 척추 뼈 비우고 좌우 대칭, 허벅지는 중앙과 무릎 위",
-    pose: "편안히 눕거나 앉은 자세",
-    intensity: "톡톡 튀는 리듬이 분명히 느껴지는 수준(약 20~25분)",
-    caution: "아픈 관절이 강하게 흔들리지 않도록 강도 조절."
+    diagrams: ["neck", "shoulder", "both_shoulders", "back"],
+    tags: "목 통증 경추 승모근 목뒤 담 결림 거북목 거북이목 Neck pain 목 아픔 뻣뻣",
+    pads: "목 뒤 좌우 승모근 상부에 채널을 좌·우로 나눠 세로로 2장씩 — 어깨 안쪽과 목이 만나는 지점에서 2~3cm 위부터, 각 채널 +/−는 같은 쪽 안에서 위·아래. 목덜미가 넓게 뻐근하면 양쪽 어깨 도해로 상부 승모근↔어깨 끝",
+    pose: "목 힘을 뺀 편안한 자세(엎드려 이마를 받치거나 의자에 기대기)",
+    intensity: "목 뒤 근육이 가볍게 톡톡 튀는 수준",
+    caution: "목 앞쪽(경동맥)·목뼈 돌기 바로 위 부착 금지. 목이 아플 때 고강도 근수축은 피하고, 팔 저림이 동반되면 진료 우선."
   },
 
   // Recovery/Massage (5)
@@ -438,19 +439,19 @@ window.PROGRAMS = [
     caution: "식사 직후·임신 중·복부 수술 부위 금지."
   },
   {
-    cat: "Fitness", en: "Get stronger biceps", ko: "이두근 강화", type: "tetanic",
-    desc: "팔 앞쪽 알통(이두근)의 힘과 볼륨을 집중 강화하는 프로그램입니다.",
+    cat: "Fitness", en: "Shape your buttocks", ko: "엉덩이 탄력 (둔근 강화)", type: "tetanic",
+    desc: "둔근(엉덩이)을 집중 수축시켜 탄력과 볼륨을 잡아 주는 하체 피트니스 코스입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
       "<span class='kbd'>Ch 1 +/-</span> → <strong>Fitness</strong> → <span class='kbd'>Ch 4 +</span>",
-      "<span class='kbd'>Ch 1 +/-</span> → <strong>Get stronger biceps</strong> → <span class='kbd'>Ch 4 +</span>",
-      "레벨 선택 → <span class='kbd'>Ch 4 +</span> 후 팔꿈치 90도 고정 상태로 강도 올리기"
+      "<span class='kbd'>Ch 1 +/-</span> → <strong>Shape your buttocks</strong> → <span class='kbd'>Ch 4 +</span>",
+      "레벨 선택(<strong>Level 1</strong>) → <span class='kbd'>Ch 4 +</span> 후 앉아서 엉덩이에 힘주며 진행"
     ],
-    diagrams: ["arm"],
-    pads: "이두 볼록한 중앙(+)과 팔꿈치 안쪽 바로 위(−) — 팔꿈치 관절·손목 뼈 피하기",
-    pose: "팔꿈치를 90도로 고정하고 손바닥 위로 향하게 버티기",
-    intensity: "중~고강도",
-    caution: "어깨 앞쪽 힘줄(이두건)에 통증이 있으면 중단."
+    diagrams: ["thigh"],
+    pads: "큰 패드(5×10)는 둔근 상단(엉덩이 볼록한 곳 위), 작은 패드(5×5)는 둔근 중앙·아래 — 좌우 대칭으로 붙이고 엉덩이 가운데(꼬리뼈·치골)와 사타구니 뼈 위는 피하기",
+    pose: "의자에 앉아 상체를 살짝 세우고 엉덩이에 힘이 들어가는 자세(허리는 젖히지 않기)",
+    intensity: "엉덩이가 단단히 조여드는 중~고강도",
+    caution: "엉덩이 가운데(꼬리뼈·치골)·사타구니 뼈 위 부착 금지. 허리 통증이 있으면 상체를 젖히지 말고 앉은 자세로만."
   },
   {
     cat: "Fitness", en: "Firm your stomach", ko: "복부 탄력 (허리둘레 정리)", type: "tetanic",
@@ -472,6 +473,18 @@ window.PROGRAMS.forEach((p, i) => { p.id = "p" + i; });
 
 window.PROGRAM_BY_EN = {};
 window.PROGRAMS.forEach(p => { window.PROGRAM_BY_EN[p.en] = p; });
+
+/* 구버전 이름 호환 — SP 4.0에 없는 옛 이름(Muscle relaxation·Endorphinic·Get stronger biceps)이
+   이미 저장된 기록·목표·북마크에 남아 있어도 가장 가까운 공식 프로그램으로 읽어 준다. */
+window.LEGACY_PROGRAM_EN = {
+  "Muscle relaxation": "Reduce muscle tension",
+  "Endorphinic": "Muscle pain",
+  "Get stronger biceps": "Firm your arms"
+};
+Object.keys(window.LEGACY_PROGRAM_EN).forEach((oldEn) => {
+  const target = window.PROGRAM_BY_EN[window.LEGACY_PROGRAM_EN[oldEn]];
+  if (target) window.PROGRAM_BY_EN[oldEn] = target;
+});
 
 window.CAT_LABEL = {
   "Pain management": "통증 관리",
@@ -540,8 +553,8 @@ window.DIAGRAM_TIPS = {
 
 /* ─── 부위 프리셋: 부위를 직접 고르면 기본 프로그램·강도·빈도가 정해진다 ── */
 window.PARTS = {
-  "어깨":      { key: "shoulder",      program: "Muscle relaxation",  minutes: 20, intensity: "근육이 가볍게 톡톡 튀는 선", days: [1, 3, 5] },
-  "목·승모근": { key: "neck",          program: "Muscle relaxation",  minutes: 15, intensity: "가볍게 톡톡 튕기는 선", days: [1, 3, 5] },
+  "어깨":      { key: "shoulder",      program: "Reduce muscle tension", minutes: 20, intensity: "근육이 가볍게 톡톡 튀는 선", days: [1, 3, 5] },
+  "목·승모근": { key: "neck",          program: "Reduce muscle tension", minutes: 15, intensity: "가볍게 톡톡 튕기는 선", days: [1, 3, 5] },
   "등·허리":   { key: "back",          program: "Back pain",          minutes: 20, intensity: "기분 좋게 근육이 톡톡 튀는 선", days: [2, 4] },
   "팔·전완":   { key: "arm",           program: "Firm your arms",     minutes: 20, intensity: "참을 수 있는 최대치의 70%", days: [2, 6] },
   "복부·코어": { key: "abs",           program: "Core stabilisation", minutes: 20, intensity: "복부가 단단히 조여드는 선", days: [1, 4] },
@@ -561,7 +574,7 @@ window.BUILTIN_GOALS = [
     items: [
       { days: [1, 5], program: "Pain management TENS", minutes: 20, intensity: "기분 좋게 찌릿한 선 (근육 튕김 X)", note: "주사 바늘 자국 바로 위는 피하기" },
       { days: [3],    program: "Tendinitis",           minutes: 20, intensity: "찌릿한 감각 수준까지만", note: "힘줄 주변을 양옆으로 감싸 부착" },
-      { days: [6],    program: "Muscle relaxation",    minutes: 15, intensity: "가볍게 톡톡 튕기는 선", note: "승모근·후면 삼각근 위주" }
+      { days: [6],    program: "Reduce muscle tension",    minutes: 15, intensity: "가볍게 톡톡 튕기는 선", note: "승모근·후면 삼각근 위주" }
     ]
   },
   {
@@ -572,7 +585,7 @@ window.BUILTIN_GOALS = [
       { days: [2], program: "Relaxing massage", minutes: 15, intensity: "근육이 살짝 튕기는 약한 선", note: "스트레칭 4종 직후" },
       { days: [4], program: "Muscle atrophy",   minutes: 15, intensity: "아주 약하게 (익숙해진 뒤)", note: "가동운동 후 보조 근력" },
       { days: [6], program: "Training recovery", minutes: 15, intensity: "톡톡 튀는 선", note: "스트레칭 후 혈류 돌리기" },
-      { days: [7], program: "Muscle relaxation", minutes: 15, intensity: "가볍게 톡톡 튕기는 선", note: "다음 주 준비" }
+      { days: [7], program: "Reduce muscle tension", minutes: 15, intensity: "가볍게 톡톡 튕기는 선", note: "다음 주 준비" }
     ]
   },
   {
@@ -586,10 +599,11 @@ window.BUILTIN_GOALS = [
   },
   {
     id: "neck-trap", name: "목·승모근 뭉침 완화", emoji: "💆", tone: "violet",
-    desc: "책상·운전으로 굳은 승모근과 목 뒤 근육을 부드럽게 이완.",
+    desc: "책상·운전으로 굳은 승모근과 목 뒤 근육을 부드럽게 이완. 목이 뻐근하게 아픈 날은 Neck pain(목 통증 완화)으로 바꿔서.",
     parts: ["목·승모근"],
     items: [
-      { days: [1, 3, 5], program: "Muscle relaxation", minutes: 15, intensity: "가볍게 톡톡 튕기는 선", note: "목 앞쪽(경동맥) 부착 금지" },
+      { days: [1, 3, 5], program: "Reduce muscle tension", minutes: 15, intensity: "가볍게 톡톡 튕기는 선", note: "목 앞쪽(경동맥) 부착 금지" },
+      { days: [2, 4], program: "Neck pain", minutes: 15, intensity: "목 뒤가 가볍게 톡톡 튀는 선", note: "목이 아픈 날 — 목 뒤 좌우 승모근 상부에 세로 부착" },
       { days: [6], program: "Relaxing massage", minutes: 20, intensity: "편안하게 튕기는 선", note: "한 주 마무리" }
     ]
   },
@@ -599,8 +613,8 @@ window.BUILTIN_GOALS = [
     parts: ["등·허리"],
     items: [
       { days: [2, 4], program: "Back pain", minutes: 20, intensity: "기분 좋게 톡톡 튀는 선", note: "척추 뼈 정중앙은 비우고 좌우 대칭" },
-      { days: [6], program: "Endorphinic", minutes: 20, intensity: "리듬이 분명히 느껴지는 선", note: "만성 뻐근함" },
-      { days: [7], program: "Muscle relaxation", minutes: 15, intensity: "가볍게 튕기는 선", note: "이완 마무리" }
+      { days: [6], program: "Muscle pain", minutes: 20, intensity: "리듬이 분명히 느껴지는 선", note: "만성 뻐근함" },
+      { days: [7], program: "Reduce muscle tension", minutes: 15, intensity: "가볍게 튕기는 선", note: "이완 마무리" }
     ]
   },
   {
@@ -636,7 +650,7 @@ window.BUILTIN_GOALS = [
     desc: "허벅지 뒤(햄스트링) 긴장을 풀어 골반을 세우고 허리로 버티는 부담을 줄입니다. 스트레칭 3종 + 이완 모드 주 4회.",
     parts: ["엉덩이·허벅지"], stretch: true,
     items: [
-      { days: [1], program: "Muscle relaxation", minutes: 20, intensity: "허벅지 뒤가 가볍게 톡톡 튀는 선", note: "스트레칭 3종 직후 — 엉덩이·허벅지 뒤 중앙과 위아래" },
+      { days: [1], program: "Reduce muscle tension", minutes: 20, intensity: "허벅지 뒤가 가볍게 톡톡 튀는 선", note: "스트레칭 3종 직후 — 엉덩이·허벅지 뒤 중앙과 위아래" },
       { days: [3], program: "Relaxing massage", minutes: 15, intensity: "살짝 튕기는 약한 선", note: "뻐근한 날은 강도를 한 단계 더 낮게" },
       { days: [5], program: "Training recovery", minutes: 20, intensity: "톡톡 튀는 선", note: "걷기·계단 오른 날 저녁" },
       { days: [6], program: "Cramp prevention", minutes: 15, intensity: "톡톡 튀는 선", note: "야간 다리 쥐·뭉침 예방" }
@@ -793,7 +807,7 @@ window.STRETCHES = [
       "반대쪽 발은 바닥에 두고 무릎을 편 채, 수건으로 다리를 천천히 당겨 허벅지 뒤가 당기는 지점에서 20초 멈춥니다."
     ],
     warn: "허리 둥글게 말지 않기 — 허리가 바닥에서 뜨거나 골반이 들리면 다리를 낮추세요. 무릎 뒤가 찌릿하면 각도를 줄이세요.",
-    course: { program: "Muscle relaxation", minutes: 20, when: "허벅지 뒤·둔근에 패드, 가볍게 톡톡 튀는 선까지", alt: "Relaxing massage" }
+    course: { program: "Reduce muscle tension", minutes: 20, when: "허벅지 뒤·둔근에 패드, 가볍게 톡톡 튀는 선까지", alt: "Relaxing massage" }
   },
   {
     id: 5, group: "hamstring", step: "STEP 2 · 앉아서 골반만", title: "의자 끝에 앉아 골반 숙이기",
@@ -807,7 +821,7 @@ window.STRETCHES = [
       "허벅지 뒤가 당기는 지점에서 20초 유지하고 천천히 돌아옵니다."
     ],
     warn: "허리 둥글게 말지 않기 — 손이 발에 닿지 않아도 됩니다. 무릎 뒤가 찌릿하면 다리를 살짝 굽히고 각도를 줄이세요.",
-    course: { program: "Relaxing massage", minutes: 15, when: "허벅지 뒤가 뻐근할 때, 살짝 튕기는 약한 선", alt: "Muscle relaxation" }
+    course: { program: "Relaxing massage", minutes: 15, when: "허벅지 뒤가 뻐근할 때, 살짝 튕기는 약한 선", alt: "Reduce muscle tension" }
   },
   {
     id: 6, group: "hamstring", step: "STEP 3 · 서서 힙 힌지", title: "발 올리고 힙 힌지",
@@ -827,7 +841,7 @@ window.STRETCHES = [
 
 /* ── 스트레칭 직후 추천 콤펙스 코스 ── */
 window.STRETCH_COURSE = [
-  { title: "스트레칭 직후 기본", program: "Relaxing massage", minutes: 20, when: "근육이 기분 좋게 살짝 튕기는 약한 선까지만", alt: "Pain management → Muscle relaxation" },
+  { title: "스트레칭 직후 기본", program: "Relaxing massage", minutes: 20, when: "근육이 기분 좋게 살짝 튕기는 약한 선까지만", alt: "Pain management → Reduce muscle tension" },
   { title: "뻐근함·통증이 남았다면", program: "Pain management TENS", minutes: 20, when: "움직임 없이 찌릿한 선까지만" },
   { title: "컨디션 좋고 혈류를 돌리고 싶다면", program: "Training recovery", minutes: 20, when: "톡톡 튀는 선" },
   { title: "재활 단계 (익숙해진 뒤)", program: "Muscle atrophy", minutes: 15, when: "아주 약하게" }
@@ -835,7 +849,7 @@ window.STRETCH_COURSE = [
 
 /* ── 햄스트링 스트레칭 직후 추천 콤펙스 코스 ── */
 window.STRETCH_COURSE_HAM = [
-  { title: "햄스트링 루틴 직후 기본", program: "Muscle relaxation", minutes: 20, when: "허벅지 뒤·둔근에 패드, 가볍게 톡톡 튀는 선까지", alt: "Relaxing massage" },
+  { title: "햄스트링 루틴 직후 기본", program: "Reduce muscle tension", minutes: 20, when: "허벅지 뒤·둔근에 패드, 가볍게 톡톡 튀는 선까지", alt: "Relaxing massage" },
   { title: "뻐근함이 남았다면", program: "Pain management TENS", minutes: 20, when: "움직임 없이 찌릿한 선까지만", alt: "Relaxing massage (약하게)" },
   { title: "걷기·계단 오른 날 저녁", program: "Training recovery", minutes: 20, when: "톡톡 튀는 선" },
   { title: "밤에 다리 쥐가 잦다면", program: "Cramp prevention", minutes: 15, when: "허벅지 뒤·종아리에 톡톡 튀는 선" }
