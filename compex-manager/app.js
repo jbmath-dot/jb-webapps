@@ -274,7 +274,7 @@
     $("#weekRange").textContent = fmtRange(mon);
     const totalSessions = [1, 2, 3, 4, 5, 6, 7].reduce((a, d) => a + plan[d].length, 0);
     const totalMin = [1, 2, 3, 4, 5, 6, 7].reduce(
-      (a, d) => a + plan[d].reduce((b, x) => b + (Number(x.item.minutes) || 0), 0),
+      (a, d) => a + plan[d].reduce((b, x) => b + progMinutes(x.item.program, x.item.minutes), 0),
       0
     );
     let html = "";
