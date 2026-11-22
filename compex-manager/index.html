@@ -36,6 +36,13 @@
   <main>
     <!-- 탭 1 · 코치 -->
     <section class="tabpane active" id="tab-coach">
+      <div class="acute-bar" id="acuteBar">
+        <div class="acute-txt">
+          <b>🩹 급성 통증 · 주사 직후 모드</b>
+          <span>켜면 강한 근수축 코스에 경고가 붙습니다 · 이 브라우저에만 저장</span>
+        </div>
+        <button class="switch" id="acuteToggle" type="button" role="switch" aria-checked="false" aria-label="급성 통증·주사 직후 모드"><i></i></button>
+      </div>
       <div class="sec-title">
         <h2>🎯 내 목표</h2>
         <button class="more" id="addGoalBtn" type="button">＋ 목표 추가</button>
@@ -185,6 +192,7 @@
 
     <!-- 탭 5 · 기록 -->
     <section class="tabpane" id="tab-log">
+      <div class="card" id="padCounter"></div>
       <div class="card">
         <h2>📊 이번 주 워크로드</h2>
         <div class="stat-grid">
@@ -205,7 +213,7 @@
           </div>
           <div class="field"><label for="fArea">부위</label><select id="fArea"></select></div>
           <div class="field"><label for="fProgram">프로그램</label><select id="fProgram"></select></div>
-          <div class="field"><label for="fIntensity">강도 (기기 표시 숫자)</label><input id="fIntensity" type="number" inputmode="numeric" min="1" max="60" step="1" placeholder="예: 12"></div>
+          <div class="field"><label for="fIntensity">강도 (기기 표시 숫자)</label><input id="fIntensity" type="number" inputmode="numeric" min="1" max="60" step="1" placeholder="예: 12"><div id="logHint"></div></div>
           <div class="field"><label>자극·통증 체감 (1 약함 ~ 5 강함)</label>
             <div class="feel" id="feelBtns">
               <button type="button" data-v="1">1</button><button type="button" data-v="2">2</button>

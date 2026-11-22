@@ -3,6 +3,7 @@ window.PROGRAMS = [
   // Pain management (8)
   {
     cat: "Pain management", en: "Pain management TENS", ko: "통증 완화 TENS", type: "tens",
+    durationMin: 20, mi: "MI-TENS · MI-SCAN", miTip: "MI-TENS 자동 — 찌릿한 감각이 올라온 지점에서 +를 멈추세요. 근수축이 감지되면 기기가 강도를 스스로 낮춥니다.", contraction: false,
     desc: "통증 신호가 뇌로 가는 길을 차단해 급·만성 관절통이나 염증성 통증을 부드럽게 가라앉히는 진통 모드입니다.",
     steps: [
       "패드 부착·케이블 연결 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -19,6 +20,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Pain management", en: "Muscle pain", ko: "근육통 완화 (만성 뭉침·결림)", type: "twitch",
+    durationMin: 20, mi: "MI-RANGE · MI-SCAN", miTip: "MI-RANGE — 강도를 올리다 화면에 ✓(체크)가 뜨면 그게 적정 범위입니다. ✓가 뜬 뒤 한두 칸 안에서 유지.", contraction: false,
     desc: "엔도르핀 분비를 촉진하고 뭉친 근육의 혈류를 늘려 오래된 결림과 근육통을 풀어 줍니다.",
     steps: [
       "패드 부착·케이블 연결 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -35,6 +37,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Pain management", en: "Back pain", ko: "허리(등) 통증", type: "twitch",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 근육이 톡톡 튀는 선에서 멈추고, 화면 강도 막대가 끝까지 차기 전 범위에서 조절.", contraction: false,
     desc: "등과 허리의 굳은 척추기립근을 리드미컬하게 풀어 주어 요통·등 결림을 완화합니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -50,6 +53,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Pain management", en: "Heavy legs", ko: "다리 피로 · 부종(무거움) 완화", type: "twitch",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 종아리가 규칙적으로 튕기는 선. 화면 막대가 가득 차면 한두 칸 낮추세요.", contraction: false,
     desc: "오래 서 있거나 걸은 날 종아리·하체의 정맥 순환을 도와 붓기와 무거움을 빼 줍니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -65,6 +69,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Pain management", en: "Cramp prevention", ko: "경련(쥐) 예방", type: "twitch",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 근육이 가볍게 튀는 선에서 멈추기 — 쥐가 날 정도로 올리지 않습니다.", contraction: false,
     desc: "야간이나 운동 중 쥐가 잘 나는 근육의 혈류와 긴장도를 미리 정리해 경련을 예방합니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -81,6 +86,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Pain management", en: "Reduce muscle tension", ko: "근긴장 완화 (뭉침·경직 풀기)", type: "twitch",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 가볍게 튀는 선. 화면에 강도 눈금(000)이 뜨면 10~20부터 천천히 올리세요.", contraction: false,
     desc: "스트레스나 잘못된 자세로 뻣뻣하게 굳은 근육의 긴장을 낮추고 부드럽게 이완시킵니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -97,6 +103,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Pain management", en: "Tendinitis", ko: "건염(힘줄염) 통증 완화", type: "tens",
+    durationMin: 20, mi: "MI-TENS · MI-SCAN", miTip: "MI-TENS 자동 — 힘줄 주변에 찌릿한 감각만. 근수축이 잡히면 기기가 강도를 낮추니 그대로 두세요.", contraction: false,
     desc: "어깨 힘줄염·테니스엘보 등 힘줄 주변의 찌릿한 통증을 근육 수축 없이 진통 파형으로 진정시킵니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -112,6 +119,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Pain management", en: "Neck pain", ko: "목 통증 완화 (목 뒤·승모근)", type: "twitch",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 목 뒤가 가볍게 튀는 선. 화면 막대가 꽉 차면 목 근육엔 과하니 낮추세요.", contraction: false,
     desc: "목 뒤와 승모근의 뻣뻣한 긴장을 낮추고 혈류를 늘려 목 통증·담 결림을 완화합니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -130,6 +138,7 @@ window.PROGRAMS = [
   // Recovery/Massage (5)
   {
     cat: "Recovery/Massage", en: "Training recovery", ko: "운동 후 회복 (혈류·피로 물질 배출)", type: "twitch",
+    durationMin: 20, mi: "MI-RANGE · MI-SCAN", miTip: "MI-RANGE — 화면에 ✓가 뜨는 강도가 회복에 맞는 범위입니다. ✓ 범위 안에서만 유지.", contraction: false,
     desc: "운동이 끝난 뒤 근육에 쌓인 피로 물질을 빠르게 씻어 내고 다음 날 근육통을 줄여 줍니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -146,6 +155,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Recovery/Massage", en: "Competition recovery", ko: "고강도 활동·경기 후 회복", type: "twitch",
+    durationMin: 25, mi: "MI-RANGE · MI-SCAN", miTip: "MI-RANGE — ✓가 뜬 뒤 그 범위 안에서 2~3칸 오르내리며 큰 근육을 넓게.", contraction: false,
     desc: "장거리 산행·경기 등 평소보다 훨씬 무리한 날 깊은 근육 피로를 집중 회복합니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -161,6 +171,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Recovery/Massage", en: "Relaxing massage", ko: "릴랙싱 마사지 (가벼운 이완)", type: "twitch",
+    durationMin: 15, mi: "MI-RANGE · MI-SCAN", miTip: "MI-RANGE — ✓가 뜨는 순간이 이완 적정선. 그 위로는 올리지 않아도 충분합니다.", contraction: false,
     desc: "부드러운 마사지 리듬으로 하루 동안 긴장된 어깨·등·다리를 편안하게 풀어 줍니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -177,6 +188,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Recovery/Massage", en: "Reduce muscle soreness", ko: "근육통(알배김·DOMS) 줄이기", type: "twitch",
+    durationMin: 20, mi: "MI-RANGE · MI-SCAN", miTip: "MI-RANGE — ✓가 뜬 범위에서 근육이 물결처럼 튀는 정도까지만.", contraction: false,
     desc: "운동 다음 날이나 그다음 날 뻐근하게 알이 배겼을 때 불편감을 덜어 주는 회복 코스입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -192,6 +204,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Recovery/Massage", en: "Reviving massage", ko: "활력 마사지 (피로감 해소)", type: "twitch",
+    durationMin: 15, mi: "MI-RANGE · MI-SCAN", miTip: "MI-RANGE — ✓ 표시가 뜨면 그 범위 안에서 짧게 끊어 올리기.", contraction: false,
     desc: "몸이 나른하고 무거울 때 산소·혈류 순환을 깨워 개운한 느낌을 주는 마사지 모드입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -210,6 +223,7 @@ window.PROGRAMS = [
   // Rehabilitation (2)
   {
     cat: "Rehabilitation", en: "Muscle atrophy", ko: "근위축 예방·회복 (약해진 근육 깨우기)", type: "tetanic",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 아주 약한 수축부터. 화면 눈금이 000에서 올라가면 5~10씩만.", contraction: true,
     desc: "통증이나 고정으로 오래 못 써서 빠진 근육량을 다시 안전하게 깨우는 재활 입문 코스입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -225,6 +239,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Rehabilitation", en: "Reinforcement", ko: "근력 보강 (재활 마무리 단계)", type: "tetanic",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 수축이 보이는 선까지. 화면 막대가 80%를 넘기지 않게 시작.", contraction: true,
     desc: "Muscle atrophy로 기초 근육이 돌아온 뒤 일상 복귀를 위해 힘을 더 탄탄히 다지는 단계입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -242,6 +257,7 @@ window.PROGRAMS = [
   // Conditioning (10)
   {
     cat: "Conditioning", en: "Endurance", ko: "근지구력 강화", type: "tetanic",
+    durationMin: 30, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 수축이 일정하게 이어지는 선. 화면 막대가 끝까지 차면 한 단계 낮추기.", contraction: true,
     desc: "오래 지치지 않고 버티는 근지구력을 키워 등산·러닝·장시간 서 있기에 도움을 줍니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -257,6 +273,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Conditioning", en: "Resistance", ko: "저항력 (고강도 근지구력)", type: "tetanic",
+    durationMin: 25, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 강한 수축이 버티는 선. 막대가 가득 차기 직전에서 조절.", contraction: true,
     desc: "높은 힘을 오래 유지하는 능력을 기르는 중·상급자용 근지구력 트레이닝입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -272,6 +289,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Conditioning", en: "Strength", ko: "근력 강화", type: "tetanic",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 최대에 가까운 수축. 화면 눈금은 수축 때만 올리고 휴식 때는 그대로.", contraction: true,
     desc: "순수 최대 근력을 끌어올리는 대표적인 EMS 근력 프로그램입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -287,6 +305,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Conditioning", en: "Explosive strength", ko: "순발력 · 폭발력", type: "tetanic",
+    durationMin: 15, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 짧고 강한 수축. 막대가 찰 때까지 올리되 통증이 있으면 즉시 낮추기.", contraction: true,
     desc: "짧은 순간에 폭발적으로 힘을 내는 속근 섬유를 집중 자극합니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -302,6 +321,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Conditioning", en: "Cross-training", ko: "크로스 트레이닝 (복합 근력)", type: "tetanic",
+    durationMin: 25, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 부위별로 따로 — 한 채널이 과하면 그 채널만 낮추세요.", contraction: true,
     desc: "지구력·근력·순발력 자극을 한 세션 안에 섞어 전신 운동 효과를 냅니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -317,6 +337,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Conditioning", en: "Core stabilisation", ko: "코어 안정화 (복부·허리)", type: "tetanic",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 복부가 단단히 조여드는 선. 화면 막대가 찰 때까지 올리지 않기.", contraction: true,
     desc: "배와 허리를 동시에 단단히 잡아 주어 자세 균형과 허리 지지력을 높여 줍니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -332,6 +353,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Conditioning", en: "Hypertrophy", ko: "근비대 (근육 크기 키우기)", type: "tetanic",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 참을 수 있는 최대 수축. 막대가 가득 차면 다음 수축 때 1~2칸 더.", contraction: true,
     desc: "근육 단면적을 키우는 데 맞춘 고강도 수축·충분한 휴식 리듬 프로그램입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -347,6 +369,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Conditioning", en: "Muscle building", ko: "근육 형성 (기초 근매스)", type: "tetanic",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 근육이 부풀어 오르는 선. 화면 눈금은 세션 중 5분마다 한 칸씩.", contraction: true,
     desc: "운동을 막 시작했거나 기초 근육량·탄력을 균형 있게 만들고 싶을 때 적합합니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -362,6 +385,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Conditioning", en: "Warm-up", ko: "준비운동 (워밍업)", type: "twitch",
+    durationMin: 10, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 가볍게 튀는 선. 화면 막대 50% 안쪽에서 멈추세요.", contraction: false,
     desc: "운동 시작 전 근육 온도와 혈류를 빠르게 끌어올려 부상을 예방하는 준비 코스입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -377,6 +401,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Conditioning", en: "Capillarisation", ko: "모세혈관 활성화 (혈류 개선)", type: "twitch",
+    durationMin: 20, mi: "MI-RANGE · MI-SCAN", miTip: "MI-RANGE — ✓가 뜨는 범위에서 근육이 잔물결처럼 튀는 정도. 막대가 차면 낮추기.", contraction: false,
     desc: "미세 혈관을 확장해 산소 공급을 늘려 주며, 수축 부담 없이 회복·혈액순환에 좋습니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -395,6 +420,7 @@ window.PROGRAMS = [
   // Fitness (5)
   {
     cat: "Fitness", en: "Firm your arms", ko: "팔 탄력 (이두·삼두)", type: "tetanic",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 이두·삼두가 단단히 조여드는 선. 막대가 찰 때까지 올리지 않기.", contraction: true,
     desc: "팔뚝 앞·뒤 근육을 탄탄하게 다듬어 처짐을 줄이고 힘을 기르는 피트니스 코스입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -410,6 +436,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Fitness", en: "Tone your thighs", ko: "허벅지 탄력", type: "tetanic",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 허벅지가 강하게 조여드는 선. 화면 눈금은 수축 때만 올리기.", contraction: true,
     desc: "허벅지 앞·뒤 라인을 매끈하고 탄력 있게 가꾸어 주는 하체 전용 코스입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -425,6 +452,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Fitness", en: "Get a 6-pack", ko: "복근 강화 (식스팩)", type: "tetanic",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 복부가 조여드는 선. 화면 막대가 80%를 넘으면 복압만 오릅니다.", contraction: true,
     desc: "복직근을 강하게 수축시켜 복근 선명도와 코어 힘을 집중적으로 끌어올립니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -440,6 +468,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Fitness", en: "Shape your buttocks", ko: "엉덩이 탄력 (둔근 강화)", type: "tetanic",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 둔근이 강하게 조여드는 선. 막대가 가득 차면 한 칸 낮추고 유지.", contraction: true,
     desc: "둔근(엉덩이)을 집중 수축시켜 탄력과 볼륨을 잡아 주는 하체 피트니스 코스입니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",
@@ -455,6 +484,7 @@ window.PROGRAMS = [
   },
   {
     cat: "Fitness", en: "Firm your stomach", ko: "복부 탄력 (허리둘레 정리)", type: "tetanic",
+    durationMin: 20, mi: "MI-SCAN", miTip: "MI-SCAN 측정 뒤 배가 단단해지는 선. 막대가 차기 전 범위에서 3~4회 반복.", contraction: true,
     desc: "복부 전반과 옆구리 탄력을 높여 허리둘레를 탄탄하게 잡아 줍니다.",
     steps: [
       "패드 부착 후 <span class='kbd'>On/Off</span> 로 켜기",

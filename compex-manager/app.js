@@ -41,6 +41,64 @@
   }
   const stripTags = (s) => String(s || "").replace(/<[^>]*>/g, "");
 
+  /* ─────────── 직전 강도 · 소요 시간 · MI · 패드 수명 ─────────── */
+  const acuteOn = () => !!(state.settings && state.settings.acute);
+  function updateAcuteUI() {
+    const btn = $("#acuteToggle");
+    if (btn) {
+      btn.classList.toggle("on", acuteOn());
+      btn.setAttribute("aria-checked", acuteOn() ? "true" : "false");
+    }
+    const bar = $("#acuteBar");
+    if (bar) bar.classList.toggle("on", acuteOn());
+  }
+  function progOf(en) {
+    return window.PROGRAM_BY_EN[en] || null;
+  }
+  function progMinutes(en, fallback) {
+    const p = progOf(en);
+    return (p && p.durationMin) || fallback || 20;
+  }
+  /* 같은 프로그램(있으면 같은 부위)의 가장 최근 기록 — 강도 힌트용 */
+  function lastSession(programEn, areaLabel) {
+    const en = normProgramEn(programEn);
+    const rows = state.sessions.filter((s) => s && normProgramEn(s.program) === en && Number(s.intensity) > 0);
+    if (!rows.length) return null;
+    const byRecent = (a, b) =>
+      String(b.date || "").localeCompare(String(a.date || "")) || (Number(b.ts) || 0) - (Number(a.ts) || 0);
+    rows.sort(byRecent);
+    if (areaLabel) {
+      const samePart = rows.find((r) => r.area === areaLabel);
+      if (samePart) return samePart;
+    }
+    return rows[0];
+  }
+  function intensityHint(programEn, areaLabel) {
+    const r = lastSession(programEn, areaLabel);
+    if (!r) return "";
+    const d = String(r.date || "").slice(5).replace("-", "/");
+    return "직전 강도 " + r.intensity + " (" + d + (r.area ? " · " + r.area : "") + ")";
+  }
+  function hintHTML(programEn, areaLabel) {
+    const t = intensityHint(programEn, areaLabel);
+    return t ? '<div class="last-hint">🕘 ' + esc(t) + "</div>" : "";
+  }
+  const ACUTE_BADGE = "⚠️ 급성기·주사 직후 비권장 (TENS·가벼운 이완만 권장)";
+  function acuteBadge(p) {
+    return acuteOn() && p && p.contraction ? '<div class="acute-warn">' + ACUTE_BADGE + "</div>" : "";
+  }
+  function miChip(p) {
+    return p && p.mi ? '<span class="mi-badge">🧠 ' + esc(p.mi) + "</span>" : "";
+  }
+  function timeChip(minutes) {
+    return '<span class="time-chip">⏱ 약 ' + (Number(minutes) || 20) + "분</span>";
+  }
+  function padInfo() {
+    const n = Math.max(0, Number(state.settings.padUses) || 0);
+    const lim = Math.max(1, Number(state.settings.padLimit) || 25);
+    return { n: n, lim: lim, warn: n >= 20, over: n >= lim };
+  }
+
   /* ─────────── 상태 ─────────── */
   function defaultState() {
     return {
@@ -49,7 +107,7 @@
       goalNames: {},
       customGoals: [],
       sessions: [],
-      settings: { fb: "vibrate" }
+      settings: { fb: "vibrate", acute: false, padUses: 0, padLimit: 25 }
     };
   }
   /* 옛 프로그램 이름 → 현재 공식 이름 (localStorage에 남은 기록 호환) */
@@ -199,8 +257,10 @@
       (t.text ? '<span class="badge ' + t.cls + '">' + t.short + "</span>" : "") +
       "</div>" +
       '<div class="pi-name">' + esc(p.ko || x.item.program) + '<span class="en">' + esc(x.item.program) + "</span></div>" +
-      '<div class="pi-meta"><span>⏱ ' + (x.item.minutes || 20) + "분</span>" +
-      '<span>🎚 ' + esc(x.item.intensity || "편안한 선까지") + "</span></div>" +
+      '<div class="pi-tags">' + timeChip(x.item.minutes || progMinutes(x.item.program)) + miChip(p) + "</div>" +
+      '<div class="pi-meta"><span>🎚 ' + esc(x.item.intensity || "편안한 선까지") + "</span></div>" +
+      hintHTML(x.item.program, areaLabelFor(x.item.program, dkey)) +
+      acuteBadge(p) +
       (x.item.note ? '<div class="pi-note">' + esc(x.item.note) + "</div>" : "") +
       '<div class="pi-actions"><button type="button" data-act="map">🩹 패드 그림' + (dkey && window.DIAGRAM_LABELS[dkey] ? " · " + esc(window.DIAGRAM_LABELS[dkey]) : "") + "</button>" +
       '<button type="button" data-act="rec" class="rec">＋ 세션 기록</button></div></div>'
@@ -273,7 +333,10 @@
     const first = keys[0];
     const html =
       '<div style="margin-bottom:10px"><div style="font-size:15.5px;font-weight:800;letter-spacing:-.01em">' + esc(p.ko) + "</div>" +
-      '<div style="font-size:11.5px;color:#94a3b8;font-weight:600">' + esc(p.en) + " · " + esc(window.CAT_LABEL[p.cat] || p.cat) + "</div></div>" +
+      '<div style="font-size:11.5px;color:#94a3b8;font-weight:600">' + esc(p.en) + " · " + esc(window.CAT_LABEL[p.cat] || p.cat) + "</div>" +
+      '<div class="pi-tags" style="margin-top:6px">' + timeChip(p.durationMin) + miChip(p) + "</div>" +
+      hintHTML(p.en, null) + acuteBadge(p) + "</div>" +
+      (p.miTip ? '<div class="mi-tip">🧠 <b>' + esc(p.mi) + '</b> — ' + esc(p.miTip) + "</div>" : "") +
       (keys.length > 1
         ? '<div class="diag-pills">' + keys.map((k, i) => '<button type="button" data-dkey="' + k + '" class="' + (i === 0 ? "active" : "") + '">' + esc(window.DIAGRAM_LABELS[k] || k) + "</button>").join("") + "</div>"
         : "") +
@@ -345,10 +408,14 @@
     return (
       '<div class="prog ' + (open ? "open" : "") + '" data-pid="' + p.id + '">' +
       '<div class="prog-head"><div class="t"><div class="ko">' + esc(p.ko) + "</div>" +
-      '<div class="en">' + esc(p.en) + ' <span class="cat">' + esc(window.CAT_LABEL[p.cat] || p.cat) + "</span></div></div>" +
+      '<div class="en">' + esc(p.en) + ' <span class="cat">' + esc(window.CAT_LABEL[p.cat] || p.cat) + "</span></div>" +
+      '<div class="prog-tags">' + timeChip(p.durationMin) + miChip(p) + "</div></div>" +
       '<span class="badge ' + t.cls + '">' + t.short + '</span><span class="arrow">▾</span></div>' +
+      acuteBadge(p) +
       '<div class="prog-body">' +
       '<p class="p-desc">' + esc(p.desc) + "</p>" +
+      (p.miTip ? '<div class="mi-tip">🧠 <b>' + esc(p.mi) + '</b> — ' + esc(p.miTip) + "</div>" : "") +
+      hintHTML(p.en, null) +
       '<div class="p-block"><div class="lbl">🎛 기기 진입 순서</div><ol>' + p.steps.map((s) => "<li>" + s + "</li>").join("") + "</ol></div>" +
       '<div class="p-block"><div class="lbl">🩹 패드 · 자세 · 강도</div><div class="val">' +
       "<b>패드</b> " + esc(p.pads) + "<br><b>자세</b> " + esc(p.pose) + "<br><b>강도</b> " + esc(p.intensity) + "</div></div>" +
@@ -585,17 +652,31 @@
     $$("#feelBtns button").forEach((b) => b.classList.toggle("active", Number(b.dataset.v) === v));
   }
 
+  /* 기록 폼의 직전 강도 힌트 */
+  function renderLogHint() {
+    const el = $("#logHint");
+    if (!el) return;
+    const program = $("#fProgram").value;
+    const area = $("#fArea").value;
+    const p = progOf(program);
+    const t = intensityHint(program, area);
+    el.innerHTML =
+      (t ? '<div class="last-hint">🕘 ' + esc(t) + "</div>" : '<div class="last-hint muted">이 프로그램의 이전 강도 기록이 아직 없습니다.</div>') +
+      (p && acuteOn() && p.contraction ? '<div class="acute-warn">' + ACUTE_BADGE + "</div>" : "");
+  }
+
   function openLog(pre) {
     pre = pre || {};
     editingId = null;
     switchTab("tab-log");
     $("#logFormTitle").textContent = "➕ 세션 기록";
     $("#fDate").value = pre.date || todayISO();
-    $("#fMinutes").value = pre.minutes || 20;
+    $("#fMinutes").value = pre.minutes || (pre.program ? progMinutes(pre.program) : 20);
     $("#fIntensity").value = pre.intensity || "";
     $("#fMemo").value = pre.memo || "";
     $("#fArea").value = pre.area || (pre.program ? areaLabelFor(pre.program) : $("#fArea").options[0].value);
     if (pre.program && window.PROGRAM_BY_EN[pre.program]) $("#fProgram").value = pre.program;
+    renderLogHint();
     setFeel(pre.feel || 3);
     setTimeout(() => {
       const el = $("#tab-log");
@@ -644,6 +725,22 @@
     $("#wsSessions").textContent = ws.length;
     $("#wsMinutes").textContent = mins;
     $("#wsStreak").textContent = streak();
+  }
+  function renderPadCounter() {
+    const el = $("#padCounter");
+    if (!el) return;
+    const pi = padInfo();
+    const pct = Math.min(100, Math.round((pi.n / pi.lim) * 100));
+    const msg = pi.over
+      ? "교체 시점을 지났습니다 — 새 패드로 바꾸면 자극이 다시 고르게 전달됩니다."
+      : pi.warn
+      ? "20회 이상 — 접착력 점검·교체를 권장합니다. 따끔하면 바로 교체하세요."
+      : "패드 접착력이 떨어지면 자극이 한쪽으로 몰려 따갑습니다. 세션 1회마다 자동으로 쌓입니다.";
+    el.innerHTML =
+      '<div class="pad-count-top"><h2>🩹 패드 사용 횟수</h2><span class="more">' + pi.n + " / " + pi.lim + "회</span></div>" +
+      '<div class="pad-bar ' + (pi.warn ? "warn" : "") + '"><i style="width:' + pct + '%"></i></div>' +
+      '<div class="pad-msg ' + (pi.warn ? "warn" : "") + '">' + esc(msg) + "</div>" +
+      '<button class="btn btn-ghost btn-sm" id="padReset" type="button">새 패드로 교체 (0부터 다시)</button>';
   }
   function streak() {
     const days = {};
@@ -704,8 +801,10 @@
       ts: Date.now()
     };
     state.sessions.push(rec);
+    state.settings.padUses = (Number(state.settings.padUses) || 0) + 1;
     saveState();
     renderStats();
+    renderPadCounter();
     renderLogs();
     toast("저장했습니다 · " + area + " " + minutes + "분");
     $("#fMemo").value = "";
@@ -957,7 +1056,7 @@
     const pi = btn.closest(".pi");
     const prog = pi.dataset.prog;
     if (btn.dataset.act === "map") openPadSheet(prog, pi.dataset.diag || "");
-    else openLog({ program: prog, minutes: (window.PROGRAM_BY_EN[prog] || {}).type === "tens" ? 20 : 20, area: areaLabelFor(prog, pi.dataset.part || "") });
+    else openLog({ program: prog, minutes: progMinutes(prog), area: areaLabelFor(prog, pi.dataset.part || "") });
   });
 
   $("#progSearch").addEventListener("input", renderPrograms);
@@ -1065,12 +1164,38 @@
     if (b) setFeel(Number(b.dataset.v));
   });
   $("#saveLog").addEventListener("click", saveLog);
+  $("#fProgram").addEventListener("change", renderLogHint);
+  $("#fArea").addEventListener("change", renderLogHint);
+  const padBox = $("#padCounter");
+  if (padBox) {
+    padBox.addEventListener("click", (e) => {
+      if (e.target.closest("#padReset")) {
+        state.settings.padUses = 0;
+        saveState();
+        renderPadCounter();
+        toast("새 패드로 교체했습니다 · 0회부터 다시 셉니다");
+      }
+    });
+  }
+  const acuteBtn = $("#acuteToggle");
+  if (acuteBtn) {
+    acuteBtn.addEventListener("click", () => {
+      state.settings.acute = !acuteOn();
+      saveState();
+      updateAcuteUI();
+      renderWeek();
+      renderPrograms();
+      renderLogHint();
+      toast(acuteOn() ? "급성 통증 · 주사 직후 모드 켬 — 강한 근수축 코스에 경고를 표시합니다" : "급성 통증 · 주사 직후 모드 끔");
+    });
+  }
   $("#resetLog").addEventListener("click", () => {
     $("#fDate").value = todayISO();
     $("#fMinutes").value = 20;
     $("#fIntensity").value = "";
     $("#fMemo").value = "";
     setFeel(3);
+    renderLogHint();
     toast("입력을 지웠습니다");
   });
   $("#logList").addEventListener("click", (e) => {
@@ -1100,7 +1225,9 @@
     renderAreas();
     renderStretch();
     renderStats();
+    renderPadCounter();
     renderLogs();
+    updateAcuteUI();
   }
   function init() {
     fillSelects();
@@ -1110,6 +1237,7 @@
     const wd = ["일", "월", "화", "수", "목", "금", "토"][d.getDay()];
     $("#topSub").textContent = d.getMonth() + 1 + "월 " + d.getDate() + "일 " + wd + "요일 · 콤펙스 SP 4.0";
     renderAll();
+    renderLogHint();
     // 매니페스트 바로가기(?tab=) 지원
     try {
       const t = new URLSearchParams(location.search).get("tab");
