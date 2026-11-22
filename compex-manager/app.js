@@ -257,7 +257,7 @@
       (t.text ? '<span class="badge ' + t.cls + '">' + t.short + "</span>" : "") +
       "</div>" +
       '<div class="pi-name">' + esc(p.ko || x.item.program) + '<span class="en">' + esc(x.item.program) + "</span></div>" +
-      '<div class="pi-tags">' + timeChip(x.item.minutes || progMinutes(x.item.program)) + miChip(p) + "</div>" +
+      '<div class="pi-tags">' + timeChip(progMinutes(x.item.program, x.item.minutes)) + miChip(p) + "</div>" +
       '<div class="pi-meta"><span>🎚 ' + esc(x.item.intensity || "편안한 선까지") + "</span></div>" +
       hintHTML(x.item.program, areaLabelFor(x.item.program, dkey)) +
       acuteBadge(p) +
@@ -806,9 +806,12 @@
     renderStats();
     renderPadCounter();
     renderLogs();
+    renderWeek();
+    renderPrograms();
     toast("저장했습니다 · " + area + " " + minutes + "분");
     $("#fMemo").value = "";
     $("#fIntensity").value = "";
+    renderLogHint();
   }
 
   function exportJSON() {
@@ -1205,6 +1208,9 @@
     saveState();
     renderStats();
     renderLogs();
+    renderWeek();
+    renderPrograms();
+    renderLogHint();
     toast("기록을 삭제했습니다");
   });
   $("#exportBtn").addEventListener("click", exportJSON);
